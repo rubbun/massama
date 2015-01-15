@@ -2,12 +2,14 @@ package com.massma.fragment;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.webkit.WebView.FindListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -22,8 +24,8 @@ public class DetailMemberFragment extends Fragment implements OnClickListener{
 	private TextView tv_name, tv_address, tv_contact_person, tv_tata, tv_mobile, tv_fax, tv_residential, tv_email, tv_web;
 	private ImageView iv_call;
 	private LinearLayout ll_mobile_second,ll_mobile_third,ll_email,ll_webaddress;
-	private TextView tv_mobile_second,tv_mobile_third;
-	private ImageView iv_call_second,iv_call_third;
+	private TextView tv_mobile_second,tv_mobile_third,tv_hughes_no,tv_hughes_no_two,tv_hughes_no_three;
+	private ImageView iv_call_second,iv_call_third,iv_hughes_call_one,iv_hughes_call_two,iv_hughes_call_three;
 	
 	public DetailMemberFragment(BaseActivity base,String name, String address, String contactParson, String tata, String mobile, String fax, String residential, String email, String web){
 		this.base = base;
@@ -70,6 +72,14 @@ public class DetailMemberFragment extends Fragment implements OnClickListener{
 		tv_web = (TextView)v.findViewById(R.id.tv_web);
 		iv_call = (ImageView)v.findViewById(R.id.iv_call);
 		
+		tv_hughes_no = (TextView)v.findViewById(R.id.tv_hughes_no);
+		tv_hughes_no.setVisibility(View.GONE);
+		
+		tv_hughes_no_two = (TextView)v.findViewById(R.id.tv_hughes_no_two);
+		tv_hughes_no_two.setVisibility(View.GONE);
+		
+		tv_hughes_no_three = (TextView)v.findViewById(R.id.tv_hughes_no_three);
+		tv_hughes_no_three.setVisibility(View.GONE);
 		
 		tv_name.setText(name);
 		tv_address.setText(address);

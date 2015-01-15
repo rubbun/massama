@@ -3,6 +3,9 @@ package com.massma;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,7 +35,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 	private ArrayList<Catagory> catagoryList = new ArrayList<Catagory>();
 	private LinearLayout ll_member, ll_catagory, ll_schedule;
 
-	private String name, address, contactParson, tata, mobile, fax, residential, email, web;
+	private String name, address, contactParson, tata, mobile, fax, residential, email, web, hughes_no;
 
 	private static final String TAB_MEMBER = "member";
 	private static final String TAB_CATEGORY = "category";
@@ -40,7 +43,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 	private static final String DETAIL_MEMBER = "member_detail";
 	private static final String TAB_SUBCATAGORY = "sub_catagory";
 
-	private String current_tab,previous_tab = null;
+	private String current_tab, previous_tab = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +73,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 			break;
 		case 1:
 			current_tab = TAB_CATEGORY;
-			fragment = new CatagoryFragment(this,catagoryList);
+			fragment = new CatagoryFragment(this, catagoryList);
 			break;
 		case 2:
 			current_tab = TAB_THIRD;
@@ -80,7 +83,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 			current_tab = DETAIL_MEMBER;
 			fragment = new DetailMemberFragment(this, name, address, contactParson, tata, mobile, fax, residential, email, web);
 			break;
-			
+
 		case 4:
 			current_tab = TAB_SUBCATAGORY;
 			fragment = new SubCategoryFragment(this, subCatagoryList);
@@ -112,7 +115,6 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 
 	}
 
-
 	public void parseJSONForMember() {
 		try {
 			JSONArray jArr = new JSONArray(readXMLinString("member.json"));
@@ -122,20 +124,28 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 					String name = c.getString("MEMBERS_NAME");
 					String address = c.getString("ADDRESS");
 					String contactParson = c.getString("CONT_PERSON");
-					String tata = c.getString("TATA");
+					String tata = c.getString("PHONE_NO");
 					String mobile = c.getString("MOBILE");
 					String fax = c.getString("FAX");
-					String residential = c.getString("RESI");
+					String residential = c.getString("RESIDENCE");
 					String email = c.getString("EMAIL");
 					String web = c.getString("WEB");
-					memberArr.add(new Member(name, address, contactParson, tata, mobile, fax, residential, email, web));
+					String hughes_no = c.getString("HUGHES_NO");
+					memberArr.add(new Member(name, address, contactParson, tata, mobile, fax, residential, email, web, hughes_no));
+					Collections.sort(memberArr, new Comparator<Member>() {
+
+						@Override
+						public int compare(Member arg0, Member arg1) {
+							return arg0.getName().compareTo(arg1.getName());
+						}
+					});
 				}
 			}
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	private void parseJSONForCtagory() {
 		try {
 			JSONArray jArr = new JSONArray(readXMLinString("category.json"));
@@ -150,7 +160,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 			e.printStackTrace();
 		}
 	}
-	
+
 	private void parseJSONForSubCtagory(String sub_catagory) {
 		try {
 			JSONArray jArr = new JSONArray(readXMLinString(sub_catagory));
@@ -167,6 +177,13 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 					String email = c.getString("EMAIL");
 					String web = c.getString("WEB");
 					subCatagoryList.add(new SubCatagory(name, address, contactParson, tata, mobile, fax, residential, email, web));
+					Collections.sort(subCatagoryList, new Comparator<SubCatagory>() {
+
+						@Override
+						public int compare(SubCatagory arg0, SubCatagory arg1) {
+							return arg0.getName().compareTo(arg1.getName());
+						}
+					});
 				}
 			}
 		} catch (JSONException e) {
@@ -184,53 +201,54 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 		this.residential = residential;
 		this.email = email;
 		this.web = web;
+		this.hughes_no = hughes_no;
 		previous_tab = TAB_MEMBER;
 		displayView(3);
 	}
-	
+
 	public void onCatagoryClick(int position) {
 		previous_tab = TAB_CATEGORY;
-		if(position == 0){
+		if (position == 0) {
 			subCatagoryList.clear();
 			parseJSONForSubCtagory("Stainless_Steel_Seamless_Pipes_and_Tubes.json");
 			displayView(4);
-		}else if(position == 1){
+		} else if (position == 1) {
 			subCatagoryList.clear();
 			parseJSONForSubCtagory("Nickel_Alloys.json");
 			displayView(4);
-		}else if(position == 2){
+		} else if (position == 2) {
 			subCatagoryList.clear();
 			parseJSONForSubCtagory("Stainless_welded_pipes_tubes.json");
 			displayView(4);
-		}else if(position == 3){
+		} else if (position == 3) {
 			subCatagoryList.clear();
 			parseJSONForSubCtagory("coper_pipe.json");
 			displayView(4);
 		}
 	}
-	
+
 	public void onSelectedCatagoryClick(int position) {
 		previous_tab = TAB_CATEGORY;
-		if(position == 0){
+		if (position == 0) {
 			subCatagoryList.clear();
 			parseJSONForSubCtagory("Stainless_Steel_Seamless_Pipes_and_Tubes.json");
 			displayView(4);
-		}else if(position == 1){
+		} else if (position == 1) {
 			subCatagoryList.clear();
 			parseJSONForSubCtagory("Nickel_Alloys.json");
 			displayView(4);
-		}else if(position == 2){
+		} else if (position == 2) {
 			subCatagoryList.clear();
 			parseJSONForSubCtagory("Stainless_welded_pipes_tubes.json");
 			displayView(4);
-		}else if(position == 3){
+		} else if (position == 3) {
 			subCatagoryList.clear();
 			parseJSONForSubCtagory("coper_pipe.json");
 			displayView(4);
 		}
 	}
-	
-	public void onSelectedMemberClick(String name, String address, String contactParson, String tata, String mobile, String fax, String residential, String email, String web) {
+
+	public void onSelectedMemberClick(String name, String address, String contactParson, String tata, String mobile, String fax, String residential, String email, String web, String hughes_no) {
 		this.name = name;
 		this.address = address;
 		this.contactParson = contactParson;
@@ -240,11 +258,12 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 		this.residential = residential;
 		this.email = email;
 		this.web = web;
+		this.hughes_no = hughes_no;
 		previous_tab = TAB_MEMBER;
 		displayView(3);
 	}
-	
-	public void onSubCatagoryClick(String name, String address, String contactParson, String tata, String mobile, String fax, String residential, String email, String web) {
+
+	public void onSubCatagoryClick(String name, String address, String contactParson, String tata, String mobile, String fax, String residential, String email, String web, String hughes_no) {
 		this.name = name;
 		this.address = address;
 		this.contactParson = contactParson;
@@ -257,8 +276,8 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 		previous_tab = TAB_SUBCATAGORY;
 		displayView(3);
 	}
-	
-	public void onSelectedSubCatagoryClick(String name, String address,String contactParson, String tata, String mobile, String fax,String residential, String email, String web) {
+
+	public void onSelectedSubCatagoryClick(String name, String address, String contactParson, String tata, String mobile, String fax, String residential, String email, String web) {
 		this.name = name;
 		this.address = address;
 		this.contactParson = contactParson;
@@ -292,14 +311,14 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 
 	@Override
 	public void onBackPressed() {
-		
+
 		if (current_tab.equalsIgnoreCase(DETAIL_MEMBER) && previous_tab.equalsIgnoreCase(TAB_MEMBER)) {
 			displayView(0);
-		}else if (current_tab.equalsIgnoreCase(DETAIL_MEMBER) && previous_tab.equalsIgnoreCase(TAB_SUBCATAGORY)) {
+		} else if (current_tab.equalsIgnoreCase(DETAIL_MEMBER) && previous_tab.equalsIgnoreCase(TAB_SUBCATAGORY)) {
 			displayView(4);
-		}else if(current_tab.equalsIgnoreCase(TAB_SUBCATAGORY) && previous_tab.equalsIgnoreCase(TAB_CATEGORY)){
+		} else if (current_tab.equalsIgnoreCase(TAB_SUBCATAGORY) && previous_tab.equalsIgnoreCase(TAB_CATEGORY)) {
 			displayView(1);
-		}else {
+		} else {
 			MainActivity.this.finish();
 		}
 	}

@@ -15,14 +15,14 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AutoCompleteTextView;
-import android.widget.ListView;
 
 import com.massma.BaseActivity;
+import com.massma.IndexableListView;
 import com.massma.R;
-import com.massma.adapter.SubCatagoryAdapter;
 import com.massma.adapter.SelectedSubCatagoryAdapter;
-import com.massma.bean.SubCatagory;
+import com.massma.adapter.SubCatagoryAdapter;
 import com.massma.bean.SelectedSubCatagory;
+import com.massma.bean.SubCatagory;
 
 public class SubCategoryFragment extends Fragment{
 	
@@ -31,7 +31,7 @@ public class SubCategoryFragment extends Fragment{
 	private SelectedSubCatagoryAdapter selecetedAdapter;
 	private ArrayList<SubCatagory> catagoryList = new ArrayList<SubCatagory>();
 	private ArrayList<SelectedSubCatagory> selectedCatagoryList = new ArrayList<SelectedSubCatagory>();
-	private ListView lv_catagories;
+	private IndexableListView lv_catagories;
 	private AutoCompleteTextView et_search;
 	
 	public SubCategoryFragment(BaseActivity base, ArrayList<SubCatagory> catagoryList2){
@@ -41,11 +41,12 @@ public class SubCategoryFragment extends Fragment{
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View v = inflater.inflate(R.layout.fragment_category, container, false);
+		View v = inflater.inflate(R.layout.fragment_sub_category, container, false);
 		
-		lv_catagories = (ListView)v.findViewById(R.id.lv_catagories);
+		lv_catagories = (IndexableListView)v.findViewById(R.id.lv_catagories);
 		adapter = new SubCatagoryAdapter(base, R.layout.row_member, catagoryList);
 		lv_catagories.setAdapter(adapter);
+		lv_catagories.setFastScrollEnabled(true);
 		
 		et_search = (AutoCompleteTextView)v.findViewById(R.id.et_search);
 		et_search.addTextChangedListener(new TextWatcher() {

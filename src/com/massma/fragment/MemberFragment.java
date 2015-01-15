@@ -15,9 +15,9 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AutoCompleteTextView;
-import android.widget.ListView;
 
 import com.massma.BaseActivity;
+import com.massma.IndexableListView;
 import com.massma.R;
 import com.massma.adapter.MemberAdapter;
 import com.massma.adapter.SelectedMemberAdapter;
@@ -28,7 +28,7 @@ public class MemberFragment extends Fragment {
 
 	private BaseActivity base;
 	private ArrayList<Member> memberArr;
-	private ListView lv_members;
+	private IndexableListView lv_members;
 	private MemberAdapter memberAdapter;
 	private SelectedMemberAdapter selectedmemberAdapter;
 	private AutoCompleteTextView et_search = null;
@@ -43,11 +43,11 @@ public class MemberFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.fragment_member, container, false);
-		lv_members = (ListView) v.findViewById(R.id.lv_members);
+		lv_members = (IndexableListView) v.findViewById(R.id.lv_members);
 		et_search = (AutoCompleteTextView) v.findViewById(R.id.et_search);
 		memberAdapter = new MemberAdapter(base, R.layout.row_member, memberArr);
 		lv_members.setAdapter(memberAdapter);
-
+		lv_members.setFastScrollEnabled(true);
 		et_search.setOnTouchListener(new OnTouchListener() {
 			
 			@Override
@@ -75,12 +75,12 @@ public class MemberFragment extends Fragment {
 								String[] arr = retailerName.split("\\s+");
 								for(int j = 0;j<arr.length;j++){
 									if(arr[j].toLowerCase().contains(searchString.toLowerCase())){
-										selectedtempArr.add(new SelectedMember(memberArr.get(i).getName(), memberArr.get(i).getAddress(),memberArr.get(i).getContactParson(),memberArr.get(i).getTata(),memberArr.get(i).getMobile(),memberArr.get(i).getFax(),memberArr.get(i).getResidential(),memberArr.get(i).getEmail(), memberArr.get(i).getWeb()));											
+										selectedtempArr.add(new SelectedMember(memberArr.get(i).getName(), memberArr.get(i).getAddress(),memberArr.get(i).getContactParson(),memberArr.get(i).getTata(),memberArr.get(i).getMobile(),memberArr.get(i).getFax(),memberArr.get(i).getResidential(),memberArr.get(i).getEmail(), memberArr.get(i).getWeb(), memberArr.get(i).getHughes_no()));											
 										break;
 									}
 								}
 							}else if(retailerName.toLowerCase().contains(searchString.toLowerCase())){
-								selectedtempArr.add(new SelectedMember(memberArr.get(i).getName(), memberArr.get(i).getAddress(),memberArr.get(i).getContactParson(),memberArr.get(i).getTata(),memberArr.get(i).getMobile(),memberArr.get(i).getFax(),memberArr.get(i).getResidential(),memberArr.get(i).getEmail(), memberArr.get(i).getWeb()));											
+								selectedtempArr.add(new SelectedMember(memberArr.get(i).getName(), memberArr.get(i).getAddress(),memberArr.get(i).getContactParson(),memberArr.get(i).getTata(),memberArr.get(i).getMobile(),memberArr.get(i).getFax(),memberArr.get(i).getResidential(),memberArr.get(i).getEmail(), memberArr.get(i).getWeb(),memberArr.get(i).getHughes_no()));											
 								}
 							}
 						}
@@ -118,7 +118,8 @@ public class MemberFragment extends Fragment {
 				String residential = memberArr.get(i).getResidential();
 				String email = memberArr.get(i).getEmail();
 				String web = memberArr.get(i).getWeb();
-				tempArr.add(new Member(name, address, contactParson, tata, mobile, fax, residential, email, web));
+				String hughes_no = memberArr.get(i).getHughes_no();
+				tempArr.add(new Member(name, address, contactParson, tata, mobile, fax, residential, email, web,hughes_no));
 			}
 		}
 

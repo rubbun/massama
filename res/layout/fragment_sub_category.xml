@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="@color/white"
     android:orientation="vertical"
     android:padding="5dp"
-    android:background="@color/white"
     tools:ignore="HardcodedText" >
 
     <LinearLayout
@@ -16,14 +16,14 @@
             android:id="@+id/et_search"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="Search"
             android:focusable="false"
+            android:hint="Search"
             android:singleLine="true" >
         </AutoCompleteTextView>
     </LinearLayout>
 
     <com.massma.IndexableListView
-        android:id="@+id/lv_members"
+        android:id="@+id/lv_catagories"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"

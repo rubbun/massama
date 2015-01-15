@@ -9,18 +9,19 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.SectionIndexer;
 import android.widget.TextView;
 
 import com.massma.BaseActivity;
 import com.massma.R;
 import com.massma.bean.SelectedMember;
 
-public class SelectedMemberAdapter extends ArrayAdapter<SelectedMember> {
+public class SelectedMemberAdapter extends ArrayAdapter<SelectedMember> implements SectionIndexer {
 	
 	public interface OnSelectedMemberClickListener{
-		public void onSelectedMemberClick(String name, String address, String contactParson, String tata, String mobile, String fax, String residential, String email, String web);
+		public void onSelectedMemberClick(String name, String address, String contactParson, String tata, String mobile, String fax, String residential, String email, String web, String hughes_no);
 	}
-
+	private String mSections = "#ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	private BaseActivity activity;
 	private ViewHolder mHolder;
 	public ArrayList<SelectedMember> item = new ArrayList<SelectedMember>();
@@ -70,7 +71,7 @@ public class SelectedMemberAdapter extends ArrayAdapter<SelectedMember> {
 			
 			@Override
 			public void onClick(View arg0) {
-				listener.onSelectedMemberClick(item.get(position).getName(),item.get(position).getAddress(),item.get(position).getContactParson(),item.get(position).getTata(),item.get(position).getMobile(),item.get(position).getFax(), item.get(position).getResidential(), item.get(position).getEmail(), item.get(position).getWeb());
+				listener.onSelectedMemberClick(item.get(position).getName(),item.get(position).getAddress(),item.get(position).getContactParson(),item.get(position).getTata(),item.get(position).getMobile(),item.get(position).getFax(), item.get(position).getResidential(), item.get(position).getEmail(), item.get(position).getWeb(),item.get(position).getHughes_no());
 				
 			}
 		});
@@ -80,5 +81,24 @@ public class SelectedMemberAdapter extends ArrayAdapter<SelectedMember> {
 	class ViewHolder {
 		public TextView tv_name;
 		public LinearLayout ll_member;
+	}
+
+	@Override
+	public int getPositionForSection(int sectionIndex) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getSectionForPosition(int position) {
+		return 0;
+	}
+
+	@Override
+	public Object[] getSections() {
+		String[] sections = new String[mSections.length()];
+		for (int i = 0; i < mSections.length(); i++)
+			sections[i] = String.valueOf(mSections.charAt(i));
+		return sections;
 	}
 }

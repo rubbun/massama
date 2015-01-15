@@ -17,11 +17,11 @@ public class BaseActivity extends FragmentActivity implements OnMemberClickListe
 		super.onCreate(arg0);
 	}
 
-	public void onMemberClick(String name, String address, String contactParson, String tata, String mobile, String fax, String residential, String email, String web) {
+	public void onMemberClick(String name, String address, String contactParson, String tata, String mobile, String fax, String residential, String email, String web,String hughes_no) {
 	}
 
 	@Override
-	public void onSelectedMemberClick(String name, String address, String contactParson, String tata, String mobile, String fax, String residential, String email, String web) {
+	public void onSelectedMemberClick(String name, String address, String contactParson, String tata, String mobile, String fax, String residential, String email, String web,String hughes_no) {
 		
 	}
 
