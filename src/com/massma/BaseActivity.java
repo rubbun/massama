@@ -10,40 +10,38 @@ import com.massma.adapter.SelectedMemberAdapter.OnSelectedMemberClickListener;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
-public class BaseActivity extends FragmentActivity implements OnMemberClickListener,OnSelectedMemberClickListener,OnCatagoryClickListener,OnSelecedCatagoryClickListener,OnSubCatagoryClickListener,OnSelectedSubCatagoryClickListener{
+public class BaseActivity extends FragmentActivity implements OnMemberClickListener, OnSelectedMemberClickListener, OnCatagoryClickListener, OnSelecedCatagoryClickListener, OnSubCatagoryClickListener, OnSelectedSubCatagoryClickListener {
 
 	@Override
 	protected void onCreate(Bundle arg0) {
 		super.onCreate(arg0);
 	}
 
-	public void onMemberClick(String name, String address, String contactParson, String tata, String mobile, String fax, String residential, String email, String web,String hughes_no) {
+	public void onMemberClick(String name, String address, String contactParson, String tata, String mobile, String fax, String residential, String email, String web, String hughes_no) {
 	}
 
 	@Override
-	public void onSelectedMemberClick(String name, String address, String contactParson, String tata, String mobile, String fax, String residential, String email, String web,String hughes_no) {
-		
+	public void onSelectedMemberClick(String name, String address, String contactParson, String tata, String mobile, String fax, String residential, String email, String web, String hughes_no) {
+
 	}
 
 	@Override
 	public void onSubCatagoryClick(String name, String address, String contactParson, String tata, String mobile, String fax, String residential, String email, String web) {
-		
+
 	}
 
 	@Override
 	public void onCatagoryClick(int position) {
-		
+
 	}
 
 	@Override
 	public void onSelectedCatagoryClick(int position) {
-		
+
 	}
 
 	@Override
-	public void onSelectedSubCatagoryClick(String name, String address,
-			String contactParson, String tata, String mobile, String fax,
-			String residential, String email, String web) {
-		
+	public void onSelectedSubCatagoryClick(String name, String address, String contactParson, String tata, String mobile, String fax, String residential, String email, String web) {
+
 	}
 }

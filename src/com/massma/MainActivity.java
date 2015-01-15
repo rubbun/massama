@@ -3,7 +3,6 @@ package com.massma;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 
@@ -24,9 +23,9 @@ import com.massma.bean.Member;
 import com.massma.bean.SubCatagory;
 import com.massma.fragment.CatagoryFragment;
 import com.massma.fragment.DetailMemberFragment;
+import com.massma.fragment.Dialerfragment;
 import com.massma.fragment.MemberFragment;
 import com.massma.fragment.SubCategoryFragment;
-import com.massma.fragment.Dialerfragment;
 
 public class MainActivity extends BaseActivity implements OnClickListener {
 
