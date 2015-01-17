@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.massma.BaseActivity;
 import com.massma.R;
@@ -69,6 +70,7 @@ public class CatagoryAdapter extends ArrayAdapter<Catagory> {
 			
 			@Override
 			public void onClick(View arg0) {
+				Toast.makeText(activity, "This is it", 6000).show();
 				listener.onCatagoryClick(position);
 			}
 		});

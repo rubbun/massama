@@ -2,14 +2,12 @@ package com.massma.fragment;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.opengl.Visibility;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.webkit.WebView.FindListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -20,14 +18,11 @@ import com.massma.R;
 public class DetailMemberFragment extends Fragment implements OnClickListener{
 	
 	private BaseActivity base;
-	private String name, address, contactParson, tata, mobile, fax, residential, email, web; 
-	private TextView tv_name, tv_address, tv_contact_person, tv_tata, tv_mobile, tv_fax, tv_residential, tv_email, tv_web;
-	private ImageView iv_call;
-	private LinearLayout ll_mobile_second,ll_mobile_third,ll_email,ll_webaddress;
-	private TextView tv_mobile_second,tv_mobile_third,tv_hughes_no,tv_hughes_no_two,tv_hughes_no_three;
-	private ImageView iv_call_second,iv_call_third,iv_hughes_call_one,iv_hughes_call_two,iv_hughes_call_three;
+	private String name, address, contactParson, tata, mobile, fax, residential, email, web,hughes_no; 
+	private TextView tv_name, tv_address, tv_contact_person, tv_tata, tv_fax, tv_residential, tv_email, tv_web;
+	private LinearLayout ll_mobile_container,ll_huges_container,ll_email,ll_webaddress;
 	
-	public DetailMemberFragment(BaseActivity base,String name, String address, String contactParson, String tata, String mobile, String fax, String residential, String email, String web){
+	public DetailMemberFragment(BaseActivity base,String name, String address, String contactParson, String tata, String mobile, String fax, String residential, String email, String web, String hughes_no){
 		this.base = base;
 		this.name = name;
 		this.address = address;
@@ -38,16 +33,22 @@ public class DetailMemberFragment extends Fragment implements OnClickListener{
 		this.residential = residential;
 		this.email = email;
 		this.web = web;
+		this.hughes_no = hughes_no;
 	}
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.fragment_detail_member, container, false);
 		
-		ll_mobile_second = (LinearLayout)v.findViewById(R.id.ll_mobile_second);
-		ll_mobile_second.setVisibility(View.GONE);
-		ll_mobile_third = (LinearLayout)v.findViewById(R.id.ll_mobile_third);
-		ll_mobile_third.setVisibility(View.GONE);
+		ll_mobile_container = (LinearLayout)v.findViewById(R.id.ll_mobile_container);
+		ll_huges_container = (LinearLayout)v.findViewById(R.id.ll_huges_container);
+		
+		if(hughes_no.length() > 0){
+			System.out.println("!!i am here");
+			ll_huges_container.setVisibility(View.VISIBLE);
+		}else{
+			ll_huges_container.setVisibility(View.GONE);
+		}
 		
 		ll_email = (LinearLayout)v.findViewById(R.id.ll_email);
 		ll_email.setOnClickListener(this);
@@ -55,31 +56,14 @@ public class DetailMemberFragment extends Fragment implements OnClickListener{
 		ll_webaddress = (LinearLayout)v.findViewById(R.id.ll_webaddress);
 		ll_webaddress.setOnClickListener(this);
 		
-		tv_mobile_second = (TextView)v.findViewById(R.id.tv_mobile_second);
-		tv_mobile_third = (TextView)v.findViewById(R.id.tv_mobile_third);
-		
-		iv_call_second = (ImageView)v.findViewById(R.id.iv_call_second);
-		iv_call_third = (ImageView)v.findViewById(R.id.iv_call_third);
-		
 		tv_name = (TextView)v.findViewById(R.id.tv_name);
 		tv_address = (TextView)v.findViewById(R.id.tv_address);
 		tv_contact_person = (TextView)v.findViewById(R.id.tv_contact_person);
 		tv_tata = (TextView)v.findViewById(R.id.tv_tata);
-		tv_mobile = (TextView)v.findViewById(R.id.tv_mobile);
 		tv_fax = (TextView)v.findViewById(R.id.tv_fax);
 		tv_residential = (TextView)v.findViewById(R.id.tv_residential);
 		tv_email = (TextView)v.findViewById(R.id.tv_email);
 		tv_web = (TextView)v.findViewById(R.id.tv_web);
-		iv_call = (ImageView)v.findViewById(R.id.iv_call);
-		
-		tv_hughes_no = (TextView)v.findViewById(R.id.tv_hughes_no);
-		tv_hughes_no.setVisibility(View.GONE);
-		
-		tv_hughes_no_two = (TextView)v.findViewById(R.id.tv_hughes_no_two);
-		tv_hughes_no_two.setVisibility(View.GONE);
-		
-		tv_hughes_no_three = (TextView)v.findViewById(R.id.tv_hughes_no_three);
-		tv_hughes_no_three.setVisibility(View.GONE);
 		
 		tv_name.setText(name);
 		tv_address.setText(address);
@@ -89,19 +73,31 @@ public class DetailMemberFragment extends Fragment implements OnClickListener{
 		if(mobile.contains("/"))
 		{
 		    String parts[] = mobile.split("/");
-		    tv_mobile.setText(parts[0]);
-		    tv_mobile_second.setText(parts[1]);
-		    ll_mobile_second.setVisibility(View.VISIBLE);
-		    iv_call_second.setOnClickListener(this);
+		    getChildView(parts);
+		   
 		}else{
-			tv_mobile.setText(mobile);
+			
+			String parts[] = new String[1];
+			parts[0] = mobile;
+		    getChildView(parts);
+		}
+		
+		if(hughes_no.contains("/"))
+		{
+		    String parts[] = hughes_no.split("/");
+		    getChildViewHughes(parts);
+		   
+		}else if(hughes_no.length() > 0){
+			
+			String parts[] = new String[1];
+			parts[0] = hughes_no;
+			getChildViewHughes(parts);
 		}
 		
 		tv_fax.setText(fax);
 		tv_residential.setText(residential);
 		tv_email.setText(email);
 		tv_web.setText(web);
-		iv_call.setOnClickListener(this);
 		
 		return v;
 	}
@@ -109,16 +105,7 @@ public class DetailMemberFragment extends Fragment implements OnClickListener{
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.iv_call:
-			Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + mobile));
-			startActivity(intent);
-			break;
-			
-		case R.id.iv_call_second:
-			Intent intent1 = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + tv_mobile_second.getText().toString().trim()));
-			startActivity(intent1);
-			break;
-			
+						
 		case R.id.ll_webaddress:
 			if(!web.contains("--")){
 				String url = web;
@@ -139,5 +126,89 @@ public class DetailMemberFragment extends Fragment implements OnClickListener{
 				startActivity(Intent.createChooser(i, "Send email"));
 			}
 		}
+	}
+	
+	public void getChildView(String[] parts){
+		for(int i = 0; i <parts.length ; i++){
+			View v = View.inflate(base, R.layout.detail_page_row, null);
+			
+			final TextView tv_mobile_no = (TextView)v.findViewById(R.id.tv_mobile_no);
+			tv_mobile_no.setText(parts[i]);
+			
+			ImageView iv_call = (ImageView)v.findViewById(R.id.iv_call);
+			iv_call.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					String first_four_digit = Integer.toString(getInitialNos(Integer.parseInt(tv_mobile_no.getText().toString().trim())));
+					Intent intent1 = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "022" +first_four_digit + tv_mobile_no.getText().toString().trim()));
+					startActivity(intent1);
+				}
+			});
+			ll_mobile_container.addView(v);
+		}
+	}
+	
+	public void getChildViewHughes(String[] parts){
+		for(int i = 0; i <parts.length ; i++){
+			View v = View.inflate(base, R.layout.detail_hughes_page_row, null);
+			
+			final TextView tv_mobile_no = (TextView)v.findViewById(R.id.tv_mobile_no);
+			tv_mobile_no.setText(parts[i]);
+			
+			ImageView iv_call = (ImageView)v.findViewById(R.id.iv_call);
+			iv_call.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					String first_four_digit = Integer.toString(getInitialNos(Integer.parseInt(tv_mobile_no.getText().toString().trim())));
+					Intent intent1 = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "022" +first_four_digit + tv_mobile_no.getText().toString().trim()));
+					startActivity(intent1);
+				}
+			});
+			ll_huges_container.addView(v);
+		}
+	}
+	
+	public int getInitialNos(int val){
+		int p=0;
+		if(val>=1000 && val<=1099){
+			p = 6645;
+		}else if(val>=1100 && val<=1299){
+			p = 6752;
+		}else if(val>=1300 && val<=1499){
+			p = 6615;
+		}else if(val>=1500 && val<=1679){
+			p = 6658;
+		}else if(val>=1680 && val<=1999){
+			p = 6615;
+		}else if(val>=2000 && val<=3499){
+			p = 6636;
+		}else if(val>=3500 && val<=4999){
+			p = 6639;
+		}else if(val>=5000 && val<=5999){
+			p = 6659;
+		}else if(val>=6000 && val<=6399){
+			p = 6749;
+		}else if(val>=6400 && val<=6999){
+			p = 6743;
+		}else if(val>=7000 && val<=7099){
+			p = 6615;
+		}else if(val>=7100 && val<=7999){
+			p = 6743;
+		}else if(val>=8000 && val<=8099){
+			p = 6615;
+		}else if(val>=8100 && val<=8499){
+			p = 6743;
+		}else if(val>=8500 && val<=8999){
+			p = 6651;
+		}else if(val>=9000 && val<=9099){
+			p = 6615;
+		}else if(val>=9100 && val<=9199){
+			p = 6743;
+		}else if(val>=9200 && val<=9999){
+			p = 6610;
+		}
+		return p;
 	}
 }

@@ -11,6 +11,7 @@ public class SubCatagory {
 	private String residential;
 	private String email;
 	private String web;
+	private String hughes_no;
 
 	public SubCatagory(String name, String address, String contactParson, String tata, String mobile, String fax, String residential, String email, String web) {
 		this.name = name;
@@ -22,6 +23,7 @@ public class SubCatagory {
 		this.residential = residential;
 		this.email = email;
 		this.web = web;
+		this.hughes_no = hughes_no;
 	}
 
 	public String getName() {
@@ -96,4 +98,11 @@ public class SubCatagory {
 		this.web = web;
 	}
 
+	public String getHughes_no() {
+		return hughes_no;
+	}
+
+	public void setHughes_no(String hughes_no) {
+		this.hughes_no = hughes_no;
+	}
 }

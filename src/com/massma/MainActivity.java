@@ -34,7 +34,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 	private ArrayList<Catagory> catagoryList = new ArrayList<Catagory>();
 	private LinearLayout ll_member, ll_catagory, ll_schedule;
 
-	private String name, address, contactParson, tata, mobile, fax, residential, email, web, hughes_no;
+	private String name, address, contactParson, tata, mobile, fax, residential, email, web, hughes_no = "";
 
 	private static final String TAB_MEMBER = "member";
 	private static final String TAB_CATEGORY = "category";
@@ -80,7 +80,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 			break;
 		case 3:
 			current_tab = DETAIL_MEMBER;
-			fragment = new DetailMemberFragment(this, name, address, contactParson, tata, mobile, fax, residential, email, web);
+			fragment = new DetailMemberFragment(this, name, address, contactParson, tata, mobile, fax, residential, email, web,hughes_no);
 			break;
 
 		case 4:
@@ -190,7 +190,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 		}
 	}
 
-	public void onMemberClick(String name, String address, String contactParson, String tata, String mobile, String fax, String residential, String email, String web) {
+	public void onMemberClick(String name, String address, String contactParson, String tata, String mobile, String fax, String residential, String email, String web, String hughes_no) {
 		this.name = name;
 		this.address = address;
 		this.contactParson = contactParson;
@@ -262,7 +262,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 		displayView(3);
 	}
 
-	public void onSubCatagoryClick(String name, String address, String contactParson, String tata, String mobile, String fax, String residential, String email, String web, String hughes_no) {
+	public void onSubCatagoryClick(String name, String address, String contactParson, String tata, String mobile, String fax, String residential, String email, String web) {
 		this.name = name;
 		this.address = address;
 		this.contactParson = contactParson;

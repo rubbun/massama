@@ -64,12 +64,12 @@ public class SubCategoryFragment extends Fragment{
 								String[] arr = retailerName.split("\\s+");
 								for(int j = 0;j<arr.length;j++){
 									if(arr[j].toLowerCase().contains(searchString.toLowerCase())){
-										selectedCatagoryList.add(new SelectedSubCatagory(catagoryList.get(i).getName(), catagoryList.get(i).getAddress(),catagoryList.get(i).getContactParson(),catagoryList.get(i).getTata(),catagoryList.get(i).getMobile(),catagoryList.get(i).getFax(),catagoryList.get(i).getResidential(),catagoryList.get(i).getEmail(), catagoryList.get(i).getWeb()));											
+										selectedCatagoryList.add(new SelectedSubCatagory(catagoryList.get(i).getName(), catagoryList.get(i).getAddress(),catagoryList.get(i).getContactParson(),catagoryList.get(i).getTata(),catagoryList.get(i).getMobile(),catagoryList.get(i).getFax(),catagoryList.get(i).getResidential(),catagoryList.get(i).getEmail(), catagoryList.get(i).getWeb(),catagoryList.get(i).getHughes_no()));											
 										break;
 									}
 								}
 							}else if(retailerName.toLowerCase().contains(searchString.toLowerCase())){
-								selectedCatagoryList.add(new SelectedSubCatagory(catagoryList.get(i).getName(), catagoryList.get(i).getAddress(),catagoryList.get(i).getContactParson(),catagoryList.get(i).getTata(),catagoryList.get(i).getMobile(),catagoryList.get(i).getFax(),catagoryList.get(i).getResidential(),catagoryList.get(i).getEmail(), catagoryList.get(i).getWeb()));											
+								selectedCatagoryList.add(new SelectedSubCatagory(catagoryList.get(i).getName(), catagoryList.get(i).getAddress(),catagoryList.get(i).getContactParson(),catagoryList.get(i).getTata(),catagoryList.get(i).getMobile(),catagoryList.get(i).getFax(),catagoryList.get(i).getResidential(),catagoryList.get(i).getEmail(), catagoryList.get(i).getWeb(),catagoryList.get(i).getHughes_no()));											
 								}
 							}
 						}

@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.SectionIndexer;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.massma.BaseActivity;
 import com.massma.R;
@@ -72,6 +73,7 @@ public class SubCatagoryAdapter extends ArrayAdapter<SubCatagory> implements Sec
 			
 			@Override
 			public void onClick(View arg0) {
+				Toast.makeText(activity, "This is subcatagory", 6000).show();
 				listener.onSubCatagoryClick(item.get(position).getName(),item.get(position).getAddress(),item.get(position).getContactParson(),item.get(position).getTata(),item.get(position).getMobile(),item.get(position).getFax(), item.get(position).getResidential(), item.get(position).getEmail(), item.get(position).getWeb());
 			}
 		});
