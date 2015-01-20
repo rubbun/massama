@@ -87,8 +87,10 @@ public class MemberFragment extends Fragment {
 	
 				selectedmemberAdapter = new SelectedMemberAdapter(base, R.layout.row_member, selectedtempArr);
 				lv_members.setAdapter(selectedmemberAdapter);
+				lv_members.setFastScrollEnabled(true);
 				}else{
 					lv_members.setAdapter(memberAdapter);
+					lv_members.setFastScrollEnabled(true);
 				}
 			}
 
@@ -125,6 +127,7 @@ public class MemberFragment extends Fragment {
 
 		memberAdapter = new MemberAdapter(base, R.layout.row_member, tempArr);
 		lv_members.setAdapter(memberAdapter);
+		lv_members.setFastScrollEnabled(true);
 	}
 	
 	@Override

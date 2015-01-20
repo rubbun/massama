@@ -29,8 +29,7 @@
         android:layout_marginTop="8dp"
         android:cacheColorHint="@null"
         android:divider="@null"
-        android:dividerHeight="0dp"
-        android:scrollbars="vertical"
+        android:dividerHeight="0dp"       
         android:scrollingCache="false" >
     </com.massma.IndexableListView>
 
