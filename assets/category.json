@@ -1,14 +1,35 @@
 [  
-   {  
-      "CATAGORY_NAME":"Stainless Steel Seamless Pipes and Tubes"
-   },
+   
    {  
       "CATAGORY_NAME":"Nickel Alloys"
    },
    {  
-      "CATAGORY_NAME":"Stainless Steel Welded Pipes and Tubes"
+      "CATAGORY_NAME":"SS Pipes"
    },
    {  
-      "CATAGORY_NAME":"Copper, Brass Pipes Tubes & Coils"
+      "CATAGORY_NAME":"SS Sheets and plates"
+   }
+   ,
+   {  
+      "CATAGORY_NAME":"SS Bars"
+   }
+   ,
+   {  
+      "CATAGORY_NAME":"Fittings"
+   }
+   ,
+   {  
+      "CATAGORY_NAME":"Flanges"
+   }
+   ,
+   {  
+      "CATAGORY_NAME":"S S Scrap"
+   }
+   ,
+   {  
+      "CATAGORY_NAME":"Copper and Brass"
+   },
+   {  
+      "CATAGORY_NAME":"Aluminium"
    }
 ]

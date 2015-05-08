@@ -41,11 +41,12 @@ public class CatagoryFragment extends Fragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View v = inflater.inflate(R.layout.fragment_member, container, false);
+		View v = inflater.inflate(R.layout.fragment_smae_catagory, container, false);
 		lv_members = (ListView) v.findViewById(R.id.lv_members);
 		et_search = (AutoCompleteTextView) v.findViewById(R.id.et_search);
 		catagoryAdapter = new CatagoryAdapter(base, R.layout.row_catagory, catagorypList);
 		lv_members.setAdapter(catagoryAdapter);
+		lv_members.setFastScrollEnabled(true);
 
 		et_search.setOnTouchListener(new OnTouchListener() {
 			
@@ -86,8 +87,10 @@ public class CatagoryFragment extends Fragment {
 	
 				selectedCatagoryAdapter = new SelectedCatagoryAdapter(base, R.layout.row_catagory, selectedtempArr);
 				lv_members.setAdapter(selectedCatagoryAdapter);
+				lv_members.setFastScrollEnabled(true);
 				}else{
 					lv_members.setAdapter(catagoryAdapter);
+					lv_members.setFastScrollEnabled(true);
 				}
 			}
 

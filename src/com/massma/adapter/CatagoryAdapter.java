@@ -70,7 +70,6 @@ public class CatagoryAdapter extends ArrayAdapter<Catagory> {
 			
 			@Override
 			public void onClick(View arg0) {
-				Toast.makeText(activity, "This is it", 6000).show();
 				listener.onCatagoryClick(position);
 			}
 		});

@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 import com.massma.BaseActivity;
 import com.massma.R;
-import com.massma.bean.Catagory;
 import com.massma.bean.SelectedCatagory;
 
 public class SelectedCatagoryAdapter extends ArrayAdapter<SelectedCatagory> {
@@ -65,6 +64,7 @@ public class SelectedCatagoryAdapter extends ArrayAdapter<SelectedCatagory> {
 		if (catagory != null) {
 			mHolder.tv_name.setText(catagory.getName());
 		}
+		
 
 		mHolder.ll_member.setOnClickListener(new OnClickListener() {
 

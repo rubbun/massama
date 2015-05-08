@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="5dp"
+    tools:ignore="HardcodedText" >
+
+    <LinearLayout
+        android:id="@+id/ll_header"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true" >
+
+        <AutoCompleteTextView
+            android:id="@+id/et_search"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:hint="Search"
+            android:singleLine="true" >
+        </AutoCompleteTextView>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/lv_members"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_header"
+        android:layout_above="@+id/ll_footer"
+        android:layout_marginTop="2dp"
+        android:cacheColorHint="@null"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:scrollingCache="false" >
+    </ListView>
+
+    <LinearLayout
+        android:id="@+id/ll_footer"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:layout_alignParentBottom="true" >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" 
+            android:gravity="center"
+            android:textColor="#000"
+            android:textSize="16sp"
+            android:text="More categories coming soon!!"/>
+    </LinearLayout>
+
+</RelativeLayout>

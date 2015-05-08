@@ -73,7 +73,6 @@ public class MemberAdapter extends ArrayAdapter<Member> implements SectionIndexe
 			
 			@Override
 			public void onClick(View arg0) {
-				Toast.makeText(activity, "Hello", 1000).show();
 				listener.onMemberClick(item.get(position).getName(),item.get(position).getAddress(),item.get(position).getContactParson(),item.get(position).getTata(),item.get(position).getMobile(),item.get(position).getFax(), item.get(position).getResidential(), item.get(position).getEmail(), item.get(position).getWeb(),item.get(position).getHughes_no());
 				
 			}

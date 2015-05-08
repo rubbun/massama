@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.massma.bean.Catagory;
 import com.massma.bean.Member;
@@ -26,21 +27,25 @@ import com.massma.fragment.DetailMemberFragment;
 import com.massma.fragment.Dialerfragment;
 import com.massma.fragment.MemberFragment;
 import com.massma.fragment.SubCategoryFragment;
+import com.massma.fragment.Supportfragment;
 
 public class MainActivity extends BaseActivity implements OnClickListener {
 
 	private ArrayList<Member> memberArr = new ArrayList<Member>();
 	private ArrayList<SubCatagory> subCatagoryList = new ArrayList<SubCatagory>();
 	private ArrayList<Catagory> catagoryList = new ArrayList<Catagory>();
-	private LinearLayout ll_member, ll_catagory, ll_schedule;
+	private LinearLayout ll_member, ll_catagory, ll_schedule,ll_support;
+	private TextView tv_member;
 
 	private String name, address, contactParson, tata, mobile, fax, residential, email, web, hughes_no = "";
 
 	private static final String TAB_MEMBER = "member";
 	private static final String TAB_CATEGORY = "category";
+	private static final String TAB_CATEGORY_LEVEL_1 = "category_level_1";
 	private static final String TAB_THIRD = "third";
 	private static final String DETAIL_MEMBER = "member_detail";
 	private static final String TAB_SUBCATAGORY = "sub_catagory";
+	private static final String TAB_SPPORT = "support";
 
 	private String current_tab, previous_tab = null;
 
@@ -57,6 +62,11 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 
 		ll_schedule = (LinearLayout) findViewById(R.id.ll_schedule);
 		ll_schedule.setOnClickListener(this);
+		
+		ll_support = (LinearLayout)findViewById(R.id.ll_support);
+		ll_support.setOnClickListener(this);
+		
+		tv_member = (TextView)findViewById(R.id.tv_member);
 
 		parseJSONForMember();
 		parseJSONForCtagory();
@@ -86,6 +96,12 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 		case 4:
 			current_tab = TAB_SUBCATAGORY;
 			fragment = new SubCategoryFragment(this, subCatagoryList);
+			break;
+			
+		case 5:
+			current_tab = TAB_SPPORT;
+			fragment = new Supportfragment(this);
+			break;
 		}
 
 		if (fragment != null) {
@@ -138,6 +154,9 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 							return arg0.getName().compareTo(arg1.getName());
 						}
 					});
+				}
+				if(memberArr.size() > 0){
+					tv_member.setText("Member"+"("+memberArr.size()+")");
 				}
 			}
 		} catch (JSONException e) {
@@ -207,6 +226,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 
 	public void onCatagoryClick(int position) {
 		previous_tab = TAB_CATEGORY;
+		current_tab = TAB_SUBCATAGORY;
 		if (position == 0) {
 			subCatagoryList.clear();
 			parseJSONForSubCtagory("Stainless_Steel_Seamless_Pipes_and_Tubes.json");
@@ -304,6 +324,10 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 
 		case R.id.ll_schedule:
 			displayView(2);
+			break;
+			
+		case R.id.ll_support:
+			displayView(5);
 			break;
 		}
 	}

@@ -1,9 +1,12 @@
 package com.massma.fragment;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -97,7 +100,13 @@ public class DetailMemberFragment extends Fragment implements OnClickListener{
 		tv_fax.setText(fax);
 		tv_residential.setText(residential);
 		tv_email.setText(email);
-		tv_web.setText(web);
+		tv_email.setTextColor(Color.parseColor("#6600FF"));
+		
+		SpannableString spanString = new SpannableString(web);
+		spanString.setSpan(new UnderlineSpan(), 0, spanString.length(), 0);
+		
+		tv_web.setText(spanString);
+		tv_web.setTextColor(Color.parseColor("#6600FF"));
 		
 		return v;
 	}
