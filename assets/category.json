@@ -1,35 +1,88 @@
-[  
-   
-   {  
-      "CATAGORY_NAME":"Nickel Alloys"
-   },
-   {  
-      "CATAGORY_NAME":"SS Pipes"
-   },
-   {  
-      "CATAGORY_NAME":"SS Sheets and plates"
-   }
-   ,
-   {  
-      "CATAGORY_NAME":"SS Bars"
-   }
-   ,
-   {  
-      "CATAGORY_NAME":"Fittings"
-   }
-   ,
-   {  
-      "CATAGORY_NAME":"Flanges"
-   }
-   ,
-   {  
-      "CATAGORY_NAME":"S S Scrap"
-   }
-   ,
-   {  
-      "CATAGORY_NAME":"Copper and Brass"
-   },
-   {  
-      "CATAGORY_NAME":"Aluminium"
-   }
-]
+{  
+   "root":[  
+      {  
+         "Name":"A",
+         "id":"1",
+         "root":[  
+            {  
+               "Name":"A1",
+               "id":"11",
+               "root":[  
+                  {  
+                     "Name":"A11",
+                     "id":"111"
+                  },
+                  {  
+                     "Name":"A12",
+                     "id":"112"
+                  },
+                  {  
+                     "Name":"A13",
+                     "id":"113"
+                  }
+               ]
+            },
+            {  
+               "Name":"A2",
+               "id":"12"
+            },
+            {  
+               "Name":"A3",
+               "id":"13"
+            }
+         ]
+      },
+      {  
+         "Name":"B",
+         "id":"2"
+      },
+      {  
+         "Name":"C",
+         "id":"3",
+         "root":[  
+            {  
+               "Name":"C1",
+               "id":"31",
+               "root":[  
+                  {  
+                     "Name":"C11",
+                     "id":"311"
+                  },
+                  {  
+                     "Name":"C12",
+                     "id":"312"
+                  },
+                  {  
+                     "Name":"C13",
+                     "id":"313"
+                  }
+               ]
+            },
+            {  
+               "Name":"C2",
+               "id":"32"
+            },
+            {  
+               "Name":"C3",
+               "id":"33"
+            }
+         ]
+      },
+      {  
+         "Name":"D",
+         "id":"4"
+      },
+      {  
+         "Name":"E",
+         "id":"5"
+      },
+      {  
+         "Name":"F",
+         "id":"6"
+      },
+      {  
+         "Name":"G",
+         "id":"7"
+      }
+   ]
+}

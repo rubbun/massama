@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:weightSum="1" >
+    android:weightSum="1" 
+     tools:ignore="DuplicateIds">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -51,12 +53,12 @@
                     android:id="@+id/tv_dial_pad"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:padding="2dp"
                     android:gravity="center"
-                    android:textStyle="bold"
                     android:maxLength="4"
+                    android:padding="2dp"
+                    android:textColor="#000"
                     android:textSize="30sp"
-                    android:textColor="#000" />
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -119,7 +121,8 @@
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textColor="#6c85b2"
                         android:textSize="30sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        />
                 </LinearLayout>
 
                 <LinearLayout

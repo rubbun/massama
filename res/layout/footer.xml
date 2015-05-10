@@ -65,7 +65,7 @@
         android:background="@drawable/devider" />
 
     <LinearLayout
-        android:id="@+id/ll_schedule"
+        android:id="@+id/ll_dialer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
