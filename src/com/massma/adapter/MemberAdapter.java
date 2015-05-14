@@ -2,38 +2,34 @@ package com.massma.adapter;
 
 import java.util.ArrayList;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.SectionIndexer;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.massma.BaseActivity;
 import com.massma.R;
 import com.massma.StringMatcher;
 import com.massma.bean.Member;
 
 public class MemberAdapter extends ArrayAdapter<Member> implements SectionIndexer{
 	
-	public interface OnMemberClickListener{
-		public void onMemberClick(String name, String address, String contactParson, String tata, String mobile, String fax, String residential, String email, String web, String string);
-	}
+	
 	private String mSections = "#ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	private BaseActivity activity;
+	private Activity activity;
 	private ViewHolder mHolder;
 	public ArrayList<Member> item = new ArrayList<Member>();
-	private OnMemberClickListener listener;
+	
 
-	public MemberAdapter(BaseActivity activity, int textViewResourceId, ArrayList<Member> items) {
+	public MemberAdapter(Activity activity, int textViewResourceId, ArrayList<Member> items) {
 		super(activity, textViewResourceId, items);
 		this.item = items;
 		this.activity = activity;
-		listener = (OnMemberClickListener) activity;
+		
 	}
 
 	@Override
@@ -69,14 +65,7 @@ public class MemberAdapter extends ArrayAdapter<Member> implements SectionIndexe
 			
 		}
 		
-		mHolder.ll_member.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View arg0) {
-				listener.onMemberClick(item.get(position).getName(),item.get(position).getAddress(),item.get(position).getContactParson(),item.get(position).getTata(),item.get(position).getMobile(),item.get(position).getFax(), item.get(position).getResidential(), item.get(position).getEmail(), item.get(position).getWeb(),item.get(position).getHughes_no());
-				
-			}
-		});
+		
 		return v;
 	}
 

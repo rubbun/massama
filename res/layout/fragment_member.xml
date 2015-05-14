@@ -3,34 +3,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical"
-    android:padding="5dp"
     android:background="@color/white"
+    android:orientation="vertical"
+    
     tools:ignore="HardcodedText" >
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:id="@+id/ll_member_list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:visibility="gone" >
 
-        <AutoCompleteTextView
-            android:id="@+id/et_search"
-            android:layout_width="fill_parent"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <AutoCompleteTextView
+                android:id="@+id/et_search"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:hint="Search"
+                android:singleLine="true" >
+            </AutoCompleteTextView>
+        </LinearLayout>
+
+        <com.massma.IndexableListView
+            android:id="@+id/lv_members"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Search"
-            android:focusable="false"
-            android:singleLine="true" >
-        </AutoCompleteTextView>
+            android:layout_marginTop="8dp"
+            android:cacheColorHint="@null"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:scrollingCache="false" >
+        </com.massma.IndexableListView>
     </LinearLayout>
 
-    <com.massma.IndexableListView
-        android:id="@+id/lv_members"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:cacheColorHint="@null"
-        android:divider="@null"
-        android:dividerHeight="0dp"       
-        android:scrollingCache="false" >
-    </com.massma.IndexableListView>
+    <LinearLayout
+        android:id="@+id/ll_member_detail"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <include layout="@layout/member_detail" />
+    </LinearLayout>
 
 </LinearLayout>

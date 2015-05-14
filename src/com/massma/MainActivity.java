@@ -1,9 +1,5 @@
 package com.massma;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -45,7 +41,7 @@ public class MainActivity extends BaseActivity {
 			break;
 		case CATEGORY:
 			CURRENT_TAB = Tabs.CATEGORY.name();
-			fragment = new CatagoryFragment(this);
+			fragment = new CatagoryFragment();
 			break;
 		case DIALER:
 			CURRENT_TAB = Tabs.DIALER.name();
@@ -93,34 +89,6 @@ public class MainActivity extends BaseActivity {
 
 	}
 
-	@Override
-	public void onBackPressed() {
-		if (CURRENT_TAB.equalsIgnoreCase(Tabs.CATEGORY.name())) {
-			JSONArray jsrr = null;
-			CatagoryFragment catagoryFragment = (CatagoryFragment) fragment;
-			if (catagoryFragment.level == 0) {
-				finish();
-				return;
-			} else if (catagoryFragment.level == 1) {
-				jsrr = catagoryFragment.jsonArray0;
-			} else if (catagoryFragment.level == 2) {
-				jsrr = catagoryFragment.jsonArray1;
-			} else if (catagoryFragment.level == 3) {
-				jsrr = catagoryFragment.jsonArray2;
-			}
-			catagoryFragment.level--;
-			catagoryFragment.ll_body.removeAllViews();
-			for (int i = 0; i < jsrr.length(); i++) {
-				try {
-					JSONObject c = jsrr.getJSONObject(i);
-					catagoryFragment.ll_body.addView(catagoryFragment.CategoryLeve(c));
-
-				} catch (JSONException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-
-	}
+	
 
 }
