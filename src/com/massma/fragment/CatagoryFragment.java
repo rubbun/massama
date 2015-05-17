@@ -35,11 +35,7 @@ public class CatagoryFragment extends BaseFragment {
 	private ArrayList<Member> memberArr = new ArrayList<Member>();
 	private IndexableListView lv_members;
 	private MemberAdapter memberAdapter;
-	private SelectedMemberAdapter selectedmemberAdapter;
-	private AutoCompleteTextView et_search = null;
-	private ArrayList<Member> tempArr = new ArrayList<Member>();
-	private ArrayList<SelectedMember> selectedtempArr = new ArrayList<SelectedMember>();
-
+	
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
@@ -53,7 +49,6 @@ public class CatagoryFragment extends BaseFragment {
 		ll_member.setVisibility(View.GONE);
 		ll_body.setVisibility(View.VISIBLE);
 		lv_members = (IndexableListView) v.findViewById(R.id.lv_members);
-		et_search = (AutoCompleteTextView) v.findViewById(R.id.et_search);
 		// listCategory = (ListView) v.findViewById(R.id.listCategory);
 		new CategoryAsynctask().execute();
 
@@ -100,9 +95,7 @@ public class CatagoryFragment extends BaseFragment {
 					e.printStackTrace();
 				}
 			}
-
 		}
-
 	}
 
 	public View SubView(final JSONObject jsonObject, int padding) {
@@ -207,6 +200,15 @@ public class CatagoryFragment extends BaseFragment {
 			
 		}
 
+	}
+	
+	public void OnbackPress(){
+		if(ll_body.getVisibility() == View.VISIBLE){
+			getActivity().finish();
+		}else{
+			ll_body.setVisibility(View.VISIBLE);
+			ll_member.setVisibility(View.GONE);
+		}
 	}
 
 }

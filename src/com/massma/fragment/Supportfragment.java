@@ -18,17 +18,14 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.massma.BaseActivity;
 import com.massma.R;
 
 public class Supportfragment extends Fragment implements OnClickListener {
 
-	private BaseActivity base;
+	
 	private RelativeLayout rl_about, rl_contactus, rl_review, rl_version;
 
-	public Supportfragment(BaseActivity base) {
-		this.base = base;
-	}
+	
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -66,7 +63,7 @@ public class Supportfragment extends Fragment implements OnClickListener {
 			break;
 
 		case R.id.rl_review:
-			final String appPackageName = base.getPackageName(); // getPackageName() from Context or Activity object
+			final String appPackageName = getActivity().getPackageName(); // getPackageName() from Context or Activity object
 			try {
 			    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
 			} catch (android.content.ActivityNotFoundException anfe) {
@@ -75,7 +72,7 @@ public class Supportfragment extends Fragment implements OnClickListener {
 			break;
 
 		case R.id.rl_version:
-			final Dialog dialog = new Dialog(base);
+			final Dialog dialog = new Dialog(getActivity());
 			dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 			dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 			dialog.setContentView(R.layout.dialog_version);
@@ -94,7 +91,7 @@ public class Supportfragment extends Fragment implements OnClickListener {
 			TextView tv_app_version = (TextView)dialog.findViewById(R.id.tv_app_version);
 			PackageInfo pInfo;
 			try {
-				pInfo = base.getPackageManager().getPackageInfo(base.getPackageName(), 0);
+				pInfo = getActivity().getPackageManager().getPackageInfo(getActivity().getPackageName(), 0);
 				tv_app_version.setText(pInfo.versionName);
 			} catch (NameNotFoundException e) {
 				e.printStackTrace();

@@ -19,16 +19,16 @@ import com.massma.R;
 
 public class Dialerfragment extends Fragment implements OnClickListener{
 	
-	private BaseActivity base;
+	//private BaseActivity base;
 	private LinearLayout ll_one,ll_two,ll_three,ll_four,ll_five,ll_six,ll_seven,ll_eight,ll_nine,ll_zero,ll_call;
 	private TextView tv_dial_pad,tv_show_message;
 	private Button btn_clear;
 	
 	String last_four_digit = null;
 	
-	public Dialerfragment(BaseActivity base){
+	/*public Dialerfragment(BaseActivity base){
 		this.base = base;
-	}
+	}*/
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -130,7 +130,7 @@ public class Dialerfragment extends Fragment implements OnClickListener{
 				Intent intent1 = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "022" + first_four_digit + last_four_digit));
 				startActivity(intent1);
 			}else{
-				Toast.makeText(base, "Please dial last four digit", 6000).show();
+				Toast.makeText(getActivity(), "Please dial last four digit", 6000).show();
 			}
 		}
 	}

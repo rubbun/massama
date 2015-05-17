@@ -5,7 +5,6 @@
     android:layout_height="fill_parent"
     android:background="@color/white"
     android:orientation="vertical"
-    
     tools:ignore="HardcodedText" >
 
     <LinearLayout
@@ -14,7 +13,7 @@
         android:layout_height="fill_parent"
         android:orientation="vertical"
         android:padding="5dp"
-        android:visibility="gone" >
+        android:visibility="visible" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -30,16 +29,27 @@
             </AutoCompleteTextView>
         </LinearLayout>
 
-        <com.massma.IndexableListView
-            android:id="@+id/lv_members"
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipeContainer"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:cacheColorHint="@null"
-            android:divider="@null"
-            android:dividerHeight="0dp"
-            android:scrollingCache="false" >
-        </com.massma.IndexableListView>
+            android:layout_height="wrap_content" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <com.massma.IndexableListView
+                    android:id="@+id/lv_members"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:cacheColorHint="@null"
+                    android:divider="@null"
+                    android:dividerHeight="0dp"
+                    android:scrollingCache="false" >
+                </com.massma.IndexableListView>
+            </LinearLayout>
+        </android.support.v4.widget.SwipeRefreshLayout>
     </LinearLayout>
 
     <LinearLayout

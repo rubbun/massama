@@ -1,6 +1,5 @@
 package com.massma.fragment;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
@@ -8,16 +7,21 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.Activity;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AutoCompleteTextView;
@@ -28,11 +32,8 @@ import com.massma.BaseActivity;
 import com.massma.IndexableListView;
 import com.massma.R;
 import com.massma.adapter.MemberAdapter;
-import com.massma.adapter.SelectedMemberAdapter;
 import com.massma.bean.Member;
-import com.massma.bean.SelectedMember;
 import com.massma.constant.Constants;
-import com.massma.fragment.CatagoryFragment.GetMemberList;
 import com.massma.network.HttpClient;
 import com.massma.subfragment.CompanyInfoFragment;
 import com.massma.subfragment.MailInfoFragment;
@@ -40,7 +41,6 @@ import com.massma.subfragment.PhoneInfoFragment;
 import com.massma.subfragment.ProductInfoFragment;
 
 public class MemberFragment extends BaseFragment implements OnItemClickListener, OnClickListener {
-	private ArrayList<Member> memberArr = new ArrayList<Member>();
 	private IndexableListView lv_members;
 	private MemberAdapter memberAdapter;
 	private AutoCompleteTextView et_search = null;
@@ -50,12 +50,16 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 	private BaseActivity base;
 	private Member memberBean;
 	
+	private SwipeRefreshLayout swipeContainer;
+	
 	private LinearLayout ll_conpany_info,ll_phone,ll_mail,ll_products;
-
-	public MemberFragment(BaseActivity base) {
-		this.base = base;
+	
+	@Override
+	public void onAttach(Activity activity) {
+		super.onAttach(activity);
+		base = (BaseActivity) activity;
 	}
-
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.fragment_member, container, false);
@@ -82,10 +86,36 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 		
 		lv_members.setOnItemClickListener(this);
 
-		new GetMemberList().execute("1");
+		if(Constants.memberArr.size() == 0){
+			new GetMemberList().execute("1");
+		}else{
+			updateUi();
+		}
+		swipeContainer = (SwipeRefreshLayout)v.findViewById(R.id.swipeContainer);
+		lv_members.setOnScrollListener(new OnScrollListener() {
+			@Override
+			public void onScrollStateChanged(AbsListView view, int scrollState) {
+			}
 
+			@Override
+			public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+				int topRowVerticalPosition = (lv_members == null || lv_members.getChildCount() == 0) ? 0 : lv_members.getChildAt(0).getTop();
+				swipeContainer.setEnabled(topRowVerticalPosition >= 0);
+			}
+		});
+
+		
+
+		
+		swipeContainer.setOnRefreshListener(new OnRefreshListener() {
+			
+			@Override
+			public void onRefresh() {
+				new GetMemberList().execute("1");
+			}
+		});
+		
 		return v;
-
 	}
 
 	public class GetMemberList extends AsyncTask<String, Void, Void> {
@@ -104,6 +134,7 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 				jsonObject.put("category_id", 1);
 				String response = HttpClient.SendHttpPost(Constants.CATEGORY_MEMBER_LIST, jsonObject.toString());
 				if (response != null) {
+					Constants.memberArr.clear();
 					JSONObject jObject = new JSONObject(response);
 					JSONArray jArr = jObject.getJSONArray("details");
 					for (int i = 0; i < jArr.length(); i++) {
@@ -118,10 +149,10 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 						String email = c.getString("email");
 						String web = c.getString("web");
 						String hughes_no = c.getString("hughes_no");
-						memberArr.add(new Member(name, address, contactParson, tata, mobile, fax, residential, email, web, hughes_no));
+						Constants.memberArr.add(new Member(name, address, contactParson, tata, mobile, fax, residential, email, web, hughes_no));
 
 					}
-					Collections.sort(memberArr, new Comparator<Member>() {
+					Collections.sort(Constants.memberArr, new Comparator<Member>() {
 
 						@Override
 						public int compare(Member arg0, Member arg1) {
@@ -139,19 +170,24 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 		protected void onPostExecute(Void result) {
 			super.onPostExecute(result);
 			dismissLoading();
-			memberAdapter = new MemberAdapter(getActivity(), R.layout.row_member, memberArr);
-			lv_members.setAdapter(memberAdapter);
-			lv_members.setFastScrollEnabled(true);
+			swipeContainer.setRefreshing(false);
+			updateUi();
 		}
+	}
+	
+	private void updateUi() {
+		memberAdapter = new MemberAdapter(getActivity(), R.layout.row_member, Constants.memberArr);
+		lv_members.setAdapter(memberAdapter);
+		lv_members.setFastScrollEnabled(true);
 	}
 
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 		ll_member_list.setVisibility(View.GONE);
 		ll_member_detail.setVisibility(View.VISIBLE);
-		tv_membername.setText("" + memberArr.get(arg2).getName());
-		tv_address.setText("" + memberArr.get(arg2).getAddress());
-		memberBean = memberArr.get(arg2);
+		tv_membername.setText("" + Constants.memberArr.get(arg2).getName());
+		tv_address.setText("" + Constants.memberArr.get(arg2).getAddress());
+		memberBean = Constants.memberArr.get(arg2);
 		displaySubView(0,memberBean);
 	}
 
@@ -212,5 +248,13 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 			break;
 		}
 	}
-
+	
+	public void OnbackPress(){
+		if(ll_member_detail.getVisibility() ==View.VISIBLE){
+			ll_member_detail.setVisibility(View.GONE);
+			ll_member_list.setVisibility(View.VISIBLE);
+		}else{
+			getActivity().finish();
+		}
+	}
 }

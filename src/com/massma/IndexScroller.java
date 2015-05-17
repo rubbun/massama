@@ -67,6 +67,7 @@ public class IndexScroller {
 		if (mState == STATE_HIDDEN)
 			return;
 		
+		
 		// mAlphaRate determines the rate of opacity
 		Paint indexbarPaint = new Paint();
 		indexbarPaint.setColor(Color.BLACK);
