@@ -17,39 +17,38 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
 
-            <AutoCompleteTextView
+            <EditText
                 android:id="@+id/et_search"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/search_icon"
                 android:focusable="false"
+                android:gravity="center|left"
                 android:hint="Search"
                 android:singleLine="true" >
-            </AutoCompleteTextView>
+            </EditText>
         </LinearLayout>
 
-        <android.support.v4.widget.SwipeRefreshLayout
-            android:id="@+id/swipeContainer"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
-            <LinearLayout
+            <org.ninehetz.pulltorefreshlistlib.PullToRefreshListView
+                android:id="@+id/lv_members"
+                style="@style/MyListViewStyle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
-
-                <com.massma.IndexableListView
-                    android:id="@+id/lv_members"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:cacheColorHint="@null"
-                    android:divider="@null"
-                    android:dividerHeight="0dp"
-                    android:scrollingCache="false" >
-                </com.massma.IndexableListView>
-            </LinearLayout>
-        </android.support.v4.widget.SwipeRefreshLayout>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:cacheColorHint="@null"
+                android:divider="@null"
+                android:dividerHeight="0dp"
+                android:scrollbarStyle="outsideOverlay"
+                android:scrollingCache="false" >
+            </org.ninehetz.pulltorefreshlistlib.PullToRefreshListView>
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout

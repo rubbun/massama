@@ -9,44 +9,57 @@
     tools:ignore="HardcodedText" >
 
     <LinearLayout
-        android:id="@+id/ll_body"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="vertical"
-        android:visibility="visible" >
-       
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/ll_member"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="vertical"
-        android:visibility="visible" >
-         <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
 
-        <AutoCompleteTextView
-            android:id="@+id/et_search"
+        <LinearLayout
+            android:id="@+id/ll_body"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:hint="Search"
-            android:focusable="false"
-            android:singleLine="true" >
-        </AutoCompleteTextView>
-    </LinearLayout>
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:visibility="visible" >
+        </LinearLayout>
 
-    <com.massma.IndexableListView
-        android:id="@+id/lv_members"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:cacheColorHint="@null"
-        android:divider="@null"
-        android:dividerHeight="0dp"       
-        android:scrollingCache="false" >
-    </com.massma.IndexableListView>
-       
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_member"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:visibility="visible" >
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <AutoCompleteTextView
+                    android:id="@+id/et_search"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:hint="Search"
+                    android:singleLine="true" >
+                </AutoCompleteTextView>
+            </LinearLayout>
+
+            <ListView
+                android:id="@+id/lv_members"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:cacheColorHint="@null"
+                android:divider="@null"
+                android:dividerHeight="0dp"
+                android:scrollingCache="false" >
+            </ListView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_member_detail"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <include layout="@layout/member_detail" />
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

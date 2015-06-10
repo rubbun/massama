@@ -22,7 +22,7 @@
         </AutoCompleteTextView>
     </LinearLayout>
 
-    <com.massma.IndexableListView
+    <com.steelbuzz.IndexableListView
         android:id="@+id/lv_catagories"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,6 +32,6 @@
         android:dividerHeight="0dp"
         android:scrollbars="vertical"
         android:scrollingCache="false" >
-    </com.massma.IndexableListView>
+    </com.steelbuzz.IndexableListView>
 
 </LinearLayout>

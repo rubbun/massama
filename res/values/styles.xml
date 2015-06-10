@@ -68,4 +68,12 @@
         <item name="android:background">@android:color/transparent</item>
     </style>
 
+    <style name="MyListViewStyle">
+       <item name="android:fastScrollThumbDrawable">@drawable/fastscroll_thumb_holo</item>
+        <item name="android:fastScrollOverlayPosition">atThumb</item>
+        <item name="android:fastScrollTextColor">@color/white</item>
+        <item name="android:fastScrollTrackDrawable">@drawable/fastscroll_thumb_pressed_holo</item>
+        <item name="android:fastScrollPreviewBackgroundRight">@drawable/bg_default_focused_holo_light</item>
+    </style>
+
 </resources>
