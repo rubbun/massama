@@ -23,11 +23,8 @@
                 android:id="@+id/ll_dialog_search"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-				android:hint="Search"
-				android:focusable="false" 
-				android:focusableInTouchMode="true"
+                android:hint="Search"
                 android:singleLine="true" >
-                
             </AutoCompleteTextView>
         </LinearLayout>
 
@@ -53,6 +50,8 @@
         android:id="@+id/ll_member_detail"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" >
+
         <include layout="@layout/member_detail" />
     </LinearLayout>
+
 </LinearLayout>

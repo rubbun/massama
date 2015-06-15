@@ -22,13 +22,10 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AutoCompleteTextView;
@@ -55,6 +52,7 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 	private MemberAdapter memberAdapter;
 	private SelectedMemberAdapter selectedmemberAdapter;
 	private EditText et_search;
+	private AutoCompleteTextView ll_dialog_search;
 	private TextView tv_membername, tv_address;
 	private LinearLayout ll_member_detail, ll_member_list;
 	private Fragment fragment = null;
@@ -217,6 +215,8 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 		if (dialog != null) {
 			dialog.hide();
 		}
+		hideKeyBoard(ll_dialog_search);
+		hideKeyBoard(et_search);
 		switch (position) {
 		case 0:
 			fragment = new CompanyInfoFragment(memberBean);
@@ -310,17 +310,9 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 		dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 
 		final ListView lv_dialog_members = (ListView) dialog.findViewById(R.id.lv_dialog_members);
-		final AutoCompleteTextView ll_dialog_search = (AutoCompleteTextView) dialog.findViewById(R.id.ll_dialog_search);
-		ll_dialog_search.setOnTouchListener(new OnTouchListener() {
-			
-			@Override
-			public boolean onTouch(View arg0, MotionEvent arg1) {
-				et_search.setFocusableInTouchMode(true);
-				base.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
-				return false;
-			}
-		});
+		ll_dialog_search = (AutoCompleteTextView) dialog.findViewById(R.id.ll_dialog_search);
 
+		showKeyBoard();
 		ll_dialog_search.addTextChangedListener(new TextWatcher() {
 
 			@Override
@@ -368,6 +360,7 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 				tv_membername.setText("" + Constants.memberArr.get(arg2).getName());
 				tv_address.setText("" + Constants.memberArr.get(arg2).getAddress());
 				memberBean = Constants.memberArr.get(arg2);
+				
 				displaySubView(0, memberBean);
 			}
 		});

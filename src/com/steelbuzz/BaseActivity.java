@@ -1,17 +1,19 @@
 package com.steelbuzz;
 
-import com.steelbuzz.adapter.SelectedMemberAdapter.OnSelectedMemberClickListener;
-import com.steelbuzz.db.TestDbAdapter;
-
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+
+import com.steelbuzz.db.TestDbAdapter;
 
 public class BaseActivity extends FragmentActivity{
 
 	public TestDbAdapter mDb;
+	
 	
 	@Override
 	protected void onCreate(Bundle arg0) {

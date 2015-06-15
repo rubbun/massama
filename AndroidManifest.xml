@@ -7,7 +7,8 @@
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="19" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
@@ -17,13 +18,24 @@
         android:label="@string/app_name"
         android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen" >
         <activity
-            android:name="com.steelbuzz.MainActivity"
+            android:name="com.steelbuzz.SignInScreen"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
-            android:configChanges="orientation|keyboardHidden|screenSize" >
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.steelbuzz.MainActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.steelbuzz.SignUpScreen"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
+
 </manifest>
