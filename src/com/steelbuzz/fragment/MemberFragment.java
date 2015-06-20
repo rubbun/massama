@@ -61,6 +61,7 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 	private Dialog dialog;
 	private boolean isSearchEnable = false;
 	private boolean isRefresh = false;
+	public ArrayList<Member> memberList = new ArrayList<Member>();
 	private ArrayList<Member> selectedtempArr = new ArrayList<Member>();
 	private LinearLayout ll_conpany_info, ll_phone, ll_mail, ll_products;
 
@@ -135,7 +136,8 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 					if (response != null) {
 						JSONObject jObject = new JSONObject(response);
 						jArr = jObject.getJSONArray("members");
-						Constants.memberArr.clear();
+						memberList.clear();
+						//Constants.memberArr.clear();
 						base.mDb.insertMemberListValue(jArr.toString());
 					}
 				} else {
@@ -158,7 +160,6 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 
 					Member member1 = new Member(id, name, address, contactParson, tata, mobile, fax, residential, email, web, hughes_no);
 					publishProgress(member1);
-
 				}
 
 			} catch (JSONException e) {
@@ -169,7 +170,8 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 		@Override
 		protected void onProgressUpdate(Member... values) {
 			super.onProgressUpdate(values);
-			Constants.memberArr.add(values[0]);
+			memberList.add(values[0]);
+			//Constants.memberArr.add(values[0]);
 			Collections.sort(Constants.memberArr, new Comparator<Member>() {
 				@Override
 				public int compare(Member arg0, Member arg1) {
@@ -179,22 +181,25 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 			if (base.hasConnection() && (isRefresh == false)) {
 				dismissLoading();
 			}
-			updateUi();
 		}
 
 		@Override
 		protected void onPostExecute(Void result) {
 			super.onPostExecute(result);
 			
-			lv_members.onRefreshComplete();
 			isRefresh = true;
+			updateUi();
 		}
 	}
 
 	private void updateUi() {
+		Constants.memberArr.clear();
+		Constants.memberArr = memberList;
 		memberAdapter = new MemberAdapter(getActivity(), R.layout.row_member, Constants.memberArr);
 		lv_members.setAdapter(memberAdapter);
 		lv_members.setFastScrollEnabled(true);
+		lv_members.onRefreshComplete();
+		
 	}
 
 	@Override

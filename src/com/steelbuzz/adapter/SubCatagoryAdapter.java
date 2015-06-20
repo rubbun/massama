@@ -9,21 +9,18 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
-import android.widget.SectionIndexer;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.steelbuzz.BaseActivity;
 import com.steelbuzz.R;
-import com.steelbuzz.StringMatcher;
 import com.steelbuzz.bean.SubCatagory;
 
-public class SubCatagoryAdapter extends ArrayAdapter<SubCatagory> implements SectionIndexer{
+public class SubCatagoryAdapter extends ArrayAdapter<SubCatagory> {
 	
 	public interface OnSubCatagoryClickListener{
 		public void onSubCatagoryClick(String name, String address, String contactParson, String tata, String mobile, String fax, String residential, String email, String web);
 	}
-	private String mSections = "#ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	private BaseActivity activity;
 	private ViewHolder mHolder;
 	public ArrayList<SubCatagory> item = new ArrayList<SubCatagory>();
@@ -83,41 +80,6 @@ public class SubCatagoryAdapter extends ArrayAdapter<SubCatagory> implements Sec
 	class ViewHolder {
 		public TextView tv_name;
 		public LinearLayout ll_member;
-	}
-
-
-	@Override
-	public int getPositionForSection(int section) {
-		// If there is no item for current section, previous section will be
-		// selected
-		for (int i = section; i >= 0; i--) {
-			for (int j = 0; j < getCount(); j++) {
-				if (i == 0) {
-					// For numeric section
-					for (int k = 0; k <= 9; k++) {
-						if (StringMatcher.match(String.valueOf(item.get(j).getName().charAt(0)), String.valueOf(k)))
-							return j;
-					}
-				} else {
-					if (StringMatcher.match(String.valueOf(item.get(j).getName().charAt(0)), String.valueOf(mSections.charAt(i))))
-						return j;
-				}
-			}
-		}
-		return 0;
-	}
-
-	@Override
-	public int getSectionForPosition(int position) {
-		return 0;
-	}
-
-	@Override
-	public Object[] getSections() {
-		String[] sections = new String[mSections.length()];
-		for (int i = 0; i < mSections.length(); i++)
-			sections[i] = String.valueOf(mSections.charAt(i));
-		return sections;
 	}
 
 }
