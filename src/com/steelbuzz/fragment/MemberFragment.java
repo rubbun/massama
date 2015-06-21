@@ -29,7 +29,6 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AutoCompleteTextView;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -51,7 +50,9 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 	private PullToRefreshListView lv_members;
 	private MemberAdapter memberAdapter;
 	private SelectedMemberAdapter selectedmemberAdapter;
-	private EditText et_search;
+	
+	private LinearLayout llSearch;
+	private TextView tvSearch;
 	private AutoCompleteTextView ll_dialog_search;
 	private TextView tv_membername, tv_address;
 	private LinearLayout ll_member_detail, ll_member_list;
@@ -75,7 +76,8 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.fragment_member, container, false);
 		lv_members = (PullToRefreshListView) v.findViewById(R.id.lv_members);
-		et_search = (EditText) v.findViewById(R.id.et_search);
+		llSearch = (LinearLayout) v.findViewById(R.id.llSearch);
+		tvSearch = (TextView) v.findViewById(R.id.tvSearch);
 		ll_member_list = (LinearLayout) v.findViewById(R.id.ll_member_list);
 		ll_member_detail = (LinearLayout) v.findViewById(R.id.ll_member_detail);
 		ll_member_list.setVisibility(View.VISIBLE);
@@ -97,7 +99,8 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 
 		lv_members.setOnItemClickListener(this);
 
-		et_search.setOnClickListener(this);
+		llSearch.setOnClickListener(this);
+		tvSearch.setOnClickListener(this);
 
 		new GetMemberList().execute();
 		
@@ -220,8 +223,8 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 		if (dialog != null) {
 			dialog.hide();
 		}
-		hideKeyBoard(ll_dialog_search);
-		hideKeyBoard(et_search);
+		//hideKeyBoard(ll_dialog_search);
+	/*	hideKeyBoard(et_search);*/
 		switch (position) {
 		case 0:
 			fragment = new CompanyInfoFragment(memberBean);
@@ -249,35 +252,36 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.ll_conpany_info:
-			ll_conpany_info.setBackgroundColor(Color.parseColor("#414141"));
-			ll_phone.setBackgroundColor(Color.parseColor("#0069A7"));
-			ll_mail.setBackgroundColor(Color.parseColor("#0069A7"));
-			ll_products.setBackgroundColor(Color.parseColor("#0069A7"));
+			ll_conpany_info.setBackgroundColor(Color.parseColor("#FFFFFF"));
+			ll_phone.setBackgroundColor(Color.parseColor("#ababab"));
+			ll_mail.setBackgroundColor(Color.parseColor("#ababab"));
+			ll_products.setBackgroundColor(Color.parseColor("#ababab"));
 			displaySubView(0, memberBean);
 			break;
 		case R.id.ll_phone:
-			ll_conpany_info.setBackgroundColor(Color.parseColor("#0069A7"));
-			ll_phone.setBackgroundColor(Color.parseColor("#414141"));
-			ll_mail.setBackgroundColor(Color.parseColor("#0069A7"));
-			ll_products.setBackgroundColor(Color.parseColor("#0069A7"));
+			ll_conpany_info.setBackgroundColor(Color.parseColor("#ababab"));
+			ll_phone.setBackgroundColor(Color.parseColor("#FFFFFF"));
+			ll_mail.setBackgroundColor(Color.parseColor("#ababab"));
+			ll_products.setBackgroundColor(Color.parseColor("#ababab"));
 			displaySubView(1, memberBean);
 			break;
 		case R.id.ll_mail:
-			ll_conpany_info.setBackgroundColor(Color.parseColor("#0069A7"));
-			ll_phone.setBackgroundColor(Color.parseColor("#0069A7"));
-			ll_mail.setBackgroundColor(Color.parseColor("#414141"));
-			ll_products.setBackgroundColor(Color.parseColor("#0069A7"));
+			ll_conpany_info.setBackgroundColor(Color.parseColor("#ababab"));
+			ll_phone.setBackgroundColor(Color.parseColor("#ababab"));
+			ll_mail.setBackgroundColor(Color.parseColor("#FFFFFF"));
+			ll_products.setBackgroundColor(Color.parseColor("#ababab"));
 			displaySubView(2, memberBean);
 			break;
 		case R.id.ll_products:
-			ll_conpany_info.setBackgroundColor(Color.parseColor("#0069A7"));
-			ll_phone.setBackgroundColor(Color.parseColor("#0069A7"));
-			ll_mail.setBackgroundColor(Color.parseColor("#0069A7"));
-			ll_products.setBackgroundColor(Color.parseColor("#414141"));
+			ll_conpany_info.setBackgroundColor(Color.parseColor("#ababab"));
+			ll_phone.setBackgroundColor(Color.parseColor("#ababab"));
+			ll_mail.setBackgroundColor(Color.parseColor("#ababab"));
+			ll_products.setBackgroundColor(Color.parseColor("#FFFFFF"));
 			displaySubView(3, memberBean);
 			break;
 			
-		case R.id.et_search:
+		case R.id.tvSearch:
+		case R.id.llSearch:
 			openSearchpage();
 			isSearchEnable = true;
 			break;

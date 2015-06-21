@@ -7,7 +7,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        android:background="#414141"
+        android:background="#FFFFFF"
         android:orientation="vertical" >
 
         <LinearLayout
@@ -17,13 +17,27 @@
             android:orientation="vertical"
             android:padding="10dp" >
 
-            <TextView
-                android:id="@+id/tv_header_name"
+            <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Address"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@color/white" />
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:id="@+id/ivLocationBlack"
+                    android:layout_width="30sp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_location_black" />
+
+                <TextView
+                    android:id="@+id/tv_header_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/ivLocationBlack"
+                    android:text="Address"
+                    android:textColor="#1f1f1f"
+                    android:textStyle="bold"
+                    android:textSize="18sp" />
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/tv_address"
@@ -32,13 +46,13 @@
                 android:layout_marginTop="3dp"
                 android:text="Address"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/white" />
+                android:textColor="#1f1f1f" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="1dp"
-            android:background="@color/white" >
+            android:background="#b3b3b3" >
         </LinearLayout>
 
         <LinearLayout
@@ -48,13 +62,27 @@
             android:orientation="vertical"
             android:padding="10dp" >
 
-            <TextView
-                android:id="@+id/tv_header_second_name"
+            <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Contact Person"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@color/white" />
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:id="@+id/ivContactPersion"
+                    android:layout_width="30sp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_user" />
+
+                <TextView
+                    android:id="@+id/tv_header_second_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/ivContactPersion"
+                    android:text="Contact Person"
+                    android:textColor="#1f1f1f"
+                    android:textStyle="bold"
+                    android:textSize="18sp" />
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/tv_contact_person"
@@ -63,13 +91,13 @@
                 android:layout_marginTop="3dp"
                 android:text="Address"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/white" />
+                android:textColor="#1f1f1f" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="1dp"
-            android:background="@color/white" >
+            android:background="#b3b3b3" >
         </LinearLayout>
     </LinearLayout>
 

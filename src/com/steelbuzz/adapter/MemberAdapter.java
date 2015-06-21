@@ -4,11 +4,14 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.steelbuzz.R;
@@ -47,9 +50,27 @@ public class MemberAdapter extends ArrayAdapter<Member> {
 
 			mHolder.tv_name = (TextView) v.findViewById(R.id.tv_name);
 			mHolder.ll_member = (LinearLayout) v.findViewById(R.id.ll_member);
-
+			mHolder.ivFeature = (ImageView)v.findViewById(R.id.ivFeature);
+			mHolder.tvFeature = (TextView)v.findViewById(R.id.tvFeature);
+			mHolder.llArrow = (LinearLayout)v.findViewById(R.id.llArrow);
+			mHolder.line = (View)v.findViewById(R.id.line);
+		
 		} else {
 			mHolder = (ViewHolder) v.getTag();
+		}
+		
+		if(position>2){
+			mHolder.ivFeature.setVisibility(View.INVISIBLE);
+			mHolder.tvFeature.setVisibility(View.INVISIBLE);
+			mHolder.llArrow.setVisibility(View.VISIBLE);
+			mHolder.line.setBackgroundColor(Color.BLACK);
+			mHolder.ll_member.setBackgroundColor(Color.WHITE);
+		}else{
+			mHolder.ivFeature.setVisibility(View.VISIBLE);
+			mHolder.tvFeature.setVisibility(View.VISIBLE);
+			mHolder.llArrow.setVisibility(View.INVISIBLE);
+			mHolder.line.setBackgroundColor(Color.WHITE);
+			mHolder.ll_member.setBackgroundColor(Color.parseColor("#0069a8"));
 		}
 
 		final Member member = item.get(position);
@@ -65,6 +86,10 @@ public class MemberAdapter extends ArrayAdapter<Member> {
 	class ViewHolder {
 		public TextView tv_name;
 		public LinearLayout ll_member;
+		public ImageView ivFeature;
+		public TextView tvFeature;
+		public LinearLayout llArrow;
+		public View line;
 
 	}
 }
