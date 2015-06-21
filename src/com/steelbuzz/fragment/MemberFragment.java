@@ -22,13 +22,10 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AutoCompleteTextView;
@@ -55,6 +52,7 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 	private MemberAdapter memberAdapter;
 	private SelectedMemberAdapter selectedmemberAdapter;
 	private EditText et_search;
+	private AutoCompleteTextView ll_dialog_search;
 	private TextView tv_membername, tv_address;
 	private LinearLayout ll_member_detail, ll_member_list;
 	private Fragment fragment = null;
@@ -63,6 +61,7 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 	private Dialog dialog;
 	private boolean isSearchEnable = false;
 	private boolean isRefresh = false;
+	public ArrayList<Member> memberList = new ArrayList<Member>();
 	private ArrayList<Member> selectedtempArr = new ArrayList<Member>();
 	private LinearLayout ll_conpany_info, ll_phone, ll_mail, ll_products;
 
@@ -137,7 +136,8 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 					if (response != null) {
 						JSONObject jObject = new JSONObject(response);
 						jArr = jObject.getJSONArray("members");
-						Constants.memberArr.clear();
+						memberList.clear();
+						//Constants.memberArr.clear();
 						base.mDb.insertMemberListValue(jArr.toString());
 					}
 				} else {
@@ -160,7 +160,6 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 
 					Member member1 = new Member(id, name, address, contactParson, tata, mobile, fax, residential, email, web, hughes_no);
 					publishProgress(member1);
-
 				}
 
 			} catch (JSONException e) {
@@ -171,7 +170,8 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 		@Override
 		protected void onProgressUpdate(Member... values) {
 			super.onProgressUpdate(values);
-			Constants.memberArr.add(values[0]);
+			memberList.add(values[0]);
+			//Constants.memberArr.add(values[0]);
 			Collections.sort(Constants.memberArr, new Comparator<Member>() {
 				@Override
 				public int compare(Member arg0, Member arg1) {
@@ -181,22 +181,25 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 			if (base.hasConnection() && (isRefresh == false)) {
 				dismissLoading();
 			}
-			updateUi();
 		}
 
 		@Override
 		protected void onPostExecute(Void result) {
 			super.onPostExecute(result);
 			
-			lv_members.onRefreshComplete();
 			isRefresh = true;
+			updateUi();
 		}
 	}
 
 	private void updateUi() {
+		Constants.memberArr.clear();
+		Constants.memberArr = memberList;
 		memberAdapter = new MemberAdapter(getActivity(), R.layout.row_member, Constants.memberArr);
 		lv_members.setAdapter(memberAdapter);
 		lv_members.setFastScrollEnabled(true);
+		lv_members.onRefreshComplete();
+		
 	}
 
 	@Override
@@ -217,6 +220,8 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 		if (dialog != null) {
 			dialog.hide();
 		}
+		hideKeyBoard(ll_dialog_search);
+		hideKeyBoard(et_search);
 		switch (position) {
 		case 0:
 			fragment = new CompanyInfoFragment(memberBean);
@@ -310,17 +315,9 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 		dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 
 		final ListView lv_dialog_members = (ListView) dialog.findViewById(R.id.lv_dialog_members);
-		final AutoCompleteTextView ll_dialog_search = (AutoCompleteTextView) dialog.findViewById(R.id.ll_dialog_search);
-		ll_dialog_search.setOnTouchListener(new OnTouchListener() {
-			
-			@Override
-			public boolean onTouch(View arg0, MotionEvent arg1) {
-				et_search.setFocusableInTouchMode(true);
-				base.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
-				return false;
-			}
-		});
+		ll_dialog_search = (AutoCompleteTextView) dialog.findViewById(R.id.ll_dialog_search);
 
+		showKeyBoard();
 		ll_dialog_search.addTextChangedListener(new TextWatcher() {
 
 			@Override
@@ -368,6 +365,7 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 				tv_membername.setText("" + Constants.memberArr.get(arg2).getName());
 				tv_address.setText("" + Constants.memberArr.get(arg2).getAddress());
 				memberBean = Constants.memberArr.get(arg2);
+				
 				displaySubView(0, memberBean);
 			}
 		});

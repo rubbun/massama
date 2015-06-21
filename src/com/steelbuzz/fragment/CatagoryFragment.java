@@ -32,7 +32,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.steelbuzz.BaseActivity;
-import com.steelbuzz.IndexableListView;
 import com.steelbuzz.R;
 import com.steelbuzz.adapter.MemberAdapter;
 import com.steelbuzz.adapter.SelectedCatagoryAdapter;
@@ -259,9 +258,9 @@ public class CatagoryFragment extends BaseFragment implements OnItemClickListene
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			if (base.hasConnection()) {
+			/*if (base.hasConnection()) {
 				showLoading();
-			}
+			}*/
 		}
 
 		@Override
@@ -271,13 +270,13 @@ public class CatagoryFragment extends BaseFragment implements OnItemClickListene
 				JSONObject jsonObject = new JSONObject();
 				jsonObject.put("category_id", arg0[0]);
 				JSONArray jArr = new JSONArray();
-				if (base.hasConnection()) {
+				/*if (base.hasConnection()) {
 					String response = HttpClient.SendHttpPost(Constants.CATEGORY_MEMBER_LIST, jsonObject.toString());
 					if (response != null) {
 						JSONObject jObject = new JSONObject(response);
 						jArr = jObject.getJSONArray("details");
 					}
-				} else {
+				} else {*/
 					JSONArray arr = base.mDb.fetchCatagoryDetailsList();
 					for (int i = 0; i < arr.length(); i++) {
 						JSONObject c = arr.getJSONObject(i);
@@ -285,7 +284,7 @@ public class CatagoryFragment extends BaseFragment implements OnItemClickListene
 							jArr.put(c);
 						}
 					}
-				}
+				//}
 				memberArr.clear();
 				for (int i = 0; i < jArr.length(); i++) {
 					JSONObject c = jArr.getJSONObject(i);
@@ -384,6 +383,7 @@ public class CatagoryFragment extends BaseFragment implements OnItemClickListene
 	}
 
 	public void displaySubView(int position, Member memberBean) {
+		hideKeyBoard(et_search);
 		switch (position) {
 		case 0:
 			fragment = new CompanyInfoFragment(memberBean);

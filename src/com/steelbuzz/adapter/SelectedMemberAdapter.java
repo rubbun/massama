@@ -9,7 +9,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
-import android.widget.SectionIndexer;
 import android.widget.TextView;
 
 import com.steelbuzz.BaseActivity;
@@ -17,12 +16,11 @@ import com.steelbuzz.R;
 import com.steelbuzz.bean.Member;
 import com.steelbuzz.fragment.MemberFragment;
 
-public class SelectedMemberAdapter extends ArrayAdapter<Member> implements SectionIndexer {
+public class SelectedMemberAdapter extends ArrayAdapter<Member> {
 	
 	public interface OnSelectedMemberClickListener{
 		public void onSelectedMemberClick(Member member);
 	}
-	private String mSections = "#ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	private BaseActivity activity;
 	private ViewHolder mHolder;
 	public ArrayList<Member> item = new ArrayList<Member>();
@@ -83,24 +81,5 @@ public class SelectedMemberAdapter extends ArrayAdapter<Member> implements Secti
 	class ViewHolder {
 		public TextView tv_name;
 		public LinearLayout ll_member;
-	}
-
-	@Override
-	public int getPositionForSection(int sectionIndex) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getSectionForPosition(int position) {
-		return 0;
-	}
-
-	@Override
-	public Object[] getSections() {
-		String[] sections = new String[mSections.length()];
-		for (int i = 0; i < mSections.length(); i++)
-			sections[i] = String.valueOf(mSections.charAt(i));
-		return sections;
 	}
 }
