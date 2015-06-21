@@ -5,7 +5,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
+
+import android.widget.RelativeLayout;
 
 import com.steelbuzz.R;
 import com.steelbuzz.Enum.Tabs;
@@ -27,15 +28,15 @@ public class MainActivity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		((LinearLayout) findViewById(R.id.ll_member)).setOnClickListener(new TabSelectListener());
-		((LinearLayout) findViewById(R.id.ll_catagory)).setOnClickListener(new TabSelectListener());
-		((LinearLayout) findViewById(R.id.ll_dialer)).setOnClickListener(new TabSelectListener());
-		((LinearLayout) findViewById(R.id.ll_support)).setOnClickListener(new TabSelectListener());
+		((RelativeLayout) findViewById(R.id.ll_member)).setOnClickListener(new TabSelectListener());
+		((RelativeLayout) findViewById(R.id.ll_catagory)).setOnClickListener(new TabSelectListener());
+		((RelativeLayout) findViewById(R.id.ll_dialer)).setOnClickListener(new TabSelectListener());
+		((RelativeLayout) findViewById(R.id.ll_support)).setOnClickListener(new TabSelectListener());
 
-		((LinearLayout) findViewById(R.id.ll_member)).setTag(TAG_MEMBER);
-		((LinearLayout) findViewById(R.id.ll_catagory)).setTag(TAG_CATEGORY);
-		((LinearLayout) findViewById(R.id.ll_dialer)).setTag(TAG_DIELER);
-		((LinearLayout) findViewById(R.id.ll_support)).setTag(TAG_SUPPORT);
+		((RelativeLayout) findViewById(R.id.ll_member)).setTag(TAG_MEMBER);
+		((RelativeLayout) findViewById(R.id.ll_catagory)).setTag(TAG_CATEGORY);
+		((RelativeLayout) findViewById(R.id.ll_dialer)).setTag(TAG_DIELER);
+		((RelativeLayout) findViewById(R.id.ll_support)).setTag(TAG_SUPPORT);
 		fragment = new MemberFragment();
 
 		getSupportFragmentManager().beginTransaction().add(R.id.frame_container, fragment, TAG_MEMBER).commit();
