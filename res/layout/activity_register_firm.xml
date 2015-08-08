@@ -1,0 +1,176 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:background="#004d7b"
+        android:gravity="center_vertical"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" >
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_arrow_left" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="6dp"
+            android:text="REGISTER FIRM"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fillViewport="true"
+        android:padding="10dp"
+        android:scrollbars="none" >
+        <LinearLayout 
+            
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:orientation="vertical"
+            >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Please insert the form below or you can visit our website to register your firm with us."
+            android:textColor="#000000"
+            android:textSize="18sp" />
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_marginTop="15dp"
+            android:background="@xml/black_border"
+            android:hint="Company Name"
+            android:paddingLeft="5dp"
+            android:imeOptions="actionNext"
+            android:singleLine="true"
+            android:layout_height="40dp" />
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_marginTop="15dp"
+            android:background="@xml/black_border"
+            android:hint="Address"
+             android:imeOptions="actionNext"
+            android:singleLine="true"
+            android:paddingLeft="5dp"
+            android:layout_height="40dp" />
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_marginTop="15dp"
+             android:imeOptions="actionNext"
+            android:singleLine="true"
+            android:background="@xml/black_border"
+            android:hint="Country"
+            android:paddingLeft="5dp"
+            android:layout_height="40dp" />
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_marginTop="15dp"
+             android:imeOptions="actionNext"
+            android:singleLine="true"
+            android:background="@xml/black_border"
+            android:hint="City"
+            android:paddingLeft="5dp"
+            android:layout_height="40dp" />
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_marginTop="15dp"
+            android:background="@xml/black_border"
+            android:hint="Contact Persion"
+             android:imeOptions="actionNext"
+            android:singleLine="true"
+            android:paddingLeft="5dp"
+            android:layout_height="40dp" />
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_marginTop="15dp"
+             android:imeOptions="actionNext"
+            android:singleLine="true"
+            android:background="@xml/black_border"
+            android:hint="Mobile No"
+            android:inputType="phone"
+            android:paddingLeft="5dp"
+            android:layout_height="40dp" />
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_marginTop="15dp"
+            android:background="@xml/black_border"
+            android:hint="Phone No"
+            android:paddingLeft="5dp"
+             android:inputType="phone"
+             android:imeOptions="actionNext"
+            android:singleLine="true"
+            android:layout_height="40dp" />
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_marginTop="15dp"
+            android:background="@xml/black_border"
+            android:hint="Huges No"
+            android:paddingLeft="5dp"
+             android:imeOptions="actionNext"
+            android:singleLine="true"
+             android:inputType="phone"
+            android:layout_height="40dp" />
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_marginTop="15dp"
+            android:background="@xml/black_border"
+            android:hint="Fax"
+             android:inputType="phone"
+            android:paddingLeft="5dp"
+             android:imeOptions="actionNext"
+            android:singleLine="true"
+            android:layout_height="40dp" />
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_marginTop="15dp"
+            android:background="@xml/black_border"
+            android:hint="Email"
+             android:inputType="textEmailAddress"
+            android:paddingLeft="5dp"
+             android:imeOptions="actionNext"
+            android:singleLine="true"
+            android:layout_height="40dp" />
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_marginTop="15dp"
+            android:background="@xml/black_border"
+            android:hint="Product Specialisation"
+            android:paddingLeft="5dp"
+             android:imeOptions="actionDone"
+            android:singleLine="true"
+            android:layout_height="40dp" />
+        
+        <LinearLayout
+                android:id="@+id/lblSignup"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="30dp"
+               
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="150dp"
+                    android:layout_height="fill_parent"
+                    android:text="Submit"
+                    android:gravity="center"
+                     android:background="@xml/signin_btn_rounded_corner"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

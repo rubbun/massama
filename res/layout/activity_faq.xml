@@ -1,0 +1,234 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:background="#004d7b"
+        android:gravity="center_vertical"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" >
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_arrow_left" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="6dp"
+            android:text="FAQ"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fillViewport="true"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:padding="10dp" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="This FAQ provides answers to basic questions about Steel Buzz. If you cannot find an answer to your question, then please submit a support ticket and we will be happy to help you!"
+                android:textColor="#004d7b"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25sp"
+                android:text="What is Steel Buzz?"
+                android:textColor="#004d7b"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Steel Buzz is smart directory which connects the Asia’s largest steel industry"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25sp"
+                android:text="How do I use Steel Buzz?"
+                android:textColor="#004d7b"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="First of all you need to download our application either on your iOS or Android device. Once you 
+have downloaded the application, you can use it for FREE for one week without signing up. After one 
+week you will need to Sign up for FREE in order to gain full access to the application."
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25sp"
+                android:text="How should I register my company with Steel Buzz?"
+                android:textColor="#004d7b"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Please use the Register Your Firm form or you can create a support ticket on our website to submit 
+information about your company."
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25sp"
+                android:text="How can I update my company&apos;s information?"
+                android:textColor="#004d7b"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="You can create a new support ticket and provide us with new updated details. Make sure you attach a 
+copy of your business card in order for us to verify the information and we will update it in no 
+time."
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25sp"
+                android:text="What are the costs to join Steel Buzz?"
+                android:textColor="#004d7b"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Membership with Steel Buzz is completely FREE. It doesn’t cost anything to join Steel Buzz. If your 
+company is not registered with us, then just create a support ticket to ‘Register a New Company’ 
+and submit your company details and we will take care of the rest from there on."
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25sp"
+                android:text="Does Steel Buzz work in offline mode?"
+                android:textColor="#004d7b"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Yes, it works without an active internet connection. You only need to connect to our web servers
+once and then you can access Steel Buzz without an active Internet connection."
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25sp"
+                android:text="Can I access Steel Buzz from my mobile phone or tablet?"
+                android:textColor="#004d7b"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="You will be able to ACCESS Steel Buzz on iPhones, and Android devices; however, you cannot access 
+our directory from a mobile device, laptop or desktop computer. We are seamlessly working to make 
+the data accessible from any device which has Internet connectivity."
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25sp"
+                android:text="Why am I being asked to register?"
+                android:textColor="#004d7b"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="The application is fairly new and we are trying to keep the database free from spammers and 
+scammers. By signing up, you claim your company&apos;s profile, verify your profile and even update 
+details like address, phone number, fax number, email id and website URL."
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25sp"
+                android:text="What are the benefits of registering with Steel Buzz?"
+                android:textColor="#004d7b"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="There are many benefits of signing up with Steel Buzz for Free:
+You can claim your company&apos;s profile 
+
+and by doing this your company gets a verified profile badge. This also creates a sense of security 
+
+for End-User, if they are planning to work with your esteemed company.
+You get access to feeds on 
+
+Buzz Storm page which gives you
+You get connected with us. For all future updates and new features 
+
+you will be the first one to get notified!
+You get access to data in the application even when you 
+are not connected to the Internet."
+                android:textColor="#000000"
+                android:textSize="18sp" />
+            
+                      <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25sp"
+                android:text="Where is Steel Buzz?"
+                android:textColor="#004d7b"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Based in Boston, Massachusetts, Steel Buzz’s collaborative office is located in Mumbai, India."
+                android:textColor="#000000"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

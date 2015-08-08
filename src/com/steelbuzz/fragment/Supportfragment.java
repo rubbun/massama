@@ -25,7 +25,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.steelbuzz.AboutActivity;
 import com.steelbuzz.BaseActivity;
+import com.steelbuzz.FAQActivity;
+import com.steelbuzz.FirmRegisterActivity;
 import com.steelbuzz.R;
 import com.steelbuzz.SignInScreen;
 import com.steelbuzz.constant.Constants;
@@ -40,7 +43,7 @@ public class Supportfragment extends BaseFragment implements OnClickListener {
 		this.activity = (BaseActivity) activity;
 	}
 	
-	private RelativeLayout rl_about,rl_logout, rl_contactus, rl_review, rl_version;
+	private RelativeLayout rl_about,rl_eaq,rl_logout, rl_contactus, rl_review, rl_version,rl_reg_firm;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,6 +52,12 @@ public class Supportfragment extends BaseFragment implements OnClickListener {
 
 		rl_about = (RelativeLayout) v.findViewById(R.id.rl_about);
 		rl_about.setOnClickListener(this);
+		
+		rl_reg_firm = (RelativeLayout) v.findViewById(R.id.rl_reg_firm);
+		rl_reg_firm.setOnClickListener(this);
+		
+		rl_eaq = (RelativeLayout) v.findViewById(R.id.rl_eaq);
+		rl_eaq.setOnClickListener(this);
 
 		rl_contactus = (RelativeLayout) v.findViewById(R.id.rl_contactus);
 		rl_contactus.setOnClickListener(this);
@@ -69,7 +78,16 @@ public class Supportfragment extends BaseFragment implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.rl_about:
+			
+			startActivity(new Intent(getActivity(), AboutActivity.class));
 
+			break;
+		case R.id.rl_eaq:
+			startActivity(new Intent(getActivity(), FAQActivity.class));
+			break;
+			
+		case R.id.rl_reg_firm:
+			startActivity(new Intent(getActivity(), FirmRegisterActivity.class));
 			break;
 		case R.id.rl_contactus:
 			Intent i = new Intent(Intent.ACTION_SEND);
