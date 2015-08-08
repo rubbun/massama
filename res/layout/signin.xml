@@ -14,23 +14,36 @@
         android:gravity="bottom|center"
         android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="STEEL BUZZ"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/white"
-            android:textStyle="bold"
-            android:textSize="47sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:gravity="bottom|center"
+            android:orientation="vertical"
+            android:weightSum="1" >
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Connecting you to Steel Industry"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@android:color/white" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/logo" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center|left"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@android:color/white"
+                    android:textSize="40sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -47,13 +60,13 @@
             android:gravity="center"
             android:orientation="vertical"
             android:paddingBottom="10dp"
-            android:paddingLeft="45dp"
-            android:paddingRight="45dp"
+            android:paddingLeft="60dp"
+            android:paddingRight="60dp"
             android:paddingTop="10dp" >
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="38dp"
+                android:layout_height="34dp"
                 android:background="@xml/signin_rounded_corner"
                 android:gravity="center|left"
                 android:orientation="horizontal"
@@ -67,24 +80,27 @@
                     android:src="@drawable/username_icon" />
 
                 <EditText
-                    android:id="@+id/editText1"
+                    android:id="@+id/etEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:background="@null"
                     android:hint="Username"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
                     android:paddingBottom="3dp"
                     android:paddingLeft="3dp"
                     android:paddingTop="3dp"
                     android:singleLine="true"
+                    android:text="soumen@gmail.com"
                     android:textColorHint="#858585" >
                 </EditText>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="38dp"
-                android:layout_marginTop="10dp"
+                android:layout_height="34dp"
+                android:layout_marginTop="12dp"
                 android:background="@xml/signin_rounded_corner"
                 android:gravity="center|left"
                 android:orientation="horizontal"
@@ -103,11 +119,13 @@
                     android:layout_marginLeft="5dp"
                     android:background="@null"
                     android:hint="Password"
+                    android:imeOptions="actionDone"
                     android:inputType="textPassword"
                     android:paddingBottom="3dp"
                     android:paddingLeft="3dp"
                     android:paddingTop="3dp"
                     android:singleLine="true"
+                    android:text="123456"
                     android:textColorHint="#858585" >
                 </EditText>
             </LinearLayout>
@@ -115,8 +133,8 @@
             <LinearLayout
                 android:id="@+id/lblSignin"
                 android:layout_width="match_parent"
-                android:layout_height="38dp"
-                android:layout_marginTop="20dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="30dp"
                 android:background="@xml/signin_btn_rounded_corner"
                 android:duplicateParentState="true"
                 android:gravity="center"
@@ -134,10 +152,10 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/txtForgotPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Forgot or Password?"
+            android:text="@string/forgot_password_text"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@android:color/white" />
 
@@ -158,13 +176,17 @@
             android:gravity="center"
             android:orientation="horizontal" >
 
-            <ImageView
-                android:id="@+id/tv_facebook"
+            <com.facebook.widget.LoginButton
+                xmlns:facebook="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/login_button"
+                style="@style/FacebookLoginButton"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:gravity="center_vertical"
                 android:layout_marginRight="25dp"
-                android:src="@drawable/facebook_icon" />
+                android:background="@drawable/facebook_icon"
+                android:textColor="@color/transparent"
+                android:visibility="visible"
+                facebook:login_text="@string/loginFacebookButton" />
 
             <ImageView
                 android:id="@+id/iv_twitter"
@@ -179,6 +201,12 @@
                 android:layout_height="50dp"
                 android:layout_marginLeft="25dp"
                 android:src="@drawable/gplus_icon" />
+
+            <com.google.android.gms.common.SignInButton
+                android:id="@+id/btn_gplus_signin"
+                android:layout_width="120dp"
+                android:layout_height="35dp"
+                android:visibility="gone" />
         </LinearLayout>
 
         <TextView
@@ -193,9 +221,9 @@
         <LinearLayout
             android:id="@+id/lblSignup"
             android:layout_width="match_parent"
-            android:layout_height="38dp"
-            android:layout_marginLeft="45dp"
-            android:layout_marginRight="45dp"
+            android:layout_height="34dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
             android:layout_marginTop="15dp"
             android:background="@xml/signin_btn_rounded_corner"
             android:gravity="center"

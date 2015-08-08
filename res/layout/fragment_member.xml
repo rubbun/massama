@@ -27,7 +27,7 @@
                 android:layout_height="fill_parent"
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:text="Members"
+                android:text="MEMBERS"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp" />
 
@@ -39,56 +39,51 @@
                 android:orientation="vertical" >
 
                 <ImageView
-                    android:id="@+id/imageView1"
+                    android:id="@+id/ivBack"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_alignParentLeft="true"
-                    android:src="@drawable/ic_arrow_left" />
+                    android:src="@drawable/ic_arrow_left"
+                    android:visibility="gone" />
             </LinearLayout>
         </RelativeLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="5dp"
+            android:layout_height="3dp"
             android:background="#002840"
             android:orientation="vertical" >
         </LinearLayout>
 
         <LinearLayout
-          
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_marginTop="5dp"
-            android:padding="10dp"
-            android:orientation="horizontal" >
+            android:orientation="horizontal"
+            android:padding="10dp" >
 
-         
-            <LinearLayout 
-                  android:id="@+id/llSearch"
+            <LinearLayout
+                android:id="@+id/llSearch"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:orientation="horizontal"
-                android:gravity="center"
                 android:background="@xml/search_bg"
-                >
+                android:gravity="center"
+                android:orientation="horizontal" >
 
                 <ImageView
                     android:id="@+id/imageView2"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                   
                     android:src="@drawable/ic_search" />
 
                 <TextView
-                      android:id="@+id/tvSearch"
-                   
+                    android:id="@+id/tvSearch"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="5dp"
+                    android:text="Search"
                     android:textColor="#000000"
-                    android:textSize="20sp"
-                    android:text="Search" />
-
+                    android:textSize="20sp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -96,8 +91,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
-            
-             <org.ninehetz.pulltorefreshlistlib.PullToRefreshListView
+            <org.ninehetz.pulltorefreshlistlib.PullToRefreshListView
                 android:id="@+id/lv_members"
                 style="@style/MyListViewStyle"
                 android:layout_width="match_parent"
@@ -108,8 +102,6 @@
                 android:dividerHeight="0dp"
                 android:scrollbarStyle="outsideOverlay"
                 android:scrollingCache="false" />
-           
-           
         </LinearLayout>
     </LinearLayout>
 

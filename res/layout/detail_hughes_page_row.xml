@@ -2,47 +2,73 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/ll_mobile_second"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#b3b3b3"
+    android:layout_height="80dp"
+    android:layout_marginTop="3dp"
     android:gravity="center|left"
     android:orientation="horizontal"
-    android:padding="4dp"
-    android:layout_marginTop="5dp"
-    android:weightSum="1" >
+    android:padding="7dp" >
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.70"
+        android:layout_width="120dp"
+        android:layout_height="fill_parent"
+        android:gravity="center"
         android:orientation="vertical" >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Hughes:"
-            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_mobile_no"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="9804578989" />
+            android:text="9804578989"
+            android:textSize="17sp" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="0dp"
+        android:id="@+id/layout_front"
+        android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_weight="0.30"
         android:gravity="center"
-        android:orientation="vertical" >
+        android:orientation="vertical" 
+        android:visibility="visible">
 
         <ImageView
             android:id="@+id/iv_call"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:padding="5dp"
             android:src="@drawable/call" />
     </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_back"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:visibility="gone" >
+
+        <ImageView
+            android:id="@+id/btn1"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/app_name"
+            android:padding="5dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/call_icon" />
+
+        <ImageView
+            android:id="@+id/btn2"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:contentDescription="@string/app_name"
+            android:padding="5dp"
+            android:src="@drawable/message_icon" />
+    </RelativeLayout>
 
 </LinearLayout>

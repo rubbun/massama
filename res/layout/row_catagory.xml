@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
+    android:gravity="center"
     android:orientation="vertical"
     tools:ignore="RtlSymmetry,HardcodedText" >
 
@@ -10,19 +11,19 @@
         android:id="@+id/llBody"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
+        android:gravity="center|left"
+        android:layout_marginTop="7dp"
         android:orientation="vertical" >
 
-     
         <TextView
             android:id="@+id/textViewName"
             android:layout_width="fill_parent"
-            android:layout_height="50dp"
+            android:layout_height="100dp"
             android:duplicateParentState="true"
             android:gravity="center|left"
             android:paddingLeft="10dp"
             android:text="TATA:"
-            android:textColor="#000000"
+            android:textColor="@android:color/white"
             android:textSize="18sp"
             android:textStyle="bold" />
 

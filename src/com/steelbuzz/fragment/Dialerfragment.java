@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,11 +18,10 @@ import com.steelbuzz.R;
 
 public class Dialerfragment extends Fragment implements OnClickListener{
 	
-	//private BaseActivity base;
-	private LinearLayout ll_one,ll_two,ll_three,ll_four,ll_five,ll_six,ll_seven,ll_eight,ll_nine,ll_zero,ll_call;
-	private TextView tv_dial_pad,tv_show_message;
-	private Button btn_clear;
-	
+	private LinearLayout ll_one,ll_two,ll_three,ll_four,ll_five,ll_six,ll_seven,ll_eight,ll_nine,ll_zero;
+	private TextView tv_dial_pad;
+	private ImageView btn_clear;
+	private ImageView ivCall;
 	String last_four_digit = null;
 	
 	@Override
@@ -58,13 +58,12 @@ public class Dialerfragment extends Fragment implements OnClickListener{
 		ll_zero = (LinearLayout)v.findViewById(R.id.ll_zero);
 		ll_zero.setOnClickListener(this);
 		
-		ll_call = (LinearLayout)v.findViewById(R.id.ll_call);
-		ll_call.setOnClickListener(this);
+		ivCall = (ImageView)v.findViewById(R.id.ivCall);
+		ivCall.setOnClickListener(this);
 		
 		tv_dial_pad = (TextView)v.findViewById(R.id.tv_dial_pad);
-		tv_show_message = (TextView)v.findViewById(R.id.tv_show_message);
 		
-		btn_clear = (Button)v.findViewById(R.id.btn_clear);
+		btn_clear = (ImageView)v.findViewById(R.id.btn_clear);
 		btn_clear.setOnClickListener(this);
 		
 		return v;
@@ -74,7 +73,7 @@ public class Dialerfragment extends Fragment implements OnClickListener{
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.ll_one:
-			last_four_digit = tv_dial_pad.getText().toString();
+			//last_four_digit = tv_dial_pad.getText().toString();
 			setNumberToDialPad("1");
 			break;
 		case R.id.ll_two:
@@ -117,7 +116,7 @@ public class Dialerfragment extends Fragment implements OnClickListener{
 			tv_dial_pad.setText("");
 			break;
 			
-		case R.id.ll_call:
+		case R.id.ivCall:
 			last_four_digit = tv_dial_pad.getText().toString();
 			if(last_four_digit.length() > 0){
 				String first_four_digit = Integer.toString(getInitialNos(Integer.parseInt(last_four_digit)));
@@ -173,6 +172,6 @@ public class Dialerfragment extends Fragment implements OnClickListener{
 
 	private void setNumberToDialPad(String number) {
 		last_four_digit = tv_dial_pad.getText().toString();
-		tv_dial_pad.setText(last_four_digit+number);
+		tv_dial_pad.setText(last_four_digit+""+number);
 	}
 }

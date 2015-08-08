@@ -3,11 +3,11 @@
     android:id="@+id/ll_mobile_second"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#b3b3b3"
+    android:background="@android:color/white"
     android:gravity="center|left"
     android:orientation="horizontal"
-    android:padding="4dp"
-    android:layout_marginTop="5dp"
+    android:padding="7dp"
+    android:layout_marginTop="3dp"
     android:weightSum="1" >
 
     <LinearLayout
@@ -17,18 +17,12 @@
         android:orientation="vertical" >
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Mobile:"
-            android:textStyle="bold" />
-
-        <TextView
             android:id="@+id/tv_mobile_no"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="9804578989" />
+            android:text="9804578989" 
+            android:textSize="17sp"/>
     </LinearLayout>
 
     <LinearLayout

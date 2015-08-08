@@ -1,60 +1,27 @@
-<!--
- <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#F1F1F1"
-    android:orientation="vertical" >
-
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
-
-        <LinearLayout
-            android:id="@+id/ll_footer"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:orientation="horizontal" >
-
-            <include
-                android:id="@+id/footer"
-                android:layout_width="fill_parent"
-                android:layout_height="100dp"
-                android:layout_alignParentBottom="true"
-                layout="@layout/footer" />
-        </LinearLayout>
-
-        <FrameLayout
-            android:id="@+id/frame_container"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_above="@id/ll_footer" >
-        </FrameLayout>
-    </RelativeLayout>
-
-</LinearLayout>
--->
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    
     android:gravity="center_horizontal" >
 
-   <FrameLayout
-            android:id="@+id/frame_container"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginBottom="65dp"
-             >
-        </FrameLayout>
+    <FrameLayout
+        android:id="@+id/frame_container"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginBottom="65dp" >
+    </FrameLayout>
+
+    <View
+        android:id="@+id/footer_border"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/footer_border" />
 
     <LinearLayout
-         android:id="@+id/ll_footer"
+        android:id="@+id/ll_footer"
         android:layout_width="fill_parent"
         android:layout_height="70dp"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@id/footer_border"
         android:orientation="horizontal"
         android:weightSum="1" >
 
@@ -64,19 +31,15 @@
             android:layout_height="fill_parent"
             android:layout_marginTop="10dp"
             android:layout_weight="0.20"
+            android:background="@drawable/tab_bg"
             android:orientation="horizontal" >
-
-            <ImageView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:adjustViewBounds="true"
-                android:scaleType="fitXY"
-                android:src="@drawable/tab_bg" />
 
             <ImageView
                 android:layout_width="35dp"
                 android:layout_height="30dp"
-                android:layout_centerInParent="true"
+                android:layout_above="@+id/tv_member"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="2dp"
                 android:src="@drawable/icon_mem" />
 
             <TextView
@@ -84,7 +47,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
                 android:gravity="center"
                 android:text="Member"
                 android:textColor="@color/white"
@@ -97,26 +60,24 @@
             android:layout_height="fill_parent"
             android:layout_marginTop="10dp"
             android:layout_weight="0.20"
+            android:background="@drawable/tab_unselect"
             android:orientation="horizontal" >
-
-            <ImageView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:adjustViewBounds="true"
-                android:scaleType="fitXY"
-                android:src="@drawable/tab_unselect" />
 
             <ImageView
                 android:layout_width="35dp"
                 android:layout_height="30dp"
-                android:layout_centerInParent="true"
-                android:src="@drawable/icon_3" />
+                android:layout_above="@+id/tvProduct"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="2dp"
+                android:src="@drawable/icon_product" />
 
             <TextView
+                android:id="@+id/tvProduct"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="3dp"
                 android:gravity="center"
                 android:text="Product"
                 android:textColor="@color/white"
@@ -124,39 +85,74 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/ll_dialer"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:layout_weight="0.20"
+            android:background="@drawable/tab_big_unselect"
             android:orientation="horizontal" >
 
-            <ImageView
+            <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:adjustViewBounds="true"
-                android:scaleType="fitXY"
-                android:src="@drawable/tab_big_unselect" />
+                android:layout_marginTop="10dp" >
 
-            <RelativeLayout
-                android:id="@+id/ll_dialer"
-                android:layout_width="fill_parent"
-                android:layout_marginTop="10dp"
-                android:layout_height="fill_parent" >
                 <ImageView
-            android:layout_width="35dp"
-            android:layout_height="30dp"
-            android:layout_centerInParent="true"
-            android:src="@drawable/icon_4" />
+                    android:layout_width="35dp"
+                    android:layout_height="30dp"
+                    android:layout_above="@+id/tvDialer"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="6dp"
+                    android:src="@drawable/icon_dialer" />
 
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:text="Dialer"
-            android:layout_alignParentBottom="true"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:textSize="12sp" />
+                <TextView
+                    android:id="@+id/tvDialer"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center"
+                    android:text="Dialer"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
             </RelativeLayout>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="10dp"
+            android:background="#002840" />
+
+        <RelativeLayout
+            android:id="@+id/ll_buzz"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="10dp"
+            android:layout_weight="0.20"
+            android:background="@drawable/tab_unselect"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/tvBuzz"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="2dp"
+                android:gravity="center"
+                android:text="Buzz"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="30dp"
+                android:layout_above="@+id/tvBuzz"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="2dp"
+                android:src="@drawable/icon_buzz" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -165,57 +161,25 @@
             android:layout_height="fill_parent"
             android:layout_marginTop="10dp"
             android:layout_weight="0.20"
+            android:background="@drawable/tab_unselect"
+            android:duplicateParentState="true"
+            android:gravity="center"
             android:orientation="horizontal" >
-
-            <ImageView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:adjustViewBounds="true"
-                android:scaleType="fitXY"
-                android:src="@drawable/tab_unselect" />
 
             <ImageView
                 android:layout_width="35dp"
                 android:layout_height="30dp"
-                android:layout_centerInParent="true"
-                android:src="@drawable/icon_5" />
+                android:layout_above="@+id/tvMore"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="2dp"
+                android:src="@drawable/icon_more" />
 
             <TextView
+                android:id="@+id/tvMore"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:layout_marginTop="2dp"
-                android:gravity="center"
-                android:text="Buzz"
-                android:textColor="@color/white"
-                android:textSize="12sp" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/ll_tab5"
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
-            android:layout_marginTop="10dp"
-            android:layout_weight="0.20"
-            android:orientation="horizontal" >
-
-            <ImageView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:adjustViewBounds="true"
-                android:scaleType="fitXY"
-                android:src="@drawable/tab_unselect" />
-
-            <ImageView
-                android:layout_width="35dp"
-                android:layout_height="30dp"
-                android:layout_centerInParent="true"
-                android:src="@drawable/icon_6" />
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="2dp"
                 android:layout_marginTop="2dp"
                 android:gravity="center"
                 android:text="More"

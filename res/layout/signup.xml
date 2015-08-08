@@ -14,23 +14,36 @@
         android:gravity="bottom|center"
         android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="STEEL BUZZ"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/white"
-            android:textStyle="bold"
-            android:textSize="47sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:gravity="bottom|center"
+            android:orientation="vertical"
+            android:weightSum="1" >
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Connecting you to Steel Industry"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@android:color/white" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/logo" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center|left"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@android:color/white"
+                    android:textSize="40sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -47,18 +60,18 @@
             android:gravity="center"
             android:orientation="vertical"
             android:paddingBottom="10dp"
-            android:paddingLeft="40dp"
-            android:paddingRight="40dp"
+            android:paddingLeft="60dp"
+            android:paddingRight="60dp"
             android:paddingTop="10dp" >
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="38dp"
+                android:layout_height="34dp"
                 android:background="@xml/signin_rounded_corner"
                 android:gravity="center|left"
                 android:orientation="horizontal"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp" >
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp" >
 
                 <ImageView
                     android:id="@+id/imageView1"
@@ -84,13 +97,13 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="38dp"
-                android:layout_marginTop="10dp"
+                android:layout_height="34dp"
+                android:layout_marginTop="12dp"
                 android:background="@xml/signin_rounded_corner"
                 android:gravity="center|left"
                 android:orientation="horizontal"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp" >
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp" >
 
                 <ImageView
                     android:layout_width="25dp"
@@ -115,13 +128,13 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="38dp"
-                android:layout_marginTop="10dp"
+                android:layout_height="34dp"
+                android:layout_marginTop="12dp"
                 android:background="@xml/signin_rounded_corner"
                 android:gravity="center|left"
                 android:orientation="horizontal"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp" >
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp" >
 
                 <ImageView
                     android:layout_width="25dp"
@@ -146,13 +159,13 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="38dp"
-                android:layout_marginTop="10dp"
+                android:layout_height="34dp"
+                android:layout_marginTop="12dp"
                 android:background="@xml/signin_rounded_corner"
                 android:gravity="center|left"
                 android:orientation="horizontal"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp" >
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp" >
 
                 <ImageView
                     android:layout_width="25dp"
@@ -178,8 +191,8 @@
             <LinearLayout
                 android:id="@+id/lblSignup"
                 android:layout_width="match_parent"
-                android:layout_height="38dp"
-                android:layout_marginTop="20dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="30dp"
                 android:background="@xml/signin_btn_rounded_corner"
                 android:gravity="center"
                 android:orientation="vertical" >

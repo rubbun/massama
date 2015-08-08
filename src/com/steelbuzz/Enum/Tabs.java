@@ -1,6 +1,6 @@
 package com.steelbuzz.Enum;
 
 public enum Tabs {
-	MEMBER,CATEGORY,DIALER,SUPPORT;
+	MEMBER,CATEGORY,DIALER,SUPPORT,BUZZ;
 
 }

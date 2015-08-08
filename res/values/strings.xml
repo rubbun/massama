@@ -1,8 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">SteelBuzz</string>
+    <string name="app_name">Steel Buzz</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-
+    
+    <!-- Button text -->
+    <string name="btn_logout_from_google">Logout from Google</string>
+    <string name="btn_revoke_access">Revoke Access</string>
+    <string name="loginFacebookButton"><b>Facebook</b></string>
+    <string name="app_id">480956285404666</string>
+    <string name="ok">OK</string>
+    <string name="cancelled">Cancelled</string>
+    <string name="permission_not_granted">Permission not allowed</string>
+    <string name="hello">Hello, </string>
+    <string name="share_instructions">Enter share message</string>
+    <string name="btn_share">Share</string>
+    
+      <!-- Twitter Configurations -->
+    <string name="twitter_callback">https://www.google.co.in/</string>
+    <string name="twitter_consumer_key">Kq2OUpcD0PTK7S27W1e5mNH9z</string>
+    <string name="twitter_consumer_secret">0IUAkhxTVbXaWcT11PWp7OlHY9ArPzn0tBm9KLwWAYmDQh9Zif</string>
+    <string name="twitter_oauth_verifier">oauth_verifier</string>
+    <!-- End Configurations -->
+    
+    <string name="forgot_password_text"><u>Forgot your Password?</u></string>
+    
 </resources>

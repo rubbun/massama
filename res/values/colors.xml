@@ -4,5 +4,6 @@
     <color name="white">#FFFFFF</color>
     <color name="title_shadow">#2E5C94</color>
     <color name="input_shadow">#fff000</color>
+    <color name="transparent">#00000000</color>
 
 </resources>

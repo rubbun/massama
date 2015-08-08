@@ -6,7 +6,6 @@ import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -15,22 +14,22 @@ import android.widget.TextView;
 
 import com.steelbuzz.BaseActivity;
 import com.steelbuzz.R;
-import com.steelbuzz.adapter.MemberAdapter.ViewHolder;
 import com.steelbuzz.bean.Member;
 import com.steelbuzz.fragment.MemberFragment;
 
 public class SelectedMemberAdapter extends ArrayAdapter<Member> {
-	
-	public interface OnSelectedMemberClickListener{
+
+	public interface OnSelectedMemberClickListener {
 		public void onSelectedMemberClick(Member member);
 	}
+
 	private BaseActivity activity;
 	private ViewHolder mHolder;
 	public ArrayList<Member> item = new ArrayList<Member>();
 	private OnSelectedMemberClickListener listener;
 	private MemberFragment fragment;
 
-	public SelectedMemberAdapter(BaseActivity activity,MemberFragment fragment, int textViewResourceId, ArrayList<Member> items) {
+	public SelectedMemberAdapter(BaseActivity activity, MemberFragment fragment, int textViewResourceId, ArrayList<Member> items) {
 		super(activity, textViewResourceId, items);
 		this.item = items;
 		this.activity = activity;
@@ -59,36 +58,26 @@ public class SelectedMemberAdapter extends ArrayAdapter<Member> {
 
 			mHolder.tv_name = (TextView) v.findViewById(R.id.tv_name);
 			mHolder.ll_member = (LinearLayout) v.findViewById(R.id.ll_member);
-			mHolder.ivFeature = (ImageView)v.findViewById(R.id.ivFeature);
-			mHolder.tvFeature = (TextView)v.findViewById(R.id.tvFeature);
-			mHolder.llArrow = (LinearLayout)v.findViewById(R.id.llArrow);
-			mHolder.line = (View)v.findViewById(R.id.line);
-		
+			mHolder.ivFeature = (ImageView) v.findViewById(R.id.ivFeature);
+			mHolder.tvFeature = (TextView) v.findViewById(R.id.tvFeature);
+			mHolder.llArrow = (LinearLayout) v.findViewById(R.id.llArrow);
+			mHolder.line = (View) v.findViewById(R.id.line);
+
 		} else {
 			mHolder = (ViewHolder) v.getTag();
 		}
-		
-		if(position>2){
-			mHolder.ivFeature.setVisibility(View.INVISIBLE);
-			mHolder.tvFeature.setVisibility(View.INVISIBLE);
-			mHolder.llArrow.setVisibility(View.VISIBLE);
-			mHolder.line.setBackgroundColor(Color.BLACK);
-			mHolder.ll_member.setBackgroundColor(Color.WHITE);
-		}else{
-			mHolder.ivFeature.setVisibility(View.VISIBLE);
-			mHolder.tvFeature.setVisibility(View.VISIBLE);
-			mHolder.llArrow.setVisibility(View.INVISIBLE);
-			mHolder.line.setBackgroundColor(Color.WHITE);
-			mHolder.ll_member.setBackgroundColor(Color.parseColor("#0069a8"));
-		}
+
+		mHolder.ivFeature.setVisibility(View.INVISIBLE);
+		mHolder.tvFeature.setVisibility(View.INVISIBLE);
+		mHolder.llArrow.setVisibility(View.VISIBLE);
+		mHolder.line.setBackgroundColor(Color.BLACK);
+		mHolder.ll_member.setBackgroundColor(Color.WHITE);
 
 		final Member member = item.get(position);
 
 		if (member != null) {
 			mHolder.tv_name.setText(member.getName());
-
 		}
-
 		return v;
 	}
 

@@ -12,9 +12,12 @@ public class Member {
 	private String email;
 	private String web;
 	private String hughes_no;
+	private String city;
+	private String country;
+	private String status;
 	public Member(String id,String name, String address, String contactParson,
 			String tata, String mobile, String fax, String residential,
-			String email, String web, String hughes_no) {
+			String email, String web, String hughes_no,String city,String country,String status) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -27,7 +30,35 @@ public class Member {
 		this.email = email;
 		this.web = web;
 		this.hughes_no = hughes_no;
+		this.city = city;
+		this.country = country;
+		this.status = status;
 	}
+	
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getCity() {
+		return city;
+	}
+	
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
 	public String getName() {
 		return name;
 	}

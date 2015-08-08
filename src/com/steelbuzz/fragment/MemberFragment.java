@@ -12,7 +12,9 @@ import org.ninehetz.pulltorefreshlistlib.PullToRefreshListView.OnRefreshListener
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -23,14 +25,18 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.steelbuzz.BaseActivity;
@@ -59,10 +65,12 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 	private Fragment fragment = null;
 	private BaseActivity base;
 	private Member memberBean;
+	private ImageView ivTick;
 	private Dialog dialog;
 	private boolean isSearchEnable = false;
 	private boolean isRefresh = false;
 	public ArrayList<Member> memberList = new ArrayList<Member>();
+	public ArrayList<Member> tempmemberList;
 	private ArrayList<Member> selectedtempArr = new ArrayList<Member>();
 	private LinearLayout ll_conpany_info, ll_phone, ll_mail, ll_products;
 
@@ -96,12 +104,15 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 
 		ll_products = (LinearLayout) v.findViewById(R.id.ll_products);
 		ll_products.setOnClickListener(this);
+		
+		ivTick = (ImageView)v.findViewById(R.id.ivTick);
 
 		lv_members.setOnItemClickListener(this);
 
 		llSearch.setOnClickListener(this);
 		tvSearch.setOnClickListener(this);
 
+		if(Constants.memberArr.size() == 0)
 		new GetMemberList().execute();
 		
 		lv_members.setOnRefreshListener(new OnRefreshListener() {
@@ -110,12 +121,14 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 			public void onRefresh() {
 				if (base.hasConnection()) {
 					isRefresh = true;
-					new GetMemberList().execute();
+					new GetPullMemberList().execute();
 				} else {
 					lv_members.onRefreshComplete();
 				}
 			}
 		});
+		
+		ivTick.setOnClickListener(this);
 		return v;
 	}
 
@@ -123,7 +136,7 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			if (base.hasConnection() && (isRefresh == false)) {
+			if (base.hasConnection() && (isRefresh == false) && (Constants.memberArr.size() == 0)) {
 				showLoading();
 			}
 		}
@@ -160,8 +173,11 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 					String email = c.getString("email");
 					String web = c.getString("web");
 					String hughes_no = c.getString("hughes_no");
+					String city = c.getString("city");
+					String country = c.getString("country");
+					String status = c.getString("status");
 
-					Member member1 = new Member(id, name, address, contactParson, tata, mobile, fax, residential, email, web, hughes_no);
+					Member member1 = new Member(id, name, address, contactParson, tata, mobile, fax, residential, email, web, hughes_no,city,country,status);
 					publishProgress(member1);
 				}
 
@@ -181,7 +197,7 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 					return arg0.getName().compareTo(arg1.getName());
 				}
 			});
-			if (base.hasConnection() && (isRefresh == false)) {
+			if (base.hasConnection() && (isRefresh == false) && (Constants.memberArr.size() == 0 )) {
 				dismissLoading();
 			}
 		}
@@ -202,7 +218,6 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 		lv_members.setAdapter(memberAdapter);
 		lv_members.setFastScrollEnabled(true);
 		lv_members.onRefreshComplete();
-		
 	}
 
 	@Override
@@ -214,20 +229,56 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 		ll_member_list.setVisibility(View.GONE);
 		ll_member_detail.setVisibility(View.VISIBLE);
 		tv_membername.setText("" + Constants.memberArr.get(arg2).getName());
-		tv_address.setText("" + Constants.memberArr.get(arg2).getAddress());
+		tv_address.setText("" + Constants.memberArr.get(arg2).getCity() + ", "+ Constants.memberArr.get(arg2).getCountry());
 		memberBean = Constants.memberArr.get(arg2);
+		if(Constants.memberArr.get(arg2).getStatus().equalsIgnoreCase("0")){
+			ivTick.setVisibility(View.GONE);
+		}else
+			ivTick.setVisibility(View.VISIBLE);
+		
 		displaySubView(0, memberBean);
 	}
 
+	private void displayPopupWindow(View anchorView) {
+        PopupWindow popup = new PopupWindow(getActivity());
+        View layout = getActivity().getLayoutInflater().inflate(R.layout.popup_content, null);
+        TextView tvCaption = (TextView)layout.findViewById(R.id.tvCaption);
+        tvCaption.setText("Verified");
+        popup.setContentView(layout);
+        // Set content width and height
+        popup.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
+        popup.setWidth(WindowManager.LayoutParams.WRAP_CONTENT);
+        // Closes the popup window when touch outside of it - when looses focus
+        popup.setOutsideTouchable(true);
+        popup.setFocusable(true);
+        // Show anchored to button
+        popup.setBackgroundDrawable(new BitmapDrawable());
+        popup.showAsDropDown(anchorView);
+      }
+	
+	
 	public void displaySubView(int position, Member memberBean) {
 		if (dialog != null) {
 			dialog.hide();
 		}
-		//hideKeyBoard(ll_dialog_search);
+		InputMethodManager imm = (InputMethodManager) getActivity()
+	            .getSystemService(Context.INPUT_METHOD_SERVICE);
+
+	    if (imm.isAcceptingText()) {
+	    	hideKeyBoard(ll_dialog_search);
+	    } else {
+	       // writeToLog("Software Keyboard was not shown");
+	    }
+		
 	/*	hideKeyBoard(et_search);*/
 		switch (position) {
 		case 0:
 			fragment = new CompanyInfoFragment(memberBean);
+			ll_conpany_info.setBackgroundColor(Color.parseColor("#FFFFFF"));
+			ll_phone.setBackgroundColor(Color.parseColor("#ababab"));
+			ll_mail.setBackgroundColor(Color.parseColor("#ababab"));
+			ll_products.setBackgroundColor(Color.parseColor("#ababab"));
+			
 			break;
 		case 1:
 			fragment = new PhoneInfoFragment(memberBean);
@@ -285,6 +336,10 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 			openSearchpage();
 			isSearchEnable = true;
 			break;
+			
+		case R.id.ivTick:
+			displayPopupWindow(v);
+			break;
 		}
 	}
 
@@ -336,7 +391,7 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 						String retailerName = Constants.memberArr.get(i).getName();
 						if (textLength <= retailerName.length()) {
 							if (retailerName.toLowerCase().contains(searchString.toLowerCase())) {
-								selectedtempArr.add(new Member(Constants.memberArr.get(i).getName(), Constants.memberArr.get(i).getName(), Constants.memberArr.get(i).getAddress(), Constants.memberArr.get(i).getContactParson(), Constants.memberArr.get(i).getTata(), Constants.memberArr.get(i).getMobile(), Constants.memberArr.get(i).getFax(), Constants.memberArr.get(i).getResidential(), Constants.memberArr.get(i).getEmail(), Constants.memberArr.get(i).getWeb(), Constants.memberArr.get(i).getHughes_no()));								
+								selectedtempArr.add(new Member(Constants.memberArr.get(i).getName(), Constants.memberArr.get(i).getName(), Constants.memberArr.get(i).getAddress(), Constants.memberArr.get(i).getContactParson(), Constants.memberArr.get(i).getTata(), Constants.memberArr.get(i).getMobile(), Constants.memberArr.get(i).getFax(), Constants.memberArr.get(i).getResidential(), Constants.memberArr.get(i).getEmail(), Constants.memberArr.get(i).getWeb(), Constants.memberArr.get(i).getHughes_no(),Constants.memberArr.get(i).getCity(),Constants.memberArr.get(i).getCountry(),Constants.memberArr.get(i).getStatus()));								
 							}
 						}
 					}
@@ -366,9 +421,13 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 
 				ll_member_list.setVisibility(View.GONE);
 				ll_member_detail.setVisibility(View.VISIBLE);
-				tv_membername.setText("" + Constants.memberArr.get(arg2).getName());
-				tv_address.setText("" + Constants.memberArr.get(arg2).getAddress());
-				memberBean = Constants.memberArr.get(arg2);
+				tv_membername.setText("" + selectedtempArr.get(arg2).getName());
+				tv_address.setText("" + selectedtempArr.get(arg2).getCity() + ", "+selectedtempArr.get(arg2).getCountry());
+				memberBean = selectedtempArr.get(arg2);
+				if(selectedtempArr.get(arg2).getStatus().equalsIgnoreCase("0")){
+					ivTick.setVisibility(View.GONE);
+				}else
+					ivTick.setVisibility(View.VISIBLE);
 				
 				displaySubView(0, memberBean);
 			}
@@ -380,4 +439,61 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 		ll_member_list.setVisibility(View.VISIBLE);
 		ll_member_detail.setVisibility(View.GONE);
 	}
+	
+	public class GetPullMemberList extends AsyncTask<String, Void, Void> {
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			tempmemberList = new ArrayList<Member>();
+		}
+
+		@Override
+		protected Void doInBackground(String... arg0) {
+
+			try {
+				String response;
+				JSONArray jArr = null;		
+				response = HttpClientGet.SendHttpGet(Constants.ALL_MEMBER_LIST);
+				if (response != null) {
+					JSONObject jObject = new JSONObject(response);
+					jArr = jObject.getJSONArray("members");
+					tempmemberList.clear();
+					for (int i = 0; i < jArr.length(); i++) {
+						JSONObject c = jArr.getJSONObject(i);
+						String id = c.getString("id");
+						String name = c.getString("members_name");
+						String address = c.getString("address");
+						String contactParson = c.getString("contact_person");
+						String tata = c.getString("phone_no");
+						String mobile = c.getString("mobile_no");
+						String fax = c.getString("fax");
+						String residential = c.getString("residence");
+						String email = c.getString("email");
+						String web = c.getString("web");
+						String hughes_no = c.getString("hughes_no");
+						String city = c.getString("city");
+						String country = c.getString("country");
+						String status = c.getString("status");
+
+						Member member1 = new Member(id, name, address, contactParson, tata, mobile, fax, residential, email, web, hughes_no,city,country,status);
+						tempmemberList.add(member1);
+					}
+				}
+			} catch (JSONException e) {
+			}
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(Void result) {
+			super.onPostExecute(result);
+			lv_members.setFastScrollEnabled(true);
+			lv_members.onRefreshComplete();
+			isRefresh = true;
+			Constants.memberArr = tempmemberList;
+			memberAdapter.notifyDataSetChanged();
+		}
+	}
+	
+	
 }

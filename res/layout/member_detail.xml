@@ -17,7 +17,7 @@
             android:layout_height="fill_parent"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="Members Details"
+            android:text="MEMBER DETAILS"
             android:textColor="#FFFFFF"
             android:textSize="20sp" />
 
@@ -25,6 +25,7 @@
             android:id="@+id/llBack"
             android:layout_width="50dp"
             android:layout_height="fill_parent"
+            android:duplicateParentState="true"
             android:gravity="center"
             android:orientation="vertical" >
 
@@ -33,9 +34,17 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_alignParentLeft="true"
-                android:src="@drawable/ic_arrow_left" />
+                android:src="@drawable/ic_arrow_left"
+                android:visibility="gone" />
         </LinearLayout>
     </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="5dp"
+        android:background="#002840"
+        android:orientation="vertical" >
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -62,6 +71,7 @@
                     android:id="@+id/tv_membername"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="1dp"
                     android:text="ADINATH METAL"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="#FFFFFF" />
@@ -69,6 +79,7 @@
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:gravity="center"
                     android:orientation="horizontal" >
 
@@ -83,8 +94,8 @@
                         android:id="@+id/tv_address"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
                         android:layout_toRightOf="@+id/ivAddress"
+                        android:gravity="center_vertical"
                         android:text="Mumbai,India"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:textColor="#FFFFFF" />
@@ -100,8 +111,8 @@
 
                 <ImageView
                     android:id="@+id/ivTick"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="37dp"
+                    android:layout_height="37dp"
                     android:src="@drawable/ic_tick" />
             </LinearLayout>
         </LinearLayout>
@@ -110,7 +121,6 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight=".80"
-           
             android:orientation="vertical" >
 
             <LinearLayout
@@ -140,9 +150,14 @@
                         android:layout_marginTop="5dp"
                         android:gravity="center"
                         android:text="COMPANY INFO"
-                        android:textColor="#1f1f1f"
+                        android:textColor="#141414"
                         android:textSize="10sp" />
                 </LinearLayout>
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/member_details_border" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -177,10 +192,15 @@
                             android:layout_marginTop="5dp"
                             android:gravity="center"
                             android:text="PHONE"
-                            android:textColor="#1f1f1f"
+                            android:textColor="#141414"
                             android:textSize="10sp" />
                     </LinearLayout>
                 </LinearLayout>
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/member_details_border" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -214,11 +234,16 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
                             android:gravity="center"
-                            android:text="PHONE"
-                            android:textColor="#1f1f1f"
+                            android:text="EMAIL"
+                            android:textColor="#141414"
                             android:textSize="10sp" />
                     </LinearLayout>
                 </LinearLayout>
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/member_details_border" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -252,15 +277,17 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
                             android:gravity="center"
-                            android:text="PHONE"
-                            android:textColor="#1f1f1f"
+                            android:text="PRODUCT"
+                            android:textColor="#141414"
                             android:textSize="10sp" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
-            <View android:layout_width="fill_parent"
-                android:background="#9b9b9b"
-                android:layout_height="1dp"/>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="#DADADA" />
 
             <FrameLayout
                 android:id="@+id/frame_detail_container"

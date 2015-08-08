@@ -1,5 +1,9 @@
 package com.steelbuzz.fragment;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -7,8 +11,10 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.JsonReader;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,15 +23,24 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.steelbuzz.BaseActivity;
 import com.steelbuzz.R;
+import com.steelbuzz.SignInScreen;
+import com.steelbuzz.constant.Constants;
+import com.steelbuzz.network.HttpClient;
 
-public class Supportfragment extends Fragment implements OnClickListener {
+public class Supportfragment extends BaseFragment implements OnClickListener {
 
+	public BaseActivity activity;
+	@Override
+	public void onAttach(Activity activity) {
+		super.onAttach(activity);
+		this.activity = (BaseActivity) activity;
+	}
 	
-	private RelativeLayout rl_about, rl_contactus, rl_review, rl_version;
-
-	
+	private RelativeLayout rl_about,rl_logout, rl_contactus, rl_review, rl_version;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,6 +58,9 @@ public class Supportfragment extends Fragment implements OnClickListener {
 
 		rl_version = (RelativeLayout) v.findViewById(R.id.rl_version);
 		rl_version.setOnClickListener(this);
+		
+		rl_logout = (RelativeLayout)v.findViewById(R.id.rl_logout);
+		rl_logout.setOnClickListener(this);
 
 		return v;
 	}
@@ -108,8 +126,57 @@ public class Supportfragment extends Fragment implements OnClickListener {
 			
 			dialog.show();
 			break;
-
+			
+		case R.id.rl_logout:
+			
+			if (activity.app.getUserinfo().getLogin_type().equalsIgnoreCase("social")) {
+				new doLogout().execute();
+			}else{
+				activity.app.getUserinfo().setSession(false);
+				Intent i1 = new Intent(activity,SignInScreen.class);
+				startActivity(i1);
+				getActivity().finish();
+			}
 		}
 	}
 
+	public class doLogout extends AsyncTask<Void, Void, Boolean> {
+
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			activity.doShowLoading();
+		}
+		
+		@Override
+		protected Boolean doInBackground(Void... params) {
+			try {
+				JSONObject ob = new JSONObject();
+				ob.put("id", activity.app.getUserinfo().getUser_id());
+				String response = HttpClient.SendHttpPost(Constants.SOCIAL_LOGOUT, ob.toString());
+				if(response != null){
+					JSONObject obj = new JSONObject(response);
+					if(obj.getBoolean("status")){
+						return true;
+					}
+				}
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+			return null;
+		}
+		
+		@Override
+		protected void onPostExecute(Boolean result) {
+			super.onPostExecute(result);
+			if(result){
+				activity.app.getUserinfo().setSession(false);
+				Intent i = new Intent(activity,SignInScreen.class);
+				startActivity(i);
+				getActivity().finish();
+			}else{
+				Toast.makeText(activity, "Some error occured.Please try again..", Toast.LENGTH_LONG).show();
+			}
+		}
+	}
 }
