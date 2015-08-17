@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.steelbuzz.BaseActivity;
 import com.steelbuzz.MyGestureListener;
 import com.steelbuzz.R;
 import com.steelbuzz.bean.Member;
@@ -23,10 +24,12 @@ public class PhoneInfoFragment extends BaseFragment{
 	
 	GestureDetectorCompat mDetector;
 	private Member member;
+	private BaseActivity base;
 	private LinearLayout ll_mobile_container,ll_huges_container;
 	private TextView tv_address,tv_contact_person,tv_header_second_name,tv_header_name;
-	public PhoneInfoFragment(Member bean){
+	public PhoneInfoFragment(Member bean, BaseActivity base){
 		this.member = bean;
+		this.base = base;
 	}
 	
 	@Override
@@ -37,6 +40,10 @@ public class PhoneInfoFragment extends BaseFragment{
 		
 		tv_header_second_name = (TextView)v.findViewById(R.id.tv_header_second_name);
 		tv_header_name = (TextView)v.findViewById(R.id.tv_header_name);
+		
+		tv_header_second_name.setTypeface(base.getSemiBoldTypeFace());
+		tv_header_name.setTypeface(base.getSemiBoldTypeFace());
+		tv_address.setTypeface(base.getRegularTypeFace());
 		
 		tv_header_name.setText("Mobile");
 		tv_header_second_name.setText("Hughes:");
@@ -82,6 +89,7 @@ public class PhoneInfoFragment extends BaseFragment{
 			
 			final TextView tv_mobile_no = (TextView)v.findViewById(R.id.tv_mobile_no);
 			tv_mobile_no.setText(parts[i]);
+			tv_mobile_no.setTypeface(base.getRegularTypeFace());
 			
 			ImageView iv_call = (ImageView)v.findViewById(R.id.iv_call);
 			iv_call.setOnClickListener(new OnClickListener() {
@@ -106,7 +114,7 @@ public class PhoneInfoFragment extends BaseFragment{
 			
 			final TextView tv_mobile_no = (TextView)v.findViewById(R.id.tv_mobile_no);
 			tv_mobile_no.setText("+91"+parts[i]);
-			
+			tv_mobile_no.setTypeface(base.getRegularTypeFace());
 			/*ImageView iv_call = (ImageView)v.findViewById(R.id.iv_call);
 			iv_call.setOnClickListener(new OnClickListener() {
 				

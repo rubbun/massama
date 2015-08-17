@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
-    android:layout_height="100dp"
+    android:layout_height="wrap_content"
     android:gravity="center_vertical"
     android:orientation="vertical"
     tools:ignore="RtlSymmetry,HardcodedText" >
@@ -10,7 +10,7 @@
     <LinearLayout
         android:id="@+id/ll_member"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="60dp"
         android:orientation="horizontal"
         android:weightSum="1" >
 
@@ -71,8 +71,8 @@
 
                 <ImageView
                     android:id="@+id/imageView2"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_marginRight="5dp"
                     android:src="@drawable/ic_arrow_right_black" />
             </LinearLayout>
@@ -83,7 +83,7 @@
         android:id="@+id/line"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#b3b3b3"
+        android:background="#f6f6f6"
         android:orientation="vertical" >
     </View>
 

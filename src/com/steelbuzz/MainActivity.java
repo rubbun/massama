@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.steelbuzz.Enum.Tabs;
 import com.steelbuzz.constant.Constants;
@@ -33,11 +34,24 @@ public class MainActivity extends BaseActivity {
 	private String TAG_BUZZ = "com.steelbuzz.fragment.BuzzFragment";
 	
 	private RelativeLayout ll_member,ll_catagory,ll_dialer,ll_support,ll_buzz;
+	private TextView tv_member,tvProduct,tvDialer,tvBuzz,tvMore;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		tv_member = (TextView)findViewById(R.id.tv_member);
+		tvProduct = (TextView)findViewById(R.id.tvProduct);
+		tvDialer = (TextView)findViewById(R.id.tvDialer);
+		tvBuzz = (TextView)findViewById(R.id.tvBuzz);
+		tvMore = (TextView)findViewById(R.id.tvMore);
+		
+		tv_member.setTypeface(getRegularTypeFace());
+		tvProduct.setTypeface(getRegularTypeFace());
+		tvDialer.setTypeface(getRegularTypeFace());
+		tvBuzz.setTypeface(getRegularTypeFace());
+		tvMore.setTypeface(getRegularTypeFace());
 
 		ll_member = (RelativeLayout) findViewById(R.id.ll_member);
 		ll_catagory = (RelativeLayout) findViewById(R.id.ll_catagory);

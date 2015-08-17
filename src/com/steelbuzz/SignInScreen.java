@@ -72,6 +72,7 @@ public class SignInScreen extends BaseActivity implements OnClickListener,Connec
 	private EditText etEmail,etPassword;
 	public InputMethodManager imm;
 	private String socialLogintype = "gplus";
+	private TextView txtSignUp,txtSignIn,txtOr,txtDonttHave;
 	
 	private String firstName,lastName,userId;
 	
@@ -170,8 +171,26 @@ public class SignInScreen extends BaseActivity implements OnClickListener,Connec
 		lblSignup = (LinearLayout) findViewById(R.id.lblSignup);
 		lblSignup.setOnClickListener(this);
 		
+		txtOr = (TextView) findViewById(R.id.txtOr);
+		txtOr.setTypeface(getLightTypeFace());
+		
+		txtDonttHave = (TextView) findViewById(R.id.txtDonttHave);
+		txtDonttHave.setTypeface(getLightTypeFace());
+		
+		txtSignIn = (TextView) findViewById(R.id.txtSignIn);
+		txtSignIn.setTypeface(getLightTypeFace());
+		
+		txtForgotPassword = (TextView) findViewById(R.id.txtForgotPassword);
+		txtForgotPassword.setTypeface(getBoldTypeFace());
+		
+		txtSignUp = (TextView) findViewById(R.id.txtSignUp);
+		txtSignUp.setTypeface(getLightTypeFace());
+		
 		etEmail = (EditText)findViewById(R.id.etEmail);
 		etPassword = (EditText)findViewById(R.id.etPassword);
+		
+		etEmail.setTypeface(getRegularTypeFace());
+		etPassword.setTypeface(getRegularTypeFace());
 		
 		btnSignIn = (SignInButton) findViewById(R.id.btn_gplus_signin);
         btnSignIn.setOnClickListener(this);

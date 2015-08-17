@@ -12,6 +12,7 @@ import org.ninehetz.pulltorefreshlistlib.PullToRefreshListView.OnRefreshListener
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
@@ -25,10 +26,10 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -40,6 +41,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.steelbuzz.BaseActivity;
+import com.steelbuzz.MyCustomProgressDialog;
 import com.steelbuzz.R;
 import com.steelbuzz.adapter.MemberAdapter;
 import com.steelbuzz.adapter.SelectedMemberAdapter;
@@ -57,6 +59,7 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 	private MemberAdapter memberAdapter;
 	private SelectedMemberAdapter selectedmemberAdapter;
 	
+	private ProgressDialog progressDialog;
 	private LinearLayout llSearch;
 	private TextView tvSearch;
 	private AutoCompleteTextView ll_dialog_search;
@@ -74,6 +77,8 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 	private ArrayList<Member> selectedtempArr = new ArrayList<Member>();
 	private LinearLayout ll_conpany_info, ll_phone, ll_mail, ll_products;
 
+	private TextView tvCompany,tvPhone,tvEmail,tvProduct;
+	
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
@@ -93,6 +98,9 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 		tv_membername = (TextView) v.findViewById(R.id.tv_membername);
 		tv_address = (TextView) v.findViewById(R.id.tv_address);
 
+		tvSearch = (TextView) v.findViewById(R.id.tvSearch);
+		tvSearch.setTypeface(base.getRegularTypeFace());
+		
 		ll_conpany_info = (LinearLayout) v.findViewById(R.id.ll_conpany_info);
 		ll_conpany_info.setOnClickListener(this);
 
@@ -104,6 +112,19 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 
 		ll_products = (LinearLayout) v.findViewById(R.id.ll_products);
 		ll_products.setOnClickListener(this);
+		
+		tvCompany = (TextView)v.findViewById(R.id.tvCompany);
+		tvPhone = (TextView)v.findViewById(R.id.tvPhone);
+		tvEmail = (TextView)v.findViewById(R.id.tvEmail);
+		tvProduct = (TextView)v.findViewById(R.id.tvProduct);
+		
+		tvCompany.setTypeface(base.getSemiBoldTypeFace());
+		tvPhone.setTypeface(base.getSemiBoldTypeFace());
+		tvEmail.setTypeface(base.getSemiBoldTypeFace());
+		tvProduct.setTypeface(base.getSemiBoldTypeFace());
+		
+		tv_membername.setTypeface(base.getRegularTypeFace());
+		tv_address.setTypeface(base.getRegularTypeFace());
 		
 		ivTick = (ImageView)v.findViewById(R.id.ivTick);
 
@@ -133,11 +154,14 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 	}
 
 	public class GetMemberList extends AsyncTask<String, Member, Void> {
+		
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
 			if (base.hasConnection() && (isRefresh == false) && (Constants.memberArr.size() == 0)) {
-				showLoading();
+				//showLoading();
+				progressDialog = MyCustomProgressDialog.ctor(getActivity());
+				progressDialog.show();
 			}
 		}
 
@@ -198,7 +222,7 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 				}
 			});
 			if (base.hasConnection() && (isRefresh == false) && (Constants.memberArr.size() == 0 )) {
-				dismissLoading();
+				progressDialog.hide();
 			}
 		}
 
@@ -273,7 +297,7 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 	/*	hideKeyBoard(et_search);*/
 		switch (position) {
 		case 0:
-			fragment = new CompanyInfoFragment(memberBean);
+			fragment = new CompanyInfoFragment(memberBean,base);
 			ll_conpany_info.setBackgroundColor(Color.parseColor("#FFFFFF"));
 			ll_phone.setBackgroundColor(Color.parseColor("#ababab"));
 			ll_mail.setBackgroundColor(Color.parseColor("#ababab"));
@@ -281,13 +305,13 @@ public class MemberFragment extends BaseFragment implements OnItemClickListener,
 			
 			break;
 		case 1:
-			fragment = new PhoneInfoFragment(memberBean);
+			fragment = new PhoneInfoFragment(memberBean,base);
 			break;
 		case 2:
-			fragment = new MailInfoFragment(memberBean);
+			fragment = new MailInfoFragment(memberBean,base);
 			break;
 		case 3:
-			fragment = new ProductInfoFragment(memberBean);
+			fragment = new ProductInfoFragment(memberBean,base);
 			break;
 		}
 		if (fragment != null) {

@@ -26,4 +26,10 @@
     
     <string name="forgot_password_text"><u>Forgot your Password?</u></string>
     
+    <string name="member">MEMBER</string>
+    <string name="product">PRODUCT</string>
+    <string name="dialer">DIALER</string>
+    <string name="buzz">BUZZ</string>
+    <string name="more">MORE</string>
+    
 </resources>

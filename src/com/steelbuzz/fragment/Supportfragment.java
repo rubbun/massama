@@ -43,7 +43,7 @@ public class Supportfragment extends BaseFragment implements OnClickListener {
 		this.activity = (BaseActivity) activity;
 	}
 	
-	private RelativeLayout rl_about,rl_eaq,rl_logout, rl_contactus, rl_review, rl_version,rl_reg_firm;
+	private RelativeLayout rl_about,rl_eaq,rl_logout, rl_contactus, rl_review, rl_reg_firm;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -64,9 +64,6 @@ public class Supportfragment extends BaseFragment implements OnClickListener {
 
 		rl_review = (RelativeLayout) v.findViewById(R.id.rl_review);
 		rl_review.setOnClickListener(this);
-
-		rl_version = (RelativeLayout) v.findViewById(R.id.rl_version);
-		rl_version.setOnClickListener(this);
 		
 		rl_logout = (RelativeLayout)v.findViewById(R.id.rl_logout);
 		rl_logout.setOnClickListener(this);
@@ -107,7 +104,7 @@ public class Supportfragment extends BaseFragment implements OnClickListener {
 			}
 			break;
 
-		case R.id.rl_version:
+		/*case R.id.rl_version:
 			final Dialog dialog = new Dialog(getActivity());
 			dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 			dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -144,7 +141,7 @@ public class Supportfragment extends BaseFragment implements OnClickListener {
 			
 			dialog.show();
 			break;
-			
+			*/
 		case R.id.rl_logout:
 			
 			if (activity.app.getUserinfo().getLogin_type().equalsIgnoreCase("social")) {

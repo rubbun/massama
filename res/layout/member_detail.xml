@@ -6,8 +6,8 @@
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="60dp"
-        android:background="#004d7b"
+        android:layout_height="55dp"
+        android:background="@drawable/header_bg"
         android:gravity="center_vertical"
         android:orientation="horizontal" >
 
@@ -17,7 +17,7 @@
             android:layout_height="fill_parent"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="MEMBER DETAILS"
+            android:text="Member Details"
             android:textColor="#FFFFFF"
             android:textSize="20sp" />
 
@@ -144,7 +144,7 @@
                         android:src="@drawable/ic_info" />
 
                     <TextView
-                        android:id="@+id/textView2"
+                        android:id="@+id/tvCompany"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
@@ -187,6 +187,7 @@
                             android:src="@drawable/ic_phone" />
 
                         <TextView
+                            android:id="@+id/tvPhone"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
@@ -230,6 +231,7 @@
                             android:src="@drawable/ic_mail" />
 
                         <TextView
+                            android:id="@+id/tvEmail"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
@@ -273,6 +275,7 @@
                             android:src="@drawable/ic_product" />
 
                         <TextView
+                            android:id="@+id/tvProduct"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"

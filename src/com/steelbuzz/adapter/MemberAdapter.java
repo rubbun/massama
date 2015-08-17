@@ -1,7 +1,6 @@
 package com.steelbuzz.adapter;
 
 import java.util.ArrayList;
-
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
@@ -13,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SectionIndexer;
 import android.widget.TextView;
-
 import com.steelbuzz.R;
 import com.steelbuzz.StringMatcher;
 import com.steelbuzz.bean.Member;
@@ -64,7 +62,7 @@ public class MemberAdapter extends ArrayAdapter<Member> implements SectionIndexe
 		mHolder.ivFeature.setVisibility(View.INVISIBLE);
 		mHolder.tvFeature.setVisibility(View.INVISIBLE);
 		mHolder.llArrow.setVisibility(View.VISIBLE);
-		mHolder.line.setBackgroundColor(Color.BLACK);
+		mHolder.line.setBackgroundColor(Color.parseColor("#999999"));
 		mHolder.ll_member.setBackgroundColor(Color.WHITE);
 
 		final Member member = item.get(position);

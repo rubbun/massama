@@ -9,6 +9,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.AsyncTask;
@@ -36,6 +37,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.steelbuzz.BaseActivity;
+import com.steelbuzz.MyCustomProgressDialog;
 import com.steelbuzz.R;
 import com.steelbuzz.adapter.MemberAdapter;
 import com.steelbuzz.adapter.SelectedCatagoryAdapter;
@@ -51,6 +53,7 @@ import com.steelbuzz.subfragment.ProductInfoFragment;
 
 public class CatagoryFragment extends BaseFragment implements OnItemClickListener, OnClickListener, OnSelecedCatagoryClickListener {
 
+	private ProgressDialog progressDialog;
 	public LinearLayout ll_body, ll_member, ll_member_detail;
 	public View view;
 	private ArrayList<Member> memberArr = new ArrayList<Member>();
@@ -75,9 +78,9 @@ public class CatagoryFragment extends BaseFragment implements OnItemClickListene
 		base = (BaseActivity) activity;
 	}
 
-	public CatagoryFragment() {
+	/*public CatagoryFragment() {
 
-	}
+	}*/
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -176,7 +179,8 @@ public class CatagoryFragment extends BaseFragment implements OnItemClickListene
 		protected void onPreExecute() {
 			super.onPreExecute();
 			if (base.hasConnection()) {
-				showLoading();
+				progressDialog = MyCustomProgressDialog.ctor(getActivity());
+				progressDialog.show();
 			}
 		}
 
@@ -208,7 +212,7 @@ public class CatagoryFragment extends BaseFragment implements OnItemClickListene
 		protected void onPostExecute(JSONArray result) {
 			super.onPostExecute(result);
 			if (base.hasConnection()) {
-				dismissLoading();
+				progressDialog.hide();
 			}
 			fetchAllCatagoryDetailList();
 			ll_body.removeAllViews();
@@ -243,7 +247,7 @@ public class CatagoryFragment extends BaseFragment implements OnItemClickListene
 			}else if(name.equals("Stainless Steel Sheets & Plates")){
 				textViewName.setBackgroundResource(R.drawable.ss_sheets_plates);
 				textViewName.setTextColor(Color.WHITE);
-			}else if(name.equals("SS Round Bars")){
+			}else if(name.equals("Stainless Steel Round Bar")){
 				textViewName.setBackgroundResource(R.drawable.ss_bars);
 				textViewName.setTextColor(Color.WHITE);
 			}else if(name.equals("Fitings")){
@@ -252,7 +256,7 @@ public class CatagoryFragment extends BaseFragment implements OnItemClickListene
 			}else if(name.equals("Flanges")){
 				textViewName.setBackgroundResource(R.drawable.flanges);
 				textViewName.setTextColor(Color.WHITE);
-			}else if(name.equals("S S Scrap")){
+			}else if(name.equals("Stainless Steel Scrap")){
 				textViewName.setBackgroundResource(R.drawable.ss_scrap);
 				textViewName.setTextColor(Color.WHITE);
 			}else if(name.equals("Copper and Brass")){
@@ -384,7 +388,7 @@ public class CatagoryFragment extends BaseFragment implements OnItemClickListene
 		protected void onPostExecute(Void result) {
 			super.onPostExecute(result);
 			if (base.hasConnection()) {
-				dismissLoading();
+				//dismissLoading();
 			}
 			ll_member.setVisibility(View.VISIBLE);
 			ll_body.setVisibility(View.GONE);
@@ -407,7 +411,6 @@ public class CatagoryFragment extends BaseFragment implements OnItemClickListene
 			ll_body.setVisibility(View.GONE);
 			ll_member.setVisibility(View.VISIBLE);
 			ll_member_detail.setVisibility(View.GONE);
-			
 		}
 	}
 
@@ -476,20 +479,20 @@ public class CatagoryFragment extends BaseFragment implements OnItemClickListene
 		hideKeyBoard(et_search);
 		switch (position) {
 		case 0:
-			fragment = new CompanyInfoFragment(memberBean);
+			fragment = new CompanyInfoFragment(memberBean,base);
 			ll_conpany_info.setBackgroundColor(Color.parseColor("#FFFFFF"));
 			ll_phone.setBackgroundColor(Color.parseColor("#ababab"));
 			ll_mail.setBackgroundColor(Color.parseColor("#ababab"));
 			ll_products.setBackgroundColor(Color.parseColor("#ababab"));
 			break;
 		case 1:
-			fragment = new PhoneInfoFragment(memberBean);
+			fragment = new PhoneInfoFragment(memberBean,base);
 			break;
 		case 2:
-			fragment = new MailInfoFragment(memberBean);
+			fragment = new MailInfoFragment(memberBean,base);
 			break;
 		case 3:
-			fragment = new ProductInfoFragment(memberBean);
+			fragment = new ProductInfoFragment(memberBean,base);
 			break;
 		}
 		if (fragment != null) {

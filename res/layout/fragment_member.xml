@@ -16,8 +16,8 @@
 
         <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="60dp"
-            android:background="#004d7b"
+            android:layout_height="55dp"
+            android:background="@drawable/header_bg"
             android:gravity="center_vertical"
             android:orientation="horizontal" >
 
@@ -27,7 +27,7 @@
                 android:layout_height="fill_parent"
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:text="MEMBERS"
+                android:text="Members"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp" />
 
@@ -57,7 +57,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="60dp"
             android:layout_marginTop="5dp"
             android:orientation="horizontal"
             android:padding="10dp" >
@@ -72,8 +72,8 @@
 
                 <ImageView
                     android:id="@+id/imageView2"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:src="@drawable/ic_search" />
 
                 <TextView
@@ -91,7 +91,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
-            <org.ninehetz.pulltorefreshlistlib.PullToRefreshListView
+           <org.ninehetz.pulltorefreshlistlib.PullToRefreshListView
                 android:id="@+id/lv_members"
                 style="@style/MyListViewStyle"
                 android:layout_width="match_parent"
@@ -101,7 +101,7 @@
                 android:divider="@null"
                 android:dividerHeight="0dp"
                 android:scrollbarStyle="outsideOverlay"
-                android:scrollingCache="false" />
+                android:scrollingCache="false" /> 
         </LinearLayout>
     </LinearLayout>
 

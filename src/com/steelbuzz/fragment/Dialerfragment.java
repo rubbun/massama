@@ -1,5 +1,6 @@
 package com.steelbuzz.fragment;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,12 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.steelbuzz.BaseActivity;
 import com.steelbuzz.R;
 
 public class Dialerfragment extends Fragment implements OnClickListener{
@@ -23,6 +24,15 @@ public class Dialerfragment extends Fragment implements OnClickListener{
 	private ImageView btn_clear;
 	private ImageView ivCall;
 	String last_four_digit = null;
+	private BaseActivity base;
+	
+	private TextView txtOne,txtTwo,txtThree,txtFour,txtFive,txtSix,txtSeven,txtEight,txtNine,txtZero;
+	
+	@Override
+	public void onAttach(Activity activity) {
+		super.onAttach(activity);
+		base = (BaseActivity) activity;
+	}
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -65,6 +75,29 @@ public class Dialerfragment extends Fragment implements OnClickListener{
 		
 		btn_clear = (ImageView)v.findViewById(R.id.btn_clear);
 		btn_clear.setOnClickListener(this);
+		
+		txtOne = (TextView)v.findViewById(R.id.txtOne);
+		txtTwo = (TextView)v.findViewById(R.id.txtTwo);
+		txtThree = (TextView)v.findViewById(R.id.txtThree);
+		txtFour = (TextView)v.findViewById(R.id.txtFour);
+		txtFive = (TextView)v.findViewById(R.id.txtFive);
+		txtSix = (TextView)v.findViewById(R.id.txtSix);
+		
+		txtSeven = (TextView)v.findViewById(R.id.txtSeven);
+		txtEight = (TextView)v.findViewById(R.id.txtEight);
+		
+		txtNine = (TextView)v.findViewById(R.id.txtNine);
+		txtZero = (TextView)v.findViewById(R.id.txtZero);
+		
+		tv_dial_pad.setTypeface(base.getRegularTypeFace());
+		txtOne.setTypeface(base.getRegularTypeFace());
+		txtTwo.setTypeface(base.getRegularTypeFace());
+		txtThree.setTypeface(base.getRegularTypeFace());
+		txtFour.setTypeface(base.getRegularTypeFace());
+		txtFive.setTypeface(base.getRegularTypeFace());
+		txtSix.setTypeface(base.getRegularTypeFace());
+		txtSeven.setTypeface(base.getRegularTypeFace());
+		txtEight.setTypeface(base.getRegularTypeFace());
 		
 		return v;
 	}

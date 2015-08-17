@@ -1,5 +1,8 @@
 package com.steelbuzz;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -19,6 +22,11 @@ public class ResetPasword extends BaseActivity implements OnClickListener {
 	private EditText etPsw, etConfirmPsw;
 	private LinearLayout lblSubmit, lblCancel;
 	private String password, ResetPassword, eMail = "";
+	
+	private static final String PASSWORD_PATTERN = 
+            "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})";
+	
+	private PasswordValidator validator;
 
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -57,7 +65,11 @@ public class ResetPasword extends BaseActivity implements OnClickListener {
 		boolean flag = true;
 		password = etPsw.getText().toString().trim().trim();
 		ResetPassword = etConfirmPsw.getText().toString().trim().trim();
-		if (password.length() == 0) {
+		validator = new PasswordValidator();
+		if (!validator.validate(password)) {
+			etPsw.setError("Password should be 6 to 20 characters string with at least one digit, one upper case letter, one lower case letter and one special symbol.");
+			flag = false;
+		}else if (password.length() == 0) {
 			etPsw.setError("Plesae enter your password.");
 			flag = false;
 		} else if (ResetPassword.length() == 0) {
@@ -112,5 +124,28 @@ public class ResetPasword extends BaseActivity implements OnClickListener {
 				Toast.makeText(ResetPasword.this, "Email id does not find.", Toast.LENGTH_LONG).show();
 			}
 		}
+	}
+	
+	public class PasswordValidator{
+		
+		  private Pattern pattern;
+		  private Matcher matcher;
+	 
+		  private static final String PASSWORD_PATTERN = 
+	              "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})";
+		        
+		  public PasswordValidator(){
+			  pattern = Pattern.compile(PASSWORD_PATTERN);
+		  }
+		  
+		  /**
+		   * Validate password with regular expression
+		   * @param password password for validation
+		   * @return true valid password, false invalid password
+		   */
+		  public boolean validate(final String password){
+			  matcher = pattern.matcher(password);
+			  return matcher.matches();    
+		  }
 	}
 }

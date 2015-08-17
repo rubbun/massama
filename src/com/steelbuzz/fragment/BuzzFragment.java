@@ -7,6 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Html;
@@ -22,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.steelbuzz.BaseActivity;
+import com.steelbuzz.MyCustomProgressDialog;
 import com.steelbuzz.R;
 import com.steelbuzz.adapter.BuzzAdapter;
 import com.steelbuzz.bean.BuzzBean;
@@ -31,7 +33,7 @@ import com.steelbuzz.util.ImageLoader;
 
 public class BuzzFragment extends BaseFragment /*implements OnItemClickListener, OnClickListener, OnSelectedMemberClickListener */ implements OnItemClickListener{
 	private BuzzAdapter buzzAdapter;
-	
+	private ProgressDialog progressDialog;
 	private LinearLayout ll_buzz_list, ll_buzz_detail;
 	private BaseActivity base;
 	private ListView lv_buzz;
@@ -76,7 +78,8 @@ public class BuzzFragment extends BaseFragment /*implements OnItemClickListener,
 		protected void onPreExecute() {
 			super.onPreExecute();
 			if (base.hasConnection() && (isRefresh == false)) {
-				showLoading();
+				progressDialog = MyCustomProgressDialog.ctor(getActivity());
+				progressDialog.show();
 			}
 		}
 
@@ -123,7 +126,7 @@ public class BuzzFragment extends BaseFragment /*implements OnItemClickListener,
 			buzzList.add(values[0]);
 			
 			if (base.hasConnection() && (isRefresh == false)) {
-				dismissLoading();
+				progressDialog.hide();
 			}
 		}
 

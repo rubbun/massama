@@ -68,8 +68,18 @@ public class BaseActivity extends FragmentActivity {
 		 return face;
 	}
 	
+	public Typeface getSemiBoldTypeFace(){
+		 Typeface face= Typeface.createFromAsset(getAssets(), "fonts/OpenSans_Semibold.ttf");
+		 return face;
+	}
+	
 	public Typeface getBoldTypeFace(){
 		 Typeface face= Typeface.createFromAsset(getAssets(), "fonts/OpenSans_Bold.ttf");
+		 return face;
+	}
+	
+	public Typeface getLightTypeFace(){
+		 Typeface face= Typeface.createFromAsset(getAssets(), "fonts/OpenSans-Light.ttf");
 		 return face;
 	}
 }

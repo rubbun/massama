@@ -37,6 +37,11 @@ public class SignUpScreen extends BaseActivity implements OnClickListener{
 		etLname = (EditText)findViewById(R.id.etLname);
 		etFname = (EditText)findViewById(R.id.etFname);
 		
+		etFname.setTypeface(getRegularTypeFace());
+		etEmail.setTypeface(getRegularTypeFace());
+		etLname.setTypeface(getRegularTypeFace());
+		etPassword.setTypeface(getRegularTypeFace());
+		
 	}
 
 	@Override

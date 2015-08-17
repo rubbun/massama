@@ -8,16 +8,19 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.steelbuzz.BaseActivity;
 import com.steelbuzz.R;
 import com.steelbuzz.bean.Member;
 import com.steelbuzz.fragment.BaseFragment;
 
 public class CompanyInfoFragment extends BaseFragment{
 	private Member member;
+	private BaseActivity base;
 	private LinearLayout ll_mobile_container,ll_huges_container;
 	private TextView tv_address,tv_contact_person,tv_header_second_name,tv_header_name;
-	public CompanyInfoFragment(Member bean){
+	public CompanyInfoFragment(Member bean, BaseActivity base){
 		this.member = bean;
+		this.base = base;
 	}
 	
 	@Override
@@ -28,6 +31,10 @@ public class CompanyInfoFragment extends BaseFragment{
 		
 		tv_header_second_name = (TextView)v.findViewById(R.id.tv_header_second_name);
 		tv_header_name = (TextView)v.findViewById(R.id.tv_header_name);
+		
+		tv_header_second_name.setTypeface(base.getSemiBoldTypeFace());
+		tv_header_name.setTypeface(base.getSemiBoldTypeFace());
+		tv_address.setTypeface(base.getRegularTypeFace());
 		
 		tv_header_name.setText("Address");
 		tv_header_second_name.setText("Contact Person");
@@ -63,6 +70,7 @@ public class CompanyInfoFragment extends BaseFragment{
 			iv_call.setVisibility(View.GONE);
 			final TextView tv_contact_person_name = (TextView)v.findViewById(R.id.tv_mobile_no);
 			tv_contact_person_name.setText(parts[i]);
+			tv_contact_person_name.setTypeface(base.getRegularTypeFace());
 			ll_huges_container.addView(v);
 		}
 	}

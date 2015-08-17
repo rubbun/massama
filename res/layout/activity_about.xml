@@ -48,14 +48,15 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.90" >
+            android:layout_weight="0.90"
+            android:layout_marginTop="15dp" >
 
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:textColor="#FFFFFF"
                 android:textSize="17sp"
-                android:padding="15dp"
+                android:padding="20dp"
                 android:text="Steel Buzz was founded back in January 2015. The application was created in association with Sanghavi Bothra Engineering, the largest stock holders of Nickel Alloy products in India to help the growing Stainless Steel industry. Steel Buzz is a Smart virtual directory with features like Product Listings, Smart Dialer and Buzz Storm which connects the Steel Industry around the globe. The application also caters to the need of millions of people who buy Stainless Steel and Nickel Alloy products on day to day basis worldwide." >
             </TextView>
         </LinearLayout>
@@ -63,7 +64,8 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.10" >
+            android:layout_weight="0.10"
+            android:layout_marginBottom="10dp" >
 
             <TextView
                 android:layout_width="fill_parent"

@@ -3,9 +3,6 @@ package com.steelbuzz;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.steelbuzz.constant.Constants;
-import com.steelbuzz.network.HttpClient;
-
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -14,6 +11,9 @@ import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import com.steelbuzz.constant.Constants;
+import com.steelbuzz.network.HttpClient;
 
 public class ForgotPassword extends BaseActivity implements OnClickListener{
 	

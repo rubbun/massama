@@ -12,16 +12,19 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.steelbuzz.BaseActivity;
 import com.steelbuzz.R;
 import com.steelbuzz.bean.Member;
 import com.steelbuzz.fragment.BaseFragment;
 
 public class MailInfoFragment extends BaseFragment{
 	private Member member;
+	private BaseActivity base;
 	private LinearLayout ll_email_container,ll_huges_container,ll_website_container;
 	private TextView tv_address,tv_header_second_name,tv_contact_person,tv_third_header,tv_header_name,tv_fax;
-	public MailInfoFragment(Member bean){
+	public MailInfoFragment(Member bean, BaseActivity base){
 		this.member = bean;
+		this.base = base;
 	}
 	
 	@Override
@@ -35,6 +38,11 @@ public class MailInfoFragment extends BaseFragment{
 		tv_third_header = (TextView)v.findViewById(R.id.tv_third_header);
 		tv_header_second_name = (TextView)v.findViewById(R.id.tv_header_second_name);
 		tv_header_name = (TextView)v.findViewById(R.id.tv_header_name);
+		
+		tv_header_second_name.setTypeface(base.getSemiBoldTypeFace());
+		tv_header_name.setTypeface(base.getSemiBoldTypeFace());
+		tv_address.setTypeface(base.getRegularTypeFace());
+		tv_third_header.setTypeface(base.getSemiBoldTypeFace());
 		
 		ll_email_container = (LinearLayout)v.findViewById(R.id.ll_email_container);
 		ll_huges_container = (LinearLayout)v.findViewById(R.id.ll_huges_container);
@@ -68,6 +76,7 @@ public class MailInfoFragment extends BaseFragment{
 			tv_contact_person.setText(Html.fromHtml(text));
 		}
 		tv_contact_person.setVisibility(View.VISIBLE);
+		tv_third_header.setTypeface(base.getSemiBoldTypeFace());
 		
 		if(member.getFax().equalsIgnoreCase("")){
 			tv_fax.setText("------");
@@ -75,7 +84,6 @@ public class MailInfoFragment extends BaseFragment{
 			tv_fax.setText(""+member.getFax());
 		}
 		tv_fax.setVisibility(View.VISIBLE);
-		
 		
 		tv_contact_person.setOnClickListener(new OnClickListener() {
 			
@@ -115,6 +123,7 @@ public class MailInfoFragment extends BaseFragment{
 			
 			final TextView tv_mobile_no = (TextView)v.findViewById(R.id.tv_mobile_no);
 			tv_mobile_no.setText(parts[i]);
+			tv_mobile_no.setTypeface(base.getRegularTypeFace());
 			
 			ImageView iv_call = (ImageView)v.findViewById(R.id.iv_call);
 			iv_call.setVisibility(View.GONE);
