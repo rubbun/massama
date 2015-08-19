@@ -98,6 +98,8 @@ public class Dialerfragment extends Fragment implements OnClickListener{
 		txtSix.setTypeface(base.getRegularTypeFace());
 		txtSeven.setTypeface(base.getRegularTypeFace());
 		txtEight.setTypeface(base.getRegularTypeFace());
+		txtNine.setTypeface(base.getRegularTypeFace());
+		txtZero.setTypeface(base.getRegularTypeFace());
 		
 		return v;
 	}
