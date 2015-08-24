@@ -92,7 +92,7 @@
                     android:paddingLeft="3dp"
                     android:paddingTop="3dp"
                     android:singleLine="true"
-                    android:text="soumen@gmail.com"
+                    android:text=""
                     android:textColorHint="#858585" >
                 </EditText>
             </LinearLayout>
@@ -125,7 +125,7 @@
                     android:paddingLeft="3dp"
                     android:paddingTop="3dp"
                     android:singleLine="true"
-                    android:text="123456"
+                    android:text=""
                     android:textColorHint="#858585" >
                 </EditText>
             </LinearLayout>
@@ -221,7 +221,7 @@
         <LinearLayout
             android:id="@+id/lblSignup"
             android:layout_width="match_parent"
-            android:layout_height="34dp"
+            android:layout_height="36dp"
             android:layout_marginLeft="60dp"
             android:layout_marginRight="60dp"
             android:layout_marginTop="15dp"

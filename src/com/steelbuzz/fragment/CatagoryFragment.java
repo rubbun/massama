@@ -39,7 +39,7 @@ import android.widget.TextView;
 import com.steelbuzz.BaseActivity;
 import com.steelbuzz.MyCustomProgressDialog;
 import com.steelbuzz.R;
-import com.steelbuzz.adapter.MemberAdapter;
+import com.steelbuzz.adapter.CatagoryAdapter;
 import com.steelbuzz.adapter.SelectedCatagoryAdapter;
 import com.steelbuzz.adapter.SelectedCatagoryAdapter.OnSelecedCatagoryClickListener;
 import com.steelbuzz.bean.Member;
@@ -64,7 +64,8 @@ public class CatagoryFragment extends BaseFragment implements OnItemClickListene
 	private LinearLayout llBack;
 	private ListView lv_members;
 	private AutoCompleteTextView et_search;
-	private MemberAdapter memberAdapter;
+	//private MemberAdapter memberAdapter;
+	private CatagoryAdapter catagoryAdapter;
 	private BaseActivity base;
 	private TextView tv_membername, tv_address;
 	private Member memberBean;
@@ -154,7 +155,7 @@ public class CatagoryFragment extends BaseFragment implements OnItemClickListene
 					selectedCatagoryAdapter = new SelectedCatagoryAdapter(base, CatagoryFragment.this, R.layout.row_catagory, selectedtempArr);
 					lv_members.setAdapter(selectedCatagoryAdapter);
 				} else {
-					lv_members.setAdapter(memberAdapter);
+					lv_members.setAdapter(catagoryAdapter);
 				}
 			}
 
@@ -278,7 +279,7 @@ public class CatagoryFragment extends BaseFragment implements OnItemClickListene
 				LayoutParams params = textViewName.getLayoutParams();
 				params.height = 100;
 				textViewName.setLayoutParams(params);
-				textViewName.setTextColor(Color.WHITE);
+				textViewName.setTextColor(Color.parseColor("#07669E"));
 			}
 			
 			
@@ -392,9 +393,9 @@ public class CatagoryFragment extends BaseFragment implements OnItemClickListene
 			}
 			ll_member.setVisibility(View.VISIBLE);
 			ll_body.setVisibility(View.GONE);
-			memberAdapter = new MemberAdapter(getActivity(), R.layout.row_member, memberArr);
-			lv_members.setAdapter(memberAdapter);
-			lv_members.setFastScrollEnabled(true);
+			catagoryAdapter = new CatagoryAdapter(getActivity(), R.layout.row_member, memberArr);
+			lv_members.setAdapter(catagoryAdapter);
+			//lv_members.setFastScrollEnabled(true);
 			llMain.setVisibility(View.GONE);
 		}
 	}
@@ -415,6 +416,12 @@ public class CatagoryFragment extends BaseFragment implements OnItemClickListene
 	}
 
 	public void resetUiVisiabilty() {
+		if((ll_member_detail.getVisibility() == View.VISIBLE) || (ll_member.getVisibility() == View.VISIBLE)){
+			llMain.setVisibility(View.VISIBLE);
+			ll_member_detail.setVisibility(View.GONE);
+			ll_member.setVisibility(View.GONE);
+			ll_body.setVisibility(View.VISIBLE);
+		}
 		ll_body.setVisibility(View.VISIBLE);
 		ll_member.setVisibility(View.GONE);
 	}

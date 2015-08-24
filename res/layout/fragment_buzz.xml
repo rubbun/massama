@@ -26,7 +26,7 @@
                 android:layout_height="fill_parent"
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:text="Buzz List"
+                android:text="Buzz Storm"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp" />
 

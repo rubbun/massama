@@ -1,34 +1,68 @@
 package com.steelbuzz;
 
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.UnderlineSpan;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.steelbuzz.ResetPasword.PasswordValidator;
 import com.steelbuzz.constant.Constants;
 import com.steelbuzz.network.HttpClient;
 
 public class SignUpScreen extends BaseActivity implements OnClickListener{
 
 	private Intent mIntent;
+	private TextView textView3,tvTerms;
 	private LinearLayout lblSignup;
 	private EditText etFname,etLname,etEmail,etPassword;
 	private String fname,lname,email,password = "";
 	private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+	private CheckBox checkbox;
+	
+	private PasswordValidator validator;
+	
+	private static final String PASSWORD_PATTERN = 
+            "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})";
 	
 	@Override
 	protected void onCreate(Bundle arg0) {
 		super.onCreate(arg0);
 		setContentView(R.layout.signup);
+		
+		lblSignup = (LinearLayout)findViewById(R.id.lblSignup);
+		textView3 = (TextView)findViewById(R.id.textView3);
+		
+		checkbox = (CheckBox)findViewById(R.id.checkBox1);
+		tvTerms = (TextView)findViewById(R.id.tvTerms);
+		
+		SpannableString content = new SpannableString("I accept Terms and Conditions.");
+        content.setSpan(new UnderlineSpan(), 9, content.length(), 0);
+        content.setSpan(new ForegroundColorSpan(Color.parseColor("#006AAB")), 9, content.length(), 0);
+        tvTerms.setText(content);
+        
+        tvTerms.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				Toast.makeText(SignUpScreen.this, "Check", Toast.LENGTH_LONG).show();
+			}
+		});
 		
 		lblSignup.setOnClickListener(this);
 		
@@ -41,6 +75,7 @@ public class SignUpScreen extends BaseActivity implements OnClickListener{
 		etEmail.setTypeface(getRegularTypeFace());
 		etLname.setTypeface(getRegularTypeFace());
 		etPassword.setTypeface(getRegularTypeFace());
+		textView3.setTypeface(getRegularTypeFace());
 		
 	}
 
@@ -74,8 +109,13 @@ public class SignUpScreen extends BaseActivity implements OnClickListener{
 			etEmail.setError("Please enter valid Email id.");
 			flag = false;
 		}else if(password.length() == 0){
-			etEmail.setError("Please enter your mail name");
+			etPassword.setError("Please enter your password.");
 			flag = false;
+		}else if (!validator.validate(password)) {
+			etPassword.setError("Password should be 6 to 20 characters string with at least one digit, one upper case letter, one lower case letter and one special symbol.");
+			flag = false;
+		}else if (!checkbox.isChecked()) {
+			
 		}
 		return flag;
 	}
@@ -136,5 +176,28 @@ public class SignUpScreen extends BaseActivity implements OnClickListener{
 				Toast.makeText(getApplicationContext(), "Some error occured.Please try again..", Toast.LENGTH_LONG).show();
 			}
 		}
+	}
+	
+	public class PasswordValidator{
+		
+		  private Pattern pattern;
+		  private Matcher matcher;
+	 
+		  private static final String PASSWORD_PATTERN = 
+	              "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})";
+		        
+		  public PasswordValidator(){
+			  pattern = Pattern.compile(PASSWORD_PATTERN);
+		  }
+		  
+		  /**
+		   * Validate password with regular expression
+		   * @param password password for validation
+		   * @return true valid password, false invalid password
+		   */
+		  public boolean validate(final String password){
+			  matcher = pattern.matcher(password);
+			  return matcher.matches();    
+		  }
 	}
 }

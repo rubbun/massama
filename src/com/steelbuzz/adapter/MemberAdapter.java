@@ -1,6 +1,7 @@
 package com.steelbuzz.adapter;
 
 import java.util.ArrayList;
+
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
@@ -12,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SectionIndexer;
 import android.widget.TextView;
+
 import com.steelbuzz.R;
 import com.steelbuzz.StringMatcher;
 import com.steelbuzz.bean.Member;
@@ -22,6 +24,7 @@ public class MemberAdapter extends ArrayAdapter<Member> implements SectionIndexe
 	private ViewHolder mHolder;
 	public ArrayList<Member> item = new ArrayList<Member>();
 	private String mSections = "#ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	String[] sections;
 
 	public MemberAdapter(Activity activity, int textViewResourceId, ArrayList<Member> items) {
 		super(activity, textViewResourceId, items);
@@ -70,6 +73,8 @@ public class MemberAdapter extends ArrayAdapter<Member> implements SectionIndexe
 		if (member != null) {
 			mHolder.tv_name.setText(member.getName());
 		}
+		
+		sections = new String[item.size()];
 		return v;
 	}
 

@@ -1,38 +1,37 @@
 package com.steelbuzz.adapter;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
+import java.util.ArrayList;
+import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.SectionIndexer;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.steelbuzz.R;
-import com.steelbuzz.bean.Catagory;
+import com.steelbuzz.StringMatcher;
+import com.steelbuzz.bean.Member;
 
-public class CatagoryAdapter extends ArrayAdapter<Catagory> {
+public class CatagoryAdapter extends ArrayAdapter<Member> /*implements SectionIndexer*/{
 
-	private Context context;
+	private Activity activity;
 	private ViewHolder mHolder;
-	public JSONArray item;
+	public ArrayList<Member> item = new ArrayList<Member>();
+	private String mSections = "#ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-	public CatagoryAdapter(Context context, int textViewResourceId, JSONArray items) {
-		super(context, textViewResourceId);
+	public CatagoryAdapter(Activity activity, int textViewResourceId, ArrayList<Member> items) {
+		super(activity, textViewResourceId, items);
 		this.item = items;
-		this.context = context;
-
+		this.activity = activity;
 	}
 
 	@Override
 	public int getCount() {
-		return item.length();
+		return item.size();
 	}
 
 	@Override
@@ -44,99 +43,94 @@ public class CatagoryAdapter extends ArrayAdapter<Catagory> {
 	public View getView(final int position, View convertView, ViewGroup parent) {
 		View v = convertView;
 		if (v == null) {
-			LayoutInflater vi = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			v = vi.inflate(R.layout.row_catagory, null);
+			LayoutInflater vi = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			v = vi.inflate(R.layout.row_member, null);
 			mHolder = new ViewHolder();
 			v.setTag(mHolder);
 
-			mHolder.textViewName = (TextView) v.findViewById(R.id.textViewName);
-			mHolder.llSubCategory = (LinearLayout) v.findViewById(R.id.llSubCategory);
+			mHolder.tv_name = (TextView) v.findViewById(R.id.tv_name);
+			mHolder.ll_member = (LinearLayout) v.findViewById(R.id.ll_member);
+			mHolder.ivFeature = (ImageView) v.findViewById(R.id.ivFeature);
+			mHolder.tvFeature = (TextView) v.findViewById(R.id.tvFeature);
+			mHolder.llArrow = (LinearLayout) v.findViewById(R.id.llArrow);
+			mHolder.line = (View) v.findViewById(R.id.line);
 
 		} else {
 			mHolder = (ViewHolder) v.getTag();
 		}
-		try {
-			mHolder.textViewName.setText(item.getJSONObject(position).getString("name"));
 
-		} catch (JSONException e) {
-			e.printStackTrace();
+		mHolder.ivFeature.setVisibility(View.INVISIBLE);
+		mHolder.tvFeature.setVisibility(View.INVISIBLE);
+		mHolder.llArrow.setVisibility(View.VISIBLE);
+		mHolder.line.setBackgroundColor(Color.parseColor("#999999"));
+		mHolder.ll_member.setBackgroundColor(Color.WHITE);
+
+		final Member member = item.get(position);
+		
+		if(position>2){
+			mHolder.ivFeature.setVisibility(View.INVISIBLE);
+			mHolder.tvFeature.setVisibility(View.INVISIBLE);
+			mHolder.llArrow.setVisibility(View.VISIBLE);
+			mHolder.line.setBackgroundColor(Color.BLACK);
+			mHolder.tv_name.setTextColor(Color.BLACK);
+			mHolder.ll_member.setBackgroundColor(Color.WHITE);
+		}else{
+			mHolder.ivFeature.setVisibility(View.VISIBLE);
+			mHolder.tvFeature.setVisibility(View.VISIBLE);
+			mHolder.llArrow.setVisibility(View.INVISIBLE);
+			mHolder.tv_name.setTextColor(Color.WHITE);
+			mHolder.line.setBackgroundColor(Color.WHITE);
+			mHolder.ll_member.setBackgroundColor(Color.parseColor("#0069a8"));
 		}
 
-		mHolder.textViewName.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				JSONObject jsonObject;
-				try {
-					jsonObject = item.getJSONObject(position);
-					if (jsonObject.has("root")) {
-						mHolder.llSubCategory.removeAllViews();
-						JSONArray jsonArray = jsonObject.getJSONArray("root");
-						System.out.println(jsonArray.toString());
-						for (int i = 0; i < jsonArray.length(); i++) {
-							JSONObject subJsonObject = jsonArray.getJSONObject(i);
-							mHolder.llSubCategory.addView(SubView(subJsonObject));
-							notifyDataSetChanged();
-						}
-					} else {
-						Toast.makeText(context, "END", Toast.LENGTH_LONG).show();
-					}
-				} catch (JSONException e) {
-					e.printStackTrace();
-				}
-
-			}
-		});
+		if (member != null) {
+			mHolder.tv_name.setText(member.getName());
+		}
 		return v;
 	}
 
 	class ViewHolder {
-		public TextView textViewName;
-		public LinearLayout llSubCategory;
-
+		public TextView tv_name;
+		public LinearLayout ll_member;
+		public ImageView ivFeature;
+		public TextView tvFeature;
+		public LinearLayout llArrow;
+		public View line;
 	}
-
-	public View view;
-
-	public View SubView(final JSONObject jsonObject) {
-		try {
-			view = View.inflate(context, R.layout.row_catagory, null);
-			String name = jsonObject.getString("name");
-			String id = jsonObject.getString("id");
-			TextView textViewName = (TextView) view.findViewById(R.id.textViewName);
-			textViewName.setText(name);
-			System.out.println("inner");
-			final LinearLayout llSubCategory = (LinearLayout) view.findViewById(R.id.llSubCategory);
-			LinearLayout llBody = (LinearLayout) view.findViewById(R.id.llBody);
-			if (jsonObject.has("root")) {
-				
-			}else{
-				
-			}
-			textViewName.setOnClickListener(new OnClickListener() {
-
-				@Override
-				public void onClick(View arg0) {
-					try {
-						if (jsonObject.has("root")) {
-							JSONArray jsonArray = jsonObject.getJSONArray("root");
-							for (int i = 0; i < jsonArray.length(); i++) {
-								JSONObject subJsonObject = jsonArray.getJSONObject(i);
-								llSubCategory.addView(SubView(subJsonObject));
-							}
-						} else {
-							Toast.makeText(context, "END", Toast.LENGTH_LONG).show();
-						}
-					} catch (Exception e) {
-						e.printStackTrace();
+	
+	/*@Override
+	public int getPositionForSection(int section) {
+		// If there is no item for current section, previous section will be
+		// selected
+		for (int i = section; i >= 0; i--) {
+			for (int j = 0; j < getCount(); j++) {
+				if (i == 0) {
+					// For numeric section
+					for (int k = 0; k <= 9; k++) {
+						if (StringMatcher.match(String.valueOf(item.get(j).getName().charAt(0)), String.valueOf(k)))
+							return j;
 					}
+				} else {
+					if (StringMatcher.match(String.valueOf(item.get(j).getName().charAt(0)), String.valueOf(mSections.charAt(i))))
+						return j;
 				}
-			});
-			return view;
-		} catch (Exception e) {
-			System.out.println("exceptiojn");
-			e.printStackTrace();
-			return null;
+			}
 		}
+		return 0;
 	}
+
+	@Override
+	public int getSectionForPosition(int position) {
+		return 0;
+	}*/
+
+	/*@Override
+	public Object[] getSections() {
+		String[] sections = new String[mSections.length()];
+		for (int i = 0; i < mSections.length(); i++)
+			sections[i] = String.valueOf(mSections.charAt(i));
+		return sections;
+	}*/
+
 }
+

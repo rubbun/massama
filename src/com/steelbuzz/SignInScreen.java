@@ -172,16 +172,16 @@ public class SignInScreen extends BaseActivity implements OnClickListener,Connec
 		lblSignup.setOnClickListener(this);
 		
 		txtOr = (TextView) findViewById(R.id.txtOr);
-		txtOr.setTypeface(getLightTypeFace());
+		txtOr.setTypeface(getRegularTypeFace());
 		
 		txtDonttHave = (TextView) findViewById(R.id.txtDonttHave);
-		txtDonttHave.setTypeface(getLightTypeFace());
+		txtDonttHave.setTypeface(getRegularTypeFace());
 		
 		txtSignIn = (TextView) findViewById(R.id.txtSignIn);
-		txtSignIn.setTypeface(getLightTypeFace());
+		txtSignIn.setTypeface(getRegularTypeFace());
 		
 		txtForgotPassword = (TextView) findViewById(R.id.txtForgotPassword);
-		txtForgotPassword.setTypeface(getBoldTypeFace());
+		txtForgotPassword.setTypeface(getRegularTypeFace());
 		
 		txtSignUp = (TextView) findViewById(R.id.txtSignUp);
 		txtSignUp.setTypeface(getLightTypeFace());

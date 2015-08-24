@@ -95,7 +95,7 @@ public class ForgotPassword extends BaseActivity implements OnClickListener{
 				startActivity(i);;
 				finish();
 			}else{
-				Toast.makeText(ForgotPassword.this, "Email id does no0t find.", Toast.LENGTH_LONG).show();
+				Toast.makeText(ForgotPassword.this, "Email id does not find.", Toast.LENGTH_LONG).show();
 			}
 		}
 	}

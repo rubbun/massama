@@ -69,19 +69,19 @@ public class SelectedCatagoryAdapter extends ArrayAdapter<Member> {
 			mHolder = (ViewHolder) v.getTag();
 		}
 		
-		if(position>2){
+		/*if(position>2){*/
 			mHolder.ivFeature.setVisibility(View.INVISIBLE);
 			mHolder.tvFeature.setVisibility(View.INVISIBLE);
 			mHolder.llArrow.setVisibility(View.VISIBLE);
 			mHolder.line.setBackgroundColor(Color.BLACK);
 			mHolder.ll_member.setBackgroundColor(Color.WHITE);
-		}else{
+		/*}else{
 			mHolder.ivFeature.setVisibility(View.VISIBLE);
 			mHolder.tvFeature.setVisibility(View.VISIBLE);
 			mHolder.llArrow.setVisibility(View.INVISIBLE);
 			mHolder.line.setBackgroundColor(Color.WHITE);
 			mHolder.ll_member.setBackgroundColor(Color.parseColor("#0069a8"));
-		}
+		}*/
 
 		final Member member = item.get(position);
 
