@@ -463,7 +463,6 @@ public class CatagoryFragment extends BaseFragment implements OnItemClickListene
 			}else
 				ivTick.setVisibility(View.VISIBLE);
 			
-			
 			displaySubView(0, memberBean);
 		}else{
 			ll_member.setVisibility(View.GONE);

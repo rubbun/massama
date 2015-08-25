@@ -67,7 +67,7 @@ public class CatagoryAdapter extends ArrayAdapter<Member> /*implements SectionIn
 
 		final Member member = item.get(position);
 		
-		if(position>2){
+		if(position>4){
 			mHolder.ivFeature.setVisibility(View.INVISIBLE);
 			mHolder.tvFeature.setVisibility(View.INVISIBLE);
 			mHolder.llArrow.setVisibility(View.VISIBLE);

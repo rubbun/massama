@@ -53,7 +53,7 @@ public class SignUpScreen extends BaseActivity implements OnClickListener{
 		
 		SpannableString content = new SpannableString("I accept Terms and Conditions.");
         content.setSpan(new UnderlineSpan(), 9, content.length(), 0);
-        content.setSpan(new ForegroundColorSpan(Color.parseColor("#006AAB")), 9, content.length(), 0);
+        content.setSpan(new ForegroundColorSpan(Color.parseColor("#cccccc")), 9, content.length(), 0);
         tvTerms.setText(content);
         
         tvTerms.setOnClickListener(new OnClickListener() {
@@ -77,6 +77,7 @@ public class SignUpScreen extends BaseActivity implements OnClickListener{
 		etPassword.setTypeface(getRegularTypeFace());
 		textView3.setTypeface(getRegularTypeFace());
 		
+		validator = new PasswordValidator();
 	}
 
 	@Override
@@ -112,7 +113,7 @@ public class SignUpScreen extends BaseActivity implements OnClickListener{
 			etPassword.setError("Please enter your password.");
 			flag = false;
 		}else if (!validator.validate(password)) {
-			etPassword.setError("Password should be 6 to 20 characters string with at least one digit, one upper case letter, one lower case letter and one special symbol.");
+			etPassword.setError("Password should be a 6 to 20 characters string with at least one digit, one upper case letter, one lower case letter and one special symbol.");
 			flag = false;
 		}else if (!checkbox.isChecked()) {
 			

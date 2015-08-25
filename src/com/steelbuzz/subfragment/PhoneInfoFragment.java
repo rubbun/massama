@@ -113,7 +113,7 @@ public class PhoneInfoFragment extends BaseFragment{
 			final LinearLayout ll_mobile_second = (LinearLayout)v.findViewById(R.id.ll_mobile_second);
 			
 			final TextView tv_mobile_no = (TextView)v.findViewById(R.id.tv_mobile_no);
-			tv_mobile_no.setText("+91"+parts[i]);
+			tv_mobile_no.setText(parts[i]);
 			tv_mobile_no.setTypeface(base.getRegularTypeFace());
 			/*ImageView iv_call = (ImageView)v.findViewById(R.id.iv_call);
 			iv_call.setOnClickListener(new OnClickListener() {

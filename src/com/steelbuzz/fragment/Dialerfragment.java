@@ -153,7 +153,7 @@ public class Dialerfragment extends Fragment implements OnClickListener{
 			
 		case R.id.ivCall:
 			last_four_digit = tv_dial_pad.getText().toString();
-			if(last_four_digit.length() > 0){
+			if((last_four_digit.length() > 0) && (last_four_digit.length() == 4)){
 				String first_four_digit = Integer.toString(getInitialNos(Integer.parseInt(last_four_digit)));
 				Intent intent1 = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "022" + first_four_digit + last_four_digit));
 				startActivity(intent1);

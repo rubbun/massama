@@ -85,7 +85,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:background="@null"
-                    android:hint="Username"
+                    android:hint="E-mail"
                     android:imeOptions="actionNext"
                     android:inputType="text"
                     android:paddingBottom="3dp"
