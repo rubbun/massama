@@ -53,7 +53,7 @@ public class SignUpScreen extends BaseActivity implements OnClickListener{
 		
 		SpannableString content = new SpannableString("I accept Terms and Conditions.");
         content.setSpan(new UnderlineSpan(), 9, content.length(), 0);
-        content.setSpan(new ForegroundColorSpan(Color.parseColor("#cccccc")), 9, content.length(), 0);
+        content.setSpan(new ForegroundColorSpan(Color.parseColor("#FFFF00")), 9, content.length(), 0);
         tvTerms.setText(content);
         
         tvTerms.setOnClickListener(new OnClickListener() {
