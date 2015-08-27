@@ -61,6 +61,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="3dp"
                     android:text="Address"
+                    android:layout_margin="10dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="#1f1f1f"
                     android:visibility="gone" />

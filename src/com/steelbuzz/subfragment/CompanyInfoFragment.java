@@ -69,7 +69,7 @@ public class CompanyInfoFragment extends BaseFragment{
 			ImageView iv_call = (ImageView)v.findViewById(R.id.iv_call);
 			iv_call.setVisibility(View.GONE);
 			final TextView tv_contact_person_name = (TextView)v.findViewById(R.id.tv_mobile_no);
-			tv_contact_person_name.setText(parts[i]);
+			tv_contact_person_name.setText(parts[i].trim());
 			tv_contact_person_name.setTypeface(base.getRegularTypeFace());
 			ll_huges_container.addView(v);
 		}

@@ -6,7 +6,6 @@
     android:background="@android:color/white"
     android:gravity="center|left"
     android:orientation="horizontal"
-    android:padding="7dp"
     android:layout_marginTop="3dp"
     android:weightSum="1" >
 

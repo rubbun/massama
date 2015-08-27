@@ -122,7 +122,7 @@ public class MailInfoFragment extends BaseFragment{
 			View v = View.inflate(getActivity(), R.layout.detail_page_row, null);
 			
 			final TextView tv_mobile_no = (TextView)v.findViewById(R.id.tv_mobile_no);
-			tv_mobile_no.setText(parts[i]);
+			tv_mobile_no.setText(parts[i].trim());
 			tv_mobile_no.setTypeface(base.getRegularTypeFace());
 			
 			ImageView iv_call = (ImageView)v.findViewById(R.id.iv_call);

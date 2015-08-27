@@ -60,7 +60,8 @@ public class SignUpScreen extends BaseActivity implements OnClickListener{
 			
 			@Override
 			public void onClick(View arg0) {
-				Toast.makeText(SignUpScreen.this, "Check", Toast.LENGTH_LONG).show();
+				Intent i = new Intent(SignUpScreen.this,TermsAndConditions.class);
+				startActivity(i);
 			}
 		});
 		

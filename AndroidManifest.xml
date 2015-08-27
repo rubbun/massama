@@ -54,7 +54,7 @@
 
                 <data
                     android:host="t4jsample"
-                    android:scheme="oauth" />
+                    android:scheme="oauth" />
                 -->
             </intent-filter>
         </activity>
@@ -94,8 +94,12 @@
             android:name=".AboutActivity"
             android:screenOrientation="portrait" >
         </activity>
-         <activity
+        <activity
             android:name=".FirmRegisterActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".TermsAndConditions"
             android:screenOrientation="portrait" >
         </activity>
 

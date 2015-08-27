@@ -44,7 +44,8 @@ public class Supportfragment extends BaseFragment implements OnClickListener {
 	}
 	
 	private RelativeLayout rl_about,rl_eaq,rl_logout, rl_contactus, rl_review, rl_reg_firm;
-
+	private RelativeLayout rl_follow_twitter,rl_likeus_fb;
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -59,14 +60,20 @@ public class Supportfragment extends BaseFragment implements OnClickListener {
 		rl_eaq = (RelativeLayout) v.findViewById(R.id.rl_eaq);
 		rl_eaq.setOnClickListener(this);
 
-		rl_contactus = (RelativeLayout) v.findViewById(R.id.rl_contactus);
-		rl_contactus.setOnClickListener(this);
+		//rl_contactus = (RelativeLayout) v.findViewById(R.id.rl_contactus);
+		//rl_contactus.setOnClickListener(this);
 
-		rl_review = (RelativeLayout) v.findViewById(R.id.rl_review);
-		rl_review.setOnClickListener(this);
+		//rl_review = (RelativeLayout) v.findViewById(R.id.rl_review);
+		//rl_review.setOnClickListener(this);
 		
 		rl_logout = (RelativeLayout)v.findViewById(R.id.rl_logout);
 		rl_logout.setOnClickListener(this);
+		
+		rl_likeus_fb = (RelativeLayout)v.findViewById(R.id.rl_likeus_fb);
+		rl_likeus_fb.setOnClickListener(this);
+		
+		rl_follow_twitter = (RelativeLayout)v.findViewById(R.id.rl_follow_twitter);
+		rl_follow_twitter.setOnClickListener(this);
 
 		return v;
 	}
@@ -86,23 +93,33 @@ public class Supportfragment extends BaseFragment implements OnClickListener {
 		case R.id.rl_reg_firm:
 			startActivity(new Intent(getActivity(), FirmRegisterActivity.class));
 			break;
-		case R.id.rl_contactus:
+			
+		case R.id.rl_follow_twitter:
+			Intent browserIntent1 = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/steel_buzz"));
+			startActivity(browserIntent1);
+			break;
+			
+		case R.id.rl_likeus_fb:
+			Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/realsteelbuzz"));
+			startActivity(browserIntent);
+			break;
+		/*case R.id.rl_contactus:
 			Intent i = new Intent(Intent.ACTION_SEND);
 			i.setType("plain/text");
 			i.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{ "udit@yahoo.com" });
 			i.putExtra(android.content.Intent.EXTRA_SUBJECT, "");
 			i.putExtra(android.content.Intent.EXTRA_TEXT, "");
 			startActivity(Intent.createChooser(i, "Send email"));
-			break;
+			break;*/
 
-		case R.id.rl_review:
+		/*case R.id.rl_review:
 			final String appPackageName = getActivity().getPackageName(); // getPackageName() from Context or Activity object
 			try {
 			    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
 			} catch (android.content.ActivityNotFoundException anfe) {
 			    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
 			}
-			break;
+			break;*/
 
 		/*case R.id.rl_version:
 			final Dialog dialog = new Dialog(getActivity());
