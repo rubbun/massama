@@ -4,29 +4,20 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.util.JsonReader;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.Button;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.steelbuzz.AboutActivity;
 import com.steelbuzz.BaseActivity;
+import com.steelbuzz.ContactUs;
 import com.steelbuzz.FAQActivity;
 import com.steelbuzz.FirmRegisterActivity;
 import com.steelbuzz.R;
@@ -44,7 +35,7 @@ public class Supportfragment extends BaseFragment implements OnClickListener {
 	}
 	
 	private RelativeLayout rl_about,rl_eaq,rl_logout, rl_contactus, rl_review, rl_reg_firm;
-	private RelativeLayout rl_follow_twitter,rl_likeus_fb;
+	private RelativeLayout rl_follow_twitter,rl_likeus_fb,rl_help;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -60,8 +51,8 @@ public class Supportfragment extends BaseFragment implements OnClickListener {
 		rl_eaq = (RelativeLayout) v.findViewById(R.id.rl_eaq);
 		rl_eaq.setOnClickListener(this);
 
-		//rl_contactus = (RelativeLayout) v.findViewById(R.id.rl_contactus);
-		//rl_contactus.setOnClickListener(this);
+		rl_help = (RelativeLayout) v.findViewById(R.id.rl_help);
+		rl_help.setOnClickListener(this);
 
 		//rl_review = (RelativeLayout) v.findViewById(R.id.rl_review);
 		//rl_review.setOnClickListener(this);
@@ -103,14 +94,10 @@ public class Supportfragment extends BaseFragment implements OnClickListener {
 			Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/realsteelbuzz"));
 			startActivity(browserIntent);
 			break;
-		/*case R.id.rl_contactus:
-			Intent i = new Intent(Intent.ACTION_SEND);
-			i.setType("plain/text");
-			i.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{ "udit@yahoo.com" });
-			i.putExtra(android.content.Intent.EXTRA_SUBJECT, "");
-			i.putExtra(android.content.Intent.EXTRA_TEXT, "");
-			startActivity(Intent.createChooser(i, "Send email"));
-			break;*/
+		case R.id.rl_help:
+			Intent i = new Intent(activity,ContactUs.class);
+			startActivity(i);
+			break;
 
 		/*case R.id.rl_review:
 			final String appPackageName = getActivity().getPackageName(); // getPackageName() from Context or Activity object

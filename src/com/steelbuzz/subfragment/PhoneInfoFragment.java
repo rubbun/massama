@@ -25,8 +25,8 @@ public class PhoneInfoFragment extends BaseFragment{
 	GestureDetectorCompat mDetector;
 	private Member member;
 	private BaseActivity base;
-	private LinearLayout ll_mobile_container,ll_huges_container;
-	private TextView tv_address,tv_contact_person,tv_header_second_name,tv_header_name;
+	private LinearLayout ll_mobile_container,ll_huges_container,ll_phone_container;
+	private TextView tv_contact_person,tv_header_second_name,tv_header_name;
 	public PhoneInfoFragment(Member bean, BaseActivity base){
 		this.member = bean;
 		this.base = base;
@@ -34,8 +34,7 @@ public class PhoneInfoFragment extends BaseFragment{
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View v = inflater.inflate(R.layout.subfragment_contact_info, container, false);
-		tv_address = (TextView)v.findViewById(R.id.tv_address);
+		View v = inflater.inflate(R.layout.subfragment_phone_info, container, false);
 		tv_contact_person = (TextView)v.findViewById(R.id.tv_contact_person);
 		
 		tv_header_second_name = (TextView)v.findViewById(R.id.tv_header_second_name);
@@ -43,18 +42,13 @@ public class PhoneInfoFragment extends BaseFragment{
 		
 		tv_header_second_name.setTypeface(base.getSemiBoldTypeFace());
 		tv_header_name.setTypeface(base.getSemiBoldTypeFace());
-		tv_address.setTypeface(base.getRegularTypeFace());
 		
-		tv_header_name.setText("Mobile");
-		tv_header_second_name.setText("Hughes:");
-		
-		tv_address.setText(""+member.getMobile());
-		tv_address.setVisibility(View.GONE);
 		tv_contact_person.setText(""+member.getResidential());
 		tv_contact_person.setVisibility(View.GONE);
 		
 		ll_mobile_container = (LinearLayout)v.findViewById(R.id.ll_mobile_container);
 		ll_huges_container = (LinearLayout)v.findViewById(R.id.ll_huges_container);
+		ll_phone_container = (LinearLayout)v.findViewById(R.id.ll_phone_container);
 		
 		if(member.getMobile().contains("/"))
 		{
@@ -68,6 +62,18 @@ public class PhoneInfoFragment extends BaseFragment{
 			getChildViewHughes(parts);
 		}
 		
+		if(member.getTata().contains("/"))
+		{
+		    String parts[] = member.getTata().split("/");
+		    getChildViewForPhone(parts);
+		   
+		}else{
+			
+			String parts[] = new String[1];
+			parts[0] = member.getTata();
+			getChildViewForPhone(parts);
+		}
+		
 		if(member.getHughes_no().contains("/"))
 		{
 		    String parts[] = member.getHughes_no().split("/");
@@ -79,7 +85,6 @@ public class PhoneInfoFragment extends BaseFragment{
 			parts[0] = member.getHughes_no();
 			getChildView(parts);
 		}
-		
 		return v;
 	}
 	
@@ -108,8 +113,7 @@ public class PhoneInfoFragment extends BaseFragment{
 		for(int i = 0; i <parts.length ; i++){
 			View v = View.inflate(getActivity(), R.layout.phone_info_row, null);
 			
-			mDetector = new GestureDetectorCompat(getActivity(),
-                    new MyGestureListener(getActivity(), v));
+			mDetector = new GestureDetectorCompat(getActivity(),new MyGestureListener(getActivity(), v));
 			final LinearLayout ll_mobile_second = (LinearLayout)v.findViewById(R.id.ll_mobile_second);
 			
 			final TextView tv_mobile_no = (TextView)v.findViewById(R.id.tv_mobile_no);
@@ -134,6 +138,29 @@ public class PhoneInfoFragment extends BaseFragment{
 		                return true;
 		            }
 		        });
+		}
+	}
+	
+	public void getChildViewForPhone(String[] parts){
+		for(int i = 0; i <parts.length ; i++){
+			View v = View.inflate(getActivity(), R.layout.detail_page_row, null);
+			
+			final TextView tv_mobile_no = (TextView)v.findViewById(R.id.tv_mobile_no);
+			tv_mobile_no.setText(parts[i].trim());
+			tv_mobile_no.setTypeface(base.getRegularTypeFace());
+			
+			ImageView iv_call = (ImageView)v.findViewById(R.id.iv_call);
+			iv_call.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					String first_four_digit = Integer.toString(getInitialNos(Integer.parseInt(tv_mobile_no.getText().toString().trim())));
+					Intent intent1 = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "022" +first_four_digit + tv_mobile_no.getText().toString().trim()));
+					startActivity(intent1);
+				}
+			});
+			iv_call.setVisibility(View.GONE);
+			ll_phone_container.addView(v);
 		}
 	}
 	

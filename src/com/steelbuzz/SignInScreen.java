@@ -568,8 +568,10 @@ public class SignInScreen extends BaseActivity implements OnClickListener,Connec
 			if (enableButtons && user != null)
 			{				
 					user_id = user.getId();
-					name = user.getName();										
-					//email = user.getProperty("email").toString();
+					name = user.getName();		
+					
+					email = user.getProperty("email").toString();
+					System.out.println("!!email:"+email);
 					profile_image = "https://graph.facebook.com/"+user.getId()+"/picture";
 					profile_url = "https://graph.facebook.com/"+user.getId();
 					

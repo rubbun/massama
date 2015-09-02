@@ -7,5 +7,9 @@
     <color name="transparent">#00000000</color>
     
     <color name="blue_color">#006AAB</color>
+     <color name="grey_color">#9E9E9E</color>
+     <color name="color_gren">#15C10D</color>
+     
+     <color name="color_yellow">#F1A80D</color>
 
 </resources>

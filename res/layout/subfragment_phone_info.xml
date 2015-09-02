@@ -31,16 +31,16 @@
                         android:layout_width="30sp"
                         android:layout_height="30dp"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/message_black_icon" />
+                        android:src="@drawable/mobile_black_icon" />
 
                     <TextView
                         android:id="@+id/tv_header_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="7dp"
+                        android:layout_marginLeft="5dp"
                         android:layout_toRightOf="@+id/ivLocationBlack"
-                        android:text="Email Address"
+                        android:text="Mobile"
                         android:textColor="#1f1f1f"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -52,7 +52,7 @@
                     android:background="@color/grey_color" />
 
                 <LinearLayout
-                    android:id="@+id/ll_email_container"
+                    android:id="@+id/ll_mobile_container"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center|left"
@@ -78,16 +78,16 @@
                         android:layout_width="30sp"
                         android:layout_height="30dp"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/website_black_icon" />
+                        android:src="@drawable/phone_black_icon" />
 
                     <TextView
                         android:id="@+id/tv_header_second_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="7dp"
+                        android:layout_marginLeft="5dp"
                         android:layout_toRightOf="@+id/ivContactPersion"
-                        android:text="Website"
+                        android:text="Contact Person"
                         android:textColor="#1f1f1f"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -99,7 +99,7 @@
                     android:background="@color/grey_color" />
 
                 <LinearLayout
-                    android:id="@+id/ll_website_container"
+                    android:id="@+id/ll_phone_container"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center|left"
@@ -131,20 +131,19 @@
                     android:padding="6dp" >
 
                     <ImageView
-                        android:id="@+id/ivWebsite"
+                        android:id="@+id/ivHughes"
                         android:layout_width="30sp"
                         android:layout_height="30dp"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/fax_black_icon" />
+                        android:src="@drawable/hughes_black_icon" />
 
                     <TextView
-                        android:id="@+id/tv_third_header"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="7dp"
-                        android:layout_toRightOf="@+id/ivWebsite"
-                        android:text="Contact Person"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/ivHughes"
+                        android:text="Hughes"
                         android:textColor="#1f1f1f"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -156,7 +155,7 @@
                     android:background="@color/grey_color" />
 
                 <LinearLayout
-                    android:id="@+id/ll_fax_container"
+                    android:id="@+id/ll_huges_container"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center|left"
@@ -166,11 +165,10 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/tv_fax"
+                    android:id="@+id/tv_hughes_person"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="3dp"
-                    android:paddingLeft="20dp"
                     android:text="Address"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="#1f1f1f"

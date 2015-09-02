@@ -14,7 +14,6 @@ import com.steelbuzz.fragment.BaseFragment;
 public class ProductInfoFragment extends BaseFragment{
 	private Member member;
 	private BaseActivity base;
-	private TextView tv_address,tv_contact_person,tv_header_name;
 	public ProductInfoFragment(Member bean, BaseActivity base){
 		this.member = bean;
 		this.base = base;
@@ -22,13 +21,8 @@ public class ProductInfoFragment extends BaseFragment{
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View v = inflater.inflate(R.layout.subfragment_contact_info, container, false);
-		tv_address = (TextView)v.findViewById(R.id.tv_address);
-		tv_contact_person = (TextView)v.findViewById(R.id.tv_contact_person);
-		
-		tv_address.setTypeface(base.getSemiBoldTypeFace());
-		tv_contact_person.setTypeface(base.getSemiBoldTypeFace());
-		
+		View v = inflater.inflate(R.layout.subfragment_product, container, false);
+				
 		return v;
 	}
 }

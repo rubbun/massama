@@ -19,12 +19,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center|left"
-                android:orientation="vertical"
-                android:padding="10dp" >
+                android:orientation="vertical" >
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" >
+                    android:layout_height="wrap_content"
+                    android:padding="6dp" >
 
                     <ImageView
                         android:id="@+id/ivLocationBlack"
@@ -44,13 +44,17 @@
                         android:textStyle="bold" />
                 </RelativeLayout>
 
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/grey_color" />
+
                 <LinearLayout
                     android:id="@+id/ll_mobile_container"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center|left"
                     android:orientation="vertical"
-                    android:padding="10dp"
                     android:paddingBottom="3dp"
                     android:paddingTop="3dp" >
                 </LinearLayout>
@@ -61,7 +65,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="3dp"
                     android:text="Address"
-                    android:layout_margin="10dp"
+                    android:paddingLeft="40dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="#1f1f1f"
                     android:visibility="gone" />
@@ -70,19 +74,20 @@
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="1dp"
-                android:background="#b3b3b3" >
+                android:background="#b3b3b3"
+                android:padding="10dp" >
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center|left"
-                android:orientation="vertical"
-                android:padding="10dp" >
+                android:orientation="vertical" >
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" >
+                    android:layout_height="wrap_content"
+                    android:padding="6dp" >
 
                     <ImageView
                         android:id="@+id/ivContactPersion"
@@ -102,13 +107,17 @@
                         android:textStyle="bold" />
                 </RelativeLayout>
 
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/grey_color" />
+
                 <LinearLayout
                     android:id="@+id/ll_huges_container"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center|left"
                     android:orientation="vertical"
-                    android:padding="10dp"
                     android:paddingBottom="3dp"
                     android:paddingTop="3dp" >
                 </LinearLayout>
@@ -119,15 +128,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="3dp"
                     android:text="Address"
-                    android:visibility="gone"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#1f1f1f" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="1dp"
-                android:background="#b3b3b3" >
+                    android:textColor="#1f1f1f"
+                    android:visibility="gone" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
