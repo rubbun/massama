@@ -3,28 +3,35 @@ package com.steelbuzz.subfragment;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.view.GestureDetectorCompat;
 import android.text.Html;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.steelbuzz.BaseActivity;
+import com.steelbuzz.MyGestureListener;
 import com.steelbuzz.R;
 import com.steelbuzz.bean.Member;
+import com.steelbuzz.constant.Constants;
 import com.steelbuzz.fragment.BaseFragment;
 
 public class MailInfoFragment extends BaseFragment{
 	private Member member;
 	private BaseActivity base;
+	GestureDetectorCompat mDetector;
 	private LinearLayout ll_email_container,ll_fax_container,ll_website_container;
 	private TextView tv_header_second_name,tv_contact_person,tv_third_header,tv_header_name,tv_fax;
 	public MailInfoFragment(Member bean, BaseActivity base){
 		this.member = bean;
 		this.base = base;
+		Constants.TAB_NAME = "mail";
 	}
 	
 	@Override
@@ -125,22 +132,23 @@ public class MailInfoFragment extends BaseFragment{
 		for(int i = 0; i <parts.length ; i++){
 			View v = View.inflate(getActivity(), R.layout.detail_page_mail, null);
 			
+			mDetector = new GestureDetectorCompat(getActivity(),new MyGestureListener(getActivity(), v));
+			final LinearLayout ll_mobile_second = (LinearLayout)v.findViewById(R.id.ll_mobile_second);
+			ll_mobile_second.setTag(mDetector);
+			
 			final TextView tv_mobile_no = (TextView)v.findViewById(R.id.tv_mobile_no);
 			tv_mobile_no.setText(parts[i].trim());
 			tv_mobile_no.setTypeface(base.getRegularTypeFace());
 			
 			LinearLayout llMailBg = (LinearLayout)v.findViewById(R.id.llMailBg);
-			
-			ImageView iv_call = (ImageView)v.findViewById(R.id.iv_call);
-			iv_call.setImageResource(R.drawable.email_icon);
-			
+						
 			if (parts[i].trim().equalsIgnoreCase("------")) {
 				llMailBg.setVisibility(View.GONE);
 			}else{
 				llMailBg.setVisibility(View.VISIBLE);
 			}
 			
-			iv_call.setOnClickListener(new OnClickListener() {
+			/*iv_call.setOnClickListener(new OnClickListener() {
 				
 				@Override
 				public void onClick(View v) {
@@ -151,7 +159,19 @@ public class MailInfoFragment extends BaseFragment{
 					i.putExtra(android.content.Intent.EXTRA_TEXT, "");
 					startActivity(Intent.createChooser(i, "Send email"));
 				}
-			});
+			});*/
+			
+			ll_mobile_second.setOnTouchListener(new OnTouchListener() {
+
+	            @Override
+	            public boolean onTouch(View v, MotionEvent event) {
+	            	((GestureDetectorCompat)v.getTag()).onTouchEvent(event);
+	            	TextView tv_mobile_no = (TextView)v.findViewById(R.id.tv_mobile_no);
+	                Constants.EMAIL_ID = tv_mobile_no.getText().toString().trim();
+	            	return true;
+	            }
+	        });
+			
 			ll_email_container.addView(v);
 		}
 	}

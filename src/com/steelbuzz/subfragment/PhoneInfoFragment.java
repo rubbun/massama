@@ -18,6 +18,7 @@ import com.steelbuzz.BaseActivity;
 import com.steelbuzz.MyGestureListener;
 import com.steelbuzz.R;
 import com.steelbuzz.bean.Member;
+import com.steelbuzz.constant.Constants;
 import com.steelbuzz.fragment.BaseFragment;
 
 public class PhoneInfoFragment extends BaseFragment{
@@ -30,6 +31,7 @@ public class PhoneInfoFragment extends BaseFragment{
 	public PhoneInfoFragment(Member bean, BaseActivity base){
 		this.member = bean;
 		this.base = base;
+		Constants.TAB_NAME = "phone";
 	}
 	
 	@Override
@@ -109,12 +111,13 @@ public class PhoneInfoFragment extends BaseFragment{
 			ll_huges_container.addView(v);
 		}
 	}
-	public void getChildViewHughes(String[] parts){
+	public void getChildViewHughes(final String[] parts){
 		for(int i = 0; i <parts.length ; i++){
 			View v = View.inflate(getActivity(), R.layout.phone_info_row, null);
 			
 			mDetector = new GestureDetectorCompat(getActivity(),new MyGestureListener(getActivity(), v));
 			final LinearLayout ll_mobile_second = (LinearLayout)v.findViewById(R.id.ll_mobile_second);
+			ll_mobile_second.setTag(mDetector);
 			
 			final TextView tv_mobile_no = (TextView)v.findViewById(R.id.tv_mobile_no);
 			tv_mobile_no.setText(parts[i].trim());
@@ -128,16 +131,20 @@ public class PhoneInfoFragment extends BaseFragment{
 					startActivity(intent1);
 				}
 			});*/
-			ll_mobile_container.addView(v);
+			
 			
 			ll_mobile_second.setOnTouchListener(new OnTouchListener() {
 
 		            @Override
 		            public boolean onTouch(View v, MotionEvent event) {
-		                mDetector.onTouchEvent(event);
-		                return true;
+		            	((GestureDetectorCompat)v.getTag()).onTouchEvent(event);
+		            	TextView tv_mobile_no = (TextView)v.findViewById(R.id.tv_mobile_no);
+		                Constants.PHONE_NO = tv_mobile_no.getText().toString().trim();
+		            	return true;
 		            }
 		        });
+			
+			ll_mobile_container.addView(v);
 		}
 	}
 	

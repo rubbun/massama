@@ -1,6 +1,12 @@
 package com.steelbuzz;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.style.ClickableSpan;
+import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -8,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ContactUs extends BaseActivity{
 	
@@ -50,5 +57,30 @@ public class ContactUs extends BaseActivity{
 			
 		}
 	   });
+	   
+	   
+	   ClickableSpan clickable = new ClickableSpan() {
+	          public void onClick(View view) {
+	        	  System.out.println("!!reach here");
+	        	  Toast.makeText(ContactUs.this, "Hello", Toast.LENGTH_LONG).show();
+	          }
+	    };
+	   String s = getResources().getString(R.string.contactus_text);
+	   SpannableStringBuilder sb = new SpannableStringBuilder(s);
+				//normal font for 1st 9 chars
+	   sb.setSpan(new ForegroundColorSpan(Color.parseColor("#8CD1F3")), 17, 20, 0);
+	   //sb.setSpan(clickable, 17, 20, 0);
+	   tvHeaderText.setText(sb);
+	   
+	  /* ((Spannable)tvHeaderText.getText()).setSpan(new ClickableSpan(){
+	     @Override public void onClick(View widget){
+	    	 //Toast.makeText(ContactUs.this, "Hello", Toast.LENGTH_LONG).show();
+	     }
+	   },17,20,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);*/
+	   
+	   //SpannableStringBuilder strBuilder = new SpannableStringBuilder(s);
+	   
+	    
+	    //strBuilder.removeSpan(span);
 	}
 }

@@ -25,8 +25,8 @@
                 android:layout_height="fill_parent"
                 android:layout_weight="0.70"
                 android:gravity="center|left"
-                android:padding="10dp"
-                android:orientation="vertical" >
+                android:orientation="vertical"
+                android:padding="10dp" >
 
                 <TextView
                     android:id="@+id/tv_mobile_no"
@@ -50,7 +50,15 @@
                     android:id="@+id/iv_call"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/call" />
+                    android:src="@drawable/call_white_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Call"
+                    android:layout_marginTop="2dp"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -70,7 +78,8 @@
                 android:layout_centerVertical="true"
                 android:contentDescription="@string/app_name"
                 android:padding="5dp"
-                android:src="@drawable/call_icon" />
+                android:src="@drawable/call_icon"
+                android:visibility="gone" />
 
             <ImageView
                 android:id="@+id/btn2"
@@ -81,7 +90,8 @@
                 android:layout_marginLeft="20dp"
                 android:contentDescription="@string/app_name"
                 android:padding="5dp"
-                android:src="@drawable/message_icon" />
+                android:src="@drawable/message_icon"
+                android:visibility="gone" />
         </RelativeLayout>
     </LinearLayout>
 

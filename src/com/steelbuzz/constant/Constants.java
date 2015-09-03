@@ -37,6 +37,10 @@ public class Constants {
 	public static final String CATAGORY_DETAIL_ID = "ID";
 	public static final String CATAGORY_DETAIL_LIST = "CATAGORY_DETAIL_LIST";
 	
+	public static String PHONE_NO = "";
+	public static String EMAIL_ID = "";
+	public static String TAB_NAME = "";
+	
 	public enum values {
 		USRINFO, USERID, FIRSTNAME,LASTNAME, EMAIL,SESSION,LOGINTYPE,TRIALPERIODSTATUS,STARTTIME
 	}
