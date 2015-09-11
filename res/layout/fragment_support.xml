@@ -140,6 +140,7 @@
                 android:layout_height="60dp"
                 android:background="@color/white"
                 android:orientation="vertical"
+                android:layout_marginTop="30dp"
                 android:paddingLeft="10dp" >
 
                 <TextView
@@ -242,6 +243,7 @@
                 android:layout_height="60dp"
                 android:background="@color/white"
                 android:orientation="vertical"
+                android:layout_marginTop="30dp"
                 android:paddingLeft="10dp" >
 
                 <TextView

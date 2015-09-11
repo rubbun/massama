@@ -34,7 +34,7 @@ public class Supportfragment extends BaseFragment implements OnClickListener {
 		this.activity = (BaseActivity) activity;
 	}
 	
-	private RelativeLayout rl_about,rl_eaq,rl_logout, rl_contactus, rl_review, rl_reg_firm;
+	private RelativeLayout rl_about,rl_share,rl_eaq,rl_logout, rl_contactus, rl_review, rl_reg_firm;
 	private RelativeLayout rl_follow_twitter,rl_likeus_fb,rl_help;
 	
 	@Override
@@ -53,6 +53,9 @@ public class Supportfragment extends BaseFragment implements OnClickListener {
 
 		rl_help = (RelativeLayout) v.findViewById(R.id.rl_help);
 		rl_help.setOnClickListener(this);
+		
+		rl_share = (RelativeLayout) v.findViewById(R.id.rl_share);
+		rl_share.setOnClickListener(this);
 
 		//rl_review = (RelativeLayout) v.findViewById(R.id.rl_review);
 		//rl_review.setOnClickListener(this);
@@ -146,6 +149,14 @@ public class Supportfragment extends BaseFragment implements OnClickListener {
 			dialog.show();
 			break;
 			*/
+			
+		case R.id.rl_share:
+			Intent shareIntent = new Intent();
+			shareIntent.setAction(Intent.ACTION_SEND);
+			shareIntent.setType("text/plain");
+			shareIntent.putExtra(Intent.EXTRA_TEXT, "Hi, I am using SteelBuzz.Connecting you to Steel Industry.");
+			startActivity(Intent.createChooser(shareIntent, "Share your thoughts"));
+			break;
 		case R.id.rl_logout:
 			
 			if (activity.app.getUserinfo().getLogin_type().equalsIgnoreCase("social")) {

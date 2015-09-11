@@ -1,10 +1,10 @@
 package com.steelbuzz;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.text.Spannable;
 import android.text.SpannableStringBuilder;
-import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
@@ -14,7 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.TextView.BufferType;
 
 public class ContactUs extends BaseActivity{
 	
@@ -48,7 +48,8 @@ public class ContactUs extends BaseActivity{
 		public void onItemSelected(AdapterView<?> arg0, View arg1, int pos, long arg3) {
 			
 			if (pos != 0) {
-				etDesc.setText(arr[pos]);
+				//etDesc.setText(arr[pos-1]);
+				etDesc.setHint(arr[pos-1]);
 			}
 		}
 
@@ -58,29 +59,26 @@ public class ContactUs extends BaseActivity{
 		}
 	   });
 	   
-	   
-	   ClickableSpan clickable = new ClickableSpan() {
-	          public void onClick(View view) {
-	        	  System.out.println("!!reach here");
-	        	  Toast.makeText(ContactUs.this, "Hello", Toast.LENGTH_LONG).show();
-	          }
-	    };
 	   String s = getResources().getString(R.string.contactus_text);
-	   SpannableStringBuilder sb = new SpannableStringBuilder(s);
-				//normal font for 1st 9 chars
-	   sb.setSpan(new ForegroundColorSpan(Color.parseColor("#8CD1F3")), 17, 20, 0);
-	   //sb.setSpan(clickable, 17, 20, 0);
-	   tvHeaderText.setText(sb);
 	   
-	  /* ((Spannable)tvHeaderText.getText()).setSpan(new ClickableSpan(){
-	     @Override public void onClick(View widget){
-	    	 //Toast.makeText(ContactUs.this, "Hello", Toast.LENGTH_LONG).show();
-	     }
-	   },17,20,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);*/
-	   
-	   //SpannableStringBuilder strBuilder = new SpannableStringBuilder(s);
-	   
-	    
-	    //strBuilder.removeSpan(span);
+	   tvHeaderText.setMovementMethod(LinkMovementMethod.getInstance());
+	   tvHeaderText.setText(addClickablePart1(s), BufferType.SPANNABLE);
 	}
+	
+	private SpannableStringBuilder addClickablePart1(String str) {
+    	SpannableStringBuilder ssb = new SpannableStringBuilder(str);
+            final String clickString = str.substring(8, 11);
+            ssb.setSpan(new ClickableSpan() {
+
+                @Override
+                public void onClick(View widget) {
+                    //Toast.makeText(ContactUs.this, clickString,Toast.LENGTH_SHORT).show();
+                	Intent intent = new Intent(ContactUs.this,FAQActivity.class);
+                	startActivity(intent);
+                }
+            }, 17, 20, 0);
+            
+            ssb.setSpan(new ForegroundColorSpan(Color.parseColor("#179CDF")), 17, 20, 0);
+        return ssb;
+    }
 }
