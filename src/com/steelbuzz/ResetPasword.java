@@ -44,6 +44,7 @@ public class ResetPasword extends BaseActivity implements OnClickListener {
 		lblSubmit.setOnClickListener(this);
 		lblSubmit.setOnClickListener(this);
 
+		lblCancel.setOnClickListener(this);
 	}
 
 	@Override

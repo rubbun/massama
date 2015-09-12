@@ -72,7 +72,7 @@
                 android:layout_height="60dp"
                 android:background="@color/white"
                 android:orientation="vertical"
-                android:paddingLeft="10dp" >
+                android:paddingLeft="20dp" >
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -89,8 +89,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/arrow_icon" />
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/ic_arrow_right_black" />
             </RelativeLayout>
 
             <View
@@ -106,7 +106,7 @@
                 android:layout_height="60dp"
                 android:background="@color/white"
                 android:orientation="vertical"
-                android:paddingLeft="10dp" >
+                android:paddingLeft="20dp" >
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -123,8 +123,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/arrow_icon" />
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/ic_arrow_right_black" />
             </RelativeLayout>
 
             <View
@@ -138,10 +138,10 @@
                 android:id="@+id/rl_reg_firm"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                android:layout_marginTop="30dp"
                 android:background="@color/white"
                 android:orientation="vertical"
-                android:layout_marginTop="30dp"
-                android:paddingLeft="10dp" >
+                android:paddingLeft="20dp" >
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -158,8 +158,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/arrow_icon" />
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/ic_arrow_right_black" />
             </RelativeLayout>
 
             <View
@@ -175,7 +175,7 @@
                 android:layout_height="60dp"
                 android:background="@color/white"
                 android:orientation="vertical"
-                android:paddingLeft="10dp" >
+                android:paddingLeft="20dp" >
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -192,8 +192,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/arrow_icon" />
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/ic_arrow_right_black" />
             </RelativeLayout>
 
             <View
@@ -209,7 +209,7 @@
                 android:layout_height="60dp"
                 android:background="@color/white"
                 android:orientation="vertical"
-                android:paddingLeft="10dp" >
+                android:paddingLeft="20dp" >
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -226,8 +226,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/arrow_icon" />
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/ic_arrow_right_black" />
             </RelativeLayout>
 
             <View
@@ -241,10 +241,10 @@
                 android:id="@+id/rl_rate"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                android:layout_marginTop="30dp"
                 android:background="@color/white"
                 android:orientation="vertical"
-                android:layout_marginTop="30dp"
-                android:paddingLeft="10dp" >
+                android:paddingLeft="20dp" >
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -261,8 +261,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/arrow_icon" />
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/ic_arrow_right_black" />
             </RelativeLayout>
 
             <View
@@ -278,7 +278,7 @@
                 android:layout_height="60dp"
                 android:background="@color/white"
                 android:orientation="vertical"
-                android:paddingLeft="10dp" >
+                android:paddingLeft="20dp" >
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -295,38 +295,9 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/arrow_icon" />
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/ic_arrow_right_black" />
             </RelativeLayout>
-
-            <!--
-        <RelativeLayout
-            android:id="@+id/rl_review"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="@color/white"
-            android:orientation="vertical"
-            android:paddingLeft="10dp" >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:gravity="center"
-                android:text="Write a review"
-                android:textColor="#000"
-                android:textSize="20sp" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="10dp"
-                android:src="@drawable/arrow_icon" />
-        </RelativeLayout>
-            -->
 
             <View
                 android:layout_width="fill_parent"
@@ -341,7 +312,7 @@
                 android:layout_height="60dp"
                 android:background="@color/white"
                 android:orientation="vertical"
-                android:paddingLeft="10dp" >
+                android:paddingLeft="20dp" >
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -358,8 +329,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/arrow_icon" />
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/ic_arrow_right_black" />
             </RelativeLayout>
 
             <View
@@ -375,7 +346,7 @@
                 android:layout_height="60dp"
                 android:background="@color/white"
                 android:orientation="vertical"
-                android:paddingLeft="10dp" >
+                android:paddingLeft="20dp" >
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -392,8 +363,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/arrow_icon" />
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/ic_arrow_right_black" />
             </RelativeLayout>
 
             <View
@@ -409,7 +380,7 @@
                 android:layout_height="60dp"
                 android:background="@color/white"
                 android:orientation="vertical"
-                android:paddingLeft="10dp" >
+                android:paddingLeft="20dp" >
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -426,8 +397,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/arrow_icon" />
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/ic_arrow_right_black" />
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>

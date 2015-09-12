@@ -14,16 +14,16 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="@dimen/logo_height"
             android:gravity="bottom|center"
             android:orientation="vertical"
+            android:paddingLeft="@dimen/logo_padding_left"
+            android:paddingRight="@dimen/logo_padding_right"
             android:weightSum="1" >
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
+                android:layout_height="wrap_content"
                 android:background="@drawable/logo" />
 
             <LinearLayout

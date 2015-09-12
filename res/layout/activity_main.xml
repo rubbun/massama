@@ -20,7 +20,7 @@
     <LinearLayout
         android:id="@+id/ll_footer"
         android:layout_width="fill_parent"
-        android:layout_height="70dp"
+        android:layout_height="@dimen/footer_height"
         android:layout_above="@id/footer_border"
         android:orientation="horizontal"
         android:weightSum="1" >
@@ -35,8 +35,8 @@
             android:orientation="horizontal" >
 
             <ImageView
-                android:layout_width="35dp"
-                android:layout_height="30dp"
+                android:layout_width="@dimen/member_icon_width"
+                android:layout_height="@dimen/member_icon_height"
                 android:layout_above="@+id/tv_member"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="2dp"
@@ -51,7 +51,7 @@
                 android:gravity="center"
                 android:text="@string/member"
                 android:textColor="@color/white"
-                android:textSize="12sp" />
+                android:textSize="@dimen/tab_text_size" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -64,8 +64,8 @@
             android:orientation="horizontal" >
 
             <ImageView
-                android:layout_width="35dp"
-                android:layout_height="30dp"
+                android:layout_width="@dimen/product_icon_width"
+                android:layout_height="@dimen/product_icon_height"
                 android:layout_above="@+id/tvProduct"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="2dp"
@@ -81,7 +81,7 @@
                 android:gravity="center"
                 android:text="@string/product"
                 android:textColor="@color/white"
-                android:textSize="12sp" />
+                android:textSize="@dimen/tab_text_size" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -98,8 +98,8 @@
                 android:layout_marginTop="10dp" >
 
                 <ImageView
-                    android:layout_width="35dp"
-                    android:layout_height="30dp"
+                    android:layout_width="@dimen/dialer_icon_width"
+                    android:layout_height="@dimen/dialer_icon_height"
                     android:layout_above="@+id/tvDialer"
                     android:layout_centerHorizontal="true"
                     android:layout_marginBottom="6dp"
@@ -115,7 +115,7 @@
                     android:gravity="center"
                     android:text="@string/dialer"
                     android:textColor="@color/white"
-                    android:textSize="12sp" />
+                    android:textSize="@dimen/tab_text_size" />
             </RelativeLayout>
         </RelativeLayout>
 
@@ -144,11 +144,11 @@
                 android:gravity="center"
                 android:text="@string/buzz"
                 android:textColor="@color/white"
-                android:textSize="12sp" />
+                android:textSize="@dimen/tab_text_size" />
 
             <ImageView
-                android:layout_width="35dp"
-                android:layout_height="30dp"
+                android:layout_width="@dimen/buzz_icon_width"
+                android:layout_height="@dimen/buzz_icon_height"
                 android:layout_above="@+id/tvBuzz"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="2dp"
@@ -164,12 +164,11 @@
             android:layout_marginRight="-1dp"
             android:background="@drawable/tab_unselect"
             android:duplicateParentState="true"
-            android:gravity="center"
             android:orientation="horizontal" >
 
             <ImageView
-                android:layout_width="35dp"
-                android:layout_height="30dp"
+                android:layout_width="@dimen/more_icon_width"
+                android:layout_height="@dimen/more_icon_height"
                 android:layout_above="@+id/tvMore"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="2dp"
@@ -181,10 +180,11 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
                 android:gravity="center"
                 android:text="@string/more"
                 android:textColor="@color/white"
-                android:textSize="12sp" />
+                android:textSize="@dimen/tab_text_size" />
         </RelativeLayout>
     </LinearLayout>
 

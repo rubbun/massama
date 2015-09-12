@@ -4,6 +4,37 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     
-    <dimen name="catagory_row_height">110dp</dimen>
+    <dimen name="catagory_row_height">130dp</dimen>
+    <dimen name="padding_for_input_fields">160dp</dimen>
+    
+    <dimen name="logo_height">80dp</dimen>
+    <dimen name="logo_padding_left">110dp</dimen>
+    <dimen name="logo_padding_right">110dp</dimen>
+    
+    <dimen name="input_box_height">42dp</dimen>
+    <dimen name="forgot_password_text_size">21sp</dimen>
+    <dimen name="forgot_password_desc_text_size">19sp</dimen>
+    
+    <dimen name="button_rounded_corner">45px</dimen>
+    
+    <dimen name="footer_height">80dp</dimen>
+    <dimen name="header_height">60dp</dimen>
+    
+    <dimen name="member_icon_height">50dp</dimen>
+    <dimen name="member_icon_width">55dp</dimen>
+    
+    <dimen name="product_icon_height">38dp</dimen>
+    <dimen name="product_icon_width">53dp</dimen>
+    
+    <dimen name="dialer_icon_height">40dp</dimen>
+    <dimen name="dialer_icon_width">55dp</dimen>
+    
+    <dimen name="buzz_icon_height">38dp</dimen>
+    <dimen name="buzz_icon_width">53dp</dimen>
+    
+    <dimen name="more_icon_height">38dp</dimen>
+    <dimen name="more_icon_width">43dp</dimen>
+    
+    <dimen name="tab_text_size">14sp</dimen>
 
 </resources>

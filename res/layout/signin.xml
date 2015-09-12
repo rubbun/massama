@@ -16,33 +16,17 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="@dimen/logo_height"
             android:gravity="bottom|center"
             android:orientation="vertical"
+            android:paddingLeft="@dimen/logo_padding_left"
+            android:paddingRight="@dimen/logo_padding_right"
             android:weightSum="1" >
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:background="@drawable/logo" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center|left"
-                android:orientation="vertical"
-                android:visibility="gone" >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white"
-                    android:textSize="40sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
+                android:background="@drawable/logo" />
         </LinearLayout>
     </LinearLayout>
 
@@ -56,22 +40,22 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="40dp"
             android:gravity="center"
             android:orientation="vertical"
             android:paddingBottom="10dp"
-            android:paddingLeft="60dp"
-            android:paddingRight="60dp"
+            android:paddingLeft="@dimen/padding_for_input_fields"
+            android:paddingRight="@dimen/padding_for_input_fields"
             android:paddingTop="10dp" >
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="34dp"
-                android:background="@xml/signin_rounded_corner"
+                android:layout_height="@dimen/input_box_height"
+                android:background="@drawable/signin_rounded_corner"
                 android:gravity="center|left"
                 android:orientation="horizontal"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp" >
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp" >
 
                 <ImageView
                     android:id="@+id/imageView1"
@@ -99,13 +83,13 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="34dp"
-                android:layout_marginTop="12dp"
-                android:background="@xml/signin_rounded_corner"
+                android:layout_height="@dimen/input_box_height"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/signin_rounded_corner"
                 android:gravity="center|left"
                 android:orientation="horizontal"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp" >
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp" >
 
                 <ImageView
                     android:layout_width="25dp"
@@ -133,9 +117,9 @@
             <LinearLayout
                 android:id="@+id/lblSignin"
                 android:layout_width="match_parent"
-                android:layout_height="36dp"
+                android:layout_height="@dimen/input_box_height"
                 android:layout_marginTop="30dp"
-                android:background="@xml/signin_btn_rounded_corner"
+                android:background="@drawable/signin_btn_rounded_corner"
                 android:duplicateParentState="true"
                 android:gravity="center"
                 android:orientation="vertical" >
@@ -163,7 +147,7 @@
             android:id="@+id/txtOr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="25dp"
             android:gravity="center"
             android:text=".......  Or Sign In with  ......."
             android:textAppearance="?android:attr/textAppearanceMedium"
@@ -171,8 +155,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:gravity="center"
             android:orientation="horizontal" >
 
@@ -180,9 +164,9 @@
                 xmlns:facebook="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/login_button"
                 style="@style/FacebookLoginButton"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginRight="25dp"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginRight="35dp"
                 android:background="@drawable/facebook_icon"
                 android:textColor="@color/transparent"
                 android:visibility="visible"
@@ -190,16 +174,16 @@
 
             <ImageView
                 android:id="@+id/iv_twitter"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
                 android:gravity="center_vertical"
                 android:src="@drawable/twitter_icon" />
 
             <ImageView
                 android:id="@+id/iv_gplus"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="25dp"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginLeft="35dp"
                 android:src="@drawable/gplus_icon" />
 
             <com.google.android.gms.common.SignInButton
@@ -213,7 +197,7 @@
             android:id="@+id/txtDonttHave"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:text="Don&apos;t have an Account?"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/white" />
@@ -221,11 +205,11 @@
         <LinearLayout
             android:id="@+id/lblSignup"
             android:layout_width="match_parent"
-            android:layout_height="36dp"
-            android:layout_marginLeft="60dp"
-            android:layout_marginRight="60dp"
+            android:layout_height="@dimen/input_box_height"
+            android:layout_marginLeft="@dimen/padding_for_input_fields"
+            android:layout_marginRight="@dimen/padding_for_input_fields"
             android:layout_marginTop="15dp"
-            android:background="@xml/signin_btn_rounded_corner"
+            android:background="@drawable/signin_btn_rounded_corner"
             android:gravity="center"
             android:orientation="vertical" >
 

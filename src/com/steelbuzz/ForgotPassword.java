@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.steelbuzz.constant.Constants;
@@ -19,6 +20,8 @@ public class ForgotPassword extends BaseActivity implements OnClickListener{
 	
 	private EditText etEmail;
 	private LinearLayout lblCancel,lblSubmit;
+	
+	private TextView tvFgText,tvFgDescText;
 
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -29,6 +32,12 @@ public class ForgotPassword extends BaseActivity implements OnClickListener{
 		
 		lblSubmit = (LinearLayout)findViewById(R.id.lblSubmit);
 		lblCancel = (LinearLayout)findViewById(R.id.lblCancel);
+		
+		tvFgText = (TextView)findViewById(R.id.tvFgText);
+		tvFgDescText = (TextView)findViewById(R.id.tvFgDescText);
+		
+		tvFgText.setTypeface(getRegularTypeFace());
+		tvFgDescText.setTypeface(getRegularTypeFace());
 		
 		lblCancel.setOnClickListener(this);
 		lblSubmit.setOnClickListener(this);
