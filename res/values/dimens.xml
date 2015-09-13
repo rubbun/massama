@@ -4,20 +4,74 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     
-    <dimen name="catagory_row_height">70dp</dimen>
-    <dimen name="padding_for_input_fields">60dp</dimen>
+    <dimen name="catagory_row_height">85dp</dimen>
+    <dimen name="padding_for_input_fields">160dp</dimen>
     
-    <dimen name="logo_height">60dp</dimen>
-    <dimen name="logo_padding_left">45dp</dimen>
-    <dimen name="logo_padding_right">45dp</dimen>
+    <dimen name="logo_height">80dp</dimen>
+    <dimen name="logo_padding_left">110dp</dimen>
+    <dimen name="logo_padding_right">110dp</dimen>
     
-	<dimen name="input_box_height">30dp</dimen>
-	<dimen name="forgot_password_text_size">17sp</dimen>
-	<dimen name="forgot_password_desc_text_size">13sp</dimen>
-	
-	<dimen name="button_rounded_corner">35px</dimen>
-	
-	<dimen name="footer_height">70dp</dimen>
-	<dimen name="header_height">60dp</dimen>
+    <dimen name="input_box_height">42dp</dimen>
+    <dimen name="forgot_password_text_size">21sp</dimen>
+    <dimen name="forgot_password_desc_text_size">19sp</dimen>
+    
+    <dimen name="button_rounded_corner">45px</dimen>
+    
+    <dimen name="footer_height">65dp</dimen>
+    <dimen name="header_height">50dp</dimen>
+    
+    <dimen name="member_icon_height">30dp</dimen>
+    <dimen name="member_icon_width">35dp</dimen>
+    
+    <dimen name="product_icon_height">30dp</dimen>
+    <dimen name="product_icon_width">35dp</dimen>
+    
+    <dimen name="dialer_icon_height">35dp</dimen>
+    <dimen name="dialer_icon_width">38dp</dimen>
+    
+    <dimen name="buzz_icon_height">27dp</dimen>
+    <dimen name="buzz_icon_width">30dp</dimen>
+    
+    <dimen name="more_icon_height">27dp</dimen>
+    <dimen name="more_icon_width">33dp</dimen>
+    
+    <dimen name="tab_text_size">10sp</dimen>
+    <dimen name="member_detail_text_text_size">10sp</dimen>
+    
+    <dimen name="member_detail_info_height">90dp</dimen>
+    
+    <dimen name="memberinfo_tab_panel">60dp</dimen>
+    
+    <dimen name="contact_icon_height">30dp</dimen>
+    <dimen name="contact_icon_width">30dp</dimen>
+    
+    <dimen name="mail_icon_height">27dp</dimen>
+    <dimen name="mail_icon_width">33dp</dimen>
+    
+    <dimen name="products_icon_height">27dp</dimen>
+    <dimen name="products_icon_width">33dp</dimen>
+    
+    <dimen name="header_text_size">18sp</dimen>
+    
+    <dimen name="dialer_cross_icon_width">50dp</dimen>
+    <dimen name="dialer_cross_icon_height">28dp</dimen>
+
+    <dimen name="dialer_number_text_size">30sp</dimen>
+    <dimen name="dialer_below_number_text_size">15sp</dimen>
+    
+    <dimen name="dialer_number_eachblock_width">75dp</dimen>
+    <dimen name="dialer_number_eachblock_height">75dp</dimen>
+    
+    <dimen name="dialer_stroke_width">10dp</dimen>
+    
+    <dimen name="call_button_width">150dp</dimen>
+    <dimen name="call_button_height">45dp</dimen>
+    
+    <dimen name="catagory_text_size">15sp</dimen>
+    
+    <dimen name="support_text_size">18sp</dimen>
+    
+    <dimen name="member_row_text_size">16sp</dimen>
+    <dimen name="member_row_height">55dp</dimen>
 	
 </resources>

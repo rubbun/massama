@@ -184,6 +184,7 @@ public class SignUpScreen extends BaseActivity implements OnClickListener{
 		
 		  private Pattern pattern;
 		  private Matcher matcher;
+		  private String Password = "";
 	 
 		  private static final String PASSWORD_PATTERN = 
 	              "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})";
@@ -198,7 +199,8 @@ public class SignUpScreen extends BaseActivity implements OnClickListener{
 		   * @return true valid password, false invalid password
 		   */
 		  public boolean validate(final String password){
-			  matcher = pattern.matcher(password);
+			  this.Password = password;
+			  matcher = pattern.matcher(Password);
 			  return matcher.matches();    
 		  }
 	}

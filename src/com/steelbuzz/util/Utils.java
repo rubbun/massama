@@ -1,5 +1,11 @@
 package com.steelbuzz.util;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
+import android.content.Context;
+
  
 public class Utils {
     public static void CopyStream(InputStream is, OutputStream os)

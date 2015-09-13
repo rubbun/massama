@@ -76,9 +76,7 @@ public class MainActivity extends BaseActivity {
 
 		CURRENT_TAB = TAG_MEMBER;
 
-		
 		try {
-
 			   PackageInfo info = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_SIGNATURES);
 
 			   for (Signature signature : info.signatures) 

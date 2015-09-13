@@ -10,7 +10,7 @@
     <LinearLayout
         android:id="@+id/ll_member"
         android:layout_width="fill_parent"
-        android:layout_height="60dp"
+        android:layout_height="@dimen/member_row_height"
         android:orientation="horizontal"
         android:weightSum="1" >
 
@@ -19,7 +19,7 @@
             android:layout_height="fill_parent"
             android:layout_weight="0.70"
             android:orientation="vertical"
-            android:padding="20dp" >
+            android:padding="15dp" >
 
             <TextView
                 android:id="@+id/tv_name"
@@ -30,7 +30,7 @@
                 android:singleLine="true"
                 android:text="TextView"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="@dimen/member_row_text_size" />
         </LinearLayout>
 
         <RelativeLayout

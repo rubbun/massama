@@ -24,7 +24,7 @@
             android:paddingLeft="10dp"
             android:text="TATA:"
             android:textColor="@android:color/white"
-            android:textSize="18sp"
+            android:textSize="@dimen/catagory_text_size"
             android:textStyle="bold" />
 
         <LinearLayout
