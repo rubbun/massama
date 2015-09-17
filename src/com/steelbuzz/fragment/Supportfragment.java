@@ -4,6 +4,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -28,6 +29,8 @@ import com.steelbuzz.network.HttpClient;
 public class Supportfragment extends BaseFragment implements OnClickListener {
 
 	public BaseActivity activity;
+	private ProgressDialog dialog;
+	
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
@@ -175,7 +178,7 @@ public class Supportfragment extends BaseFragment implements OnClickListener {
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			activity.doShowLoading();
+			doShowLoading();
 		}
 		
 		@Override
@@ -199,6 +202,7 @@ public class Supportfragment extends BaseFragment implements OnClickListener {
 		@Override
 		protected void onPostExecute(Boolean result) {
 			super.onPostExecute(result);
+			doRemoveLoading();
 			if(result){
 				activity.app.getUserinfo().setSession(false);
 				Intent i = new Intent(activity,SignInScreen.class);
@@ -208,5 +212,18 @@ public class Supportfragment extends BaseFragment implements OnClickListener {
 				Toast.makeText(activity, "Some error occured.Please try again..", Toast.LENGTH_LONG).show();
 			}
 		}
+	}
+	
+	public void doShowLoading() {
+		dialog = new ProgressDialog(activity);
+		dialog.setMessage("Logging out...");
+		dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+		dialog.setIndeterminate(true);
+		dialog.setCancelable(false);
+		dialog.show();
+	}
+	
+	public void doRemoveLoading() {
+		dialog.dismiss();
 	}
 }

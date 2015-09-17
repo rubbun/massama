@@ -70,20 +70,20 @@
                 android:background="@drawable/signin_rounded_corner"
                 android:gravity="center|left"
                 android:orientation="horizontal"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp" >
+                android:paddingLeft="@dimen/input_field_padding"
+                android:paddingRight="@dimen/input_field_padding" >
 
                 <ImageView
                     android:id="@+id/imageView1"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="@dimen/input_field_icon_height"
+                    android:layout_height="@dimen/input_field_icon_height"
                     android:src="@drawable/firstname_icon" />
 
                 <EditText
                     android:id="@+id/etFname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginLeft="5dp"
                     android:background="@null"
                     android:hint="First Name"
                     android:inputType="text"
@@ -91,7 +91,8 @@
                     android:paddingLeft="3dp"
                     android:paddingTop="3dp"
                     android:singleLine="true"
-                    android:textColorHint="#858585" >
+                    android:textColorHint="#858585"
+                    android:textSize="@dimen/button_text_size" >
                 </EditText>
             </LinearLayout>
 
@@ -102,19 +103,19 @@
                 android:background="@drawable/signin_rounded_corner"
                 android:gravity="center|left"
                 android:orientation="horizontal"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp" >
+                android:paddingLeft="@dimen/input_field_padding"
+                android:paddingRight="@dimen/input_field_padding" >
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="@dimen/input_field_icon_height"
+                    android:layout_height="@dimen/input_field_icon_height"
                     android:src="@drawable/lastname_icon" />
 
                 <EditText
                     android:id="@+id/etLname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginLeft="5dp"
                     android:background="@null"
                     android:hint="Last Name"
                     android:inputType="text"
@@ -122,7 +123,8 @@
                     android:paddingLeft="3dp"
                     android:paddingTop="3dp"
                     android:singleLine="true"
-                    android:textColorHint="#858585" >
+                    android:textColorHint="#858585"
+                    android:textSize="@dimen/button_text_size" >
                 </EditText>
             </LinearLayout>
 
@@ -133,19 +135,19 @@
                 android:background="@drawable/signin_rounded_corner"
                 android:gravity="center|left"
                 android:orientation="horizontal"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp" >
+                android:paddingLeft="@dimen/input_field_padding"
+                android:paddingRight="@dimen/input_field_padding" >
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="@dimen/input_field_icon_height"
+                    android:layout_height="@dimen/input_field_icon_height"
                     android:src="@drawable/email_icon" />
 
                 <EditText
                     android:id="@+id/etEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginLeft="5dp"
                     android:background="@null"
                     android:hint="Email Address"
                     android:inputType="textEmailAddress"
@@ -153,7 +155,8 @@
                     android:paddingLeft="3dp"
                     android:paddingTop="3dp"
                     android:singleLine="true"
-                    android:textColorHint="#858585" >
+                    android:textColorHint="#858585"
+                    android:textSize="@dimen/button_text_size" >
                 </EditText>
             </LinearLayout>
 
@@ -164,19 +167,19 @@
                 android:background="@drawable/signin_rounded_corner"
                 android:gravity="center|left"
                 android:orientation="horizontal"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp" >
+                android:paddingLeft="@dimen/input_field_padding"
+                android:paddingRight="@dimen/input_field_padding" >
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="@dimen/input_field_icon_height"
+                    android:layout_height="@dimen/input_field_icon_height"
                     android:src="@drawable/password_icon" />
 
                 <EditText
                     android:id="@+id/etPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginLeft="5dp"
                     android:background="@null"
                     android:hint="Password"
                     android:inputType="textPassword"
@@ -184,7 +187,8 @@
                     android:paddingLeft="3dp"
                     android:paddingTop="3dp"
                     android:singleLine="true"
-                    android:textColorHint="#858585" >
+                    android:textColorHint="#858585"
+                    android:textSize="@dimen/button_text_size" >
                 </EditText>
             </LinearLayout>
 
@@ -212,7 +216,7 @@
                     android:text="I accept Terms and  conditions."
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@android:color/white"
-                    android:textSize="18sp" />
+                    android:textSize="@dimen/button_text_size" />
             </LinearLayout>
 
             <LinearLayout
@@ -231,7 +235,7 @@
                     android:text="Create Account"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@android:color/white"
-                    android:textSize="18sp" />
+                    android:textSize="@dimen/button_text_size" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

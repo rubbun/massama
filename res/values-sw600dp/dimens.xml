@@ -74,4 +74,17 @@
     <dimen name="member_row_text_size">18sp</dimen>
     <dimen name="member_row_height">60dp</dimen>
     
+    <dimen name="input_field_padding">20dp</dimen>
+    <dimen name="input_field_icon_height">25dp</dimen>
+    
+    <dimen name="social_icon_width">55dp</dimen>
+    <dimen name="social_icon_margin">35dp</dimen>
+    
+    <dimen name="button_text_size">18sp</dimen>
+    <dimen name="input_field_margin">40dp</dimen>
+    <dimen name="dont_have_account">15dp</dimen>
+    
+    <dimen name="forgot_password_icon_height">21dp</dimen>
+	 <dimen name="forgot_password_icon_width">32dp</dimen>
+    
 </resources>

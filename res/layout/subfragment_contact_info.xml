@@ -68,6 +68,7 @@
                     android:paddingLeft="40dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="#1f1f1f"
+                    android:textSize="@dimen/member_row_text_size"
                     android:visibility="gone" />
             </LinearLayout>
 

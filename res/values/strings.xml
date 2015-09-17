@@ -44,10 +44,11 @@
     </string-array>
     
     <string-array name="desc_array">
-        <item>Please send us the necessary information which needs to be updated and we will update it for you right away!.</item>
-        <item>Lets hear it!.</item>
-        <item>We are sorry you are having a problem with our application. Give us a detailed explanation on the problem you are facing the problem and we\'ll follow up shortly.</item>
-        <item>If you\'re interested in getting featured for a product category or any other marketing needs then please provide us your Phone # and one of our marketing experts will get in touch with you.</item>
-        <item>Send us a message if you\'ve any other queries or questions which are not listed above.</item>
+        <item>Please send us the necessary information which needs to be updated and we will update it for you right away!</item>
+        <item>Lets hear it!</item>
+        <item>We are sorry you are having a problem with our application. Give us a detailed explanation on the problem you are facing the problem and we\'ll follow up shortly</item>
+        <item>If you\'re interested in getting featured for a product category or any other marketing needs then please provide us your Phone # and one of our marketing experts will get in touch with you</item>
+        <item>Send us a message if you\'ve any other queries or questions which are not listed above</item>
     </string-array>
+        <string name="select_country">Select Country</string>
 </resources>

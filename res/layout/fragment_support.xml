@@ -149,7 +149,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     android:gravity="center"
-                    android:text="Register your firm"
+                    android:text="Register your Company"
                     android:textColor="#000"
                     android:textSize="@dimen/support_text_size" />
 
@@ -183,7 +183,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     android:gravity="center"
-                    android:text="Getting Help/Contact Us"
+                    android:text="Getting Help / Contact Us"
                     android:textColor="#000"
                     android:textSize="@dimen/support_text_size" />
 

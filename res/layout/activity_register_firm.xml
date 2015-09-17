@@ -16,7 +16,7 @@
             android:layout_height="fill_parent"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="Register Your Firm"
+            android:text="Register Your Company"
             android:textColor="#FFFFFF"
             android:textSize="20sp" />
 
@@ -64,7 +64,8 @@
                 android:hint="Company Name"
                 android:imeOptions="actionNext"
                 android:paddingLeft="5dp"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:visibility="visible" />
 
             <EditText
                 android:layout_width="fill_parent"
@@ -74,7 +75,8 @@
                 android:hint="Address"
                 android:imeOptions="actionNext"
                 android:paddingLeft="5dp"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:visibility="visible" />
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -82,7 +84,8 @@
                 android:layout_marginTop="15dp"
                 android:background="@xml/black_border"
                 android:gravity="center"
-                android:padding="2dp" >
+                android:padding="2dp"
+                android:visibility="visible" >
 
                 <Spinner
                     android:id="@+id/spCountryList"
@@ -100,34 +103,37 @@
                 android:hint="City"
                 android:imeOptions="actionNext"
                 android:paddingLeft="5dp"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:visibility="visible" />
 
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="15dp"
                 android:background="@xml/black_border"
-                android:hint="Contact Persion"
+                android:hint="Contact Person"
                 android:imeOptions="actionNext"
                 android:paddingLeft="5dp"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:visibility="visible" />
 
             <LinearLayout
+                android:id="@+id/llPhoneContainer"
                 android:layout_width="fill_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="15dp"
-                android:orientation="horizontal" >
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center|top" >
 
-                <EditText
+                <!-- <EditText
                     android:id="@+id/etCountryCode"
                     android:layout_width="60dp"
                     android:layout_height="fill_parent"
+                    android:background="@xml/black_border"
+                    android:gravity="center|left"
                     android:hint="+00"
                     android:imeOptions="actionNext"
                     android:inputType="phone"
-                    android:gravity="center|left"
-                    android:paddingLeft="10dp"
-                    android:background="@xml/black_border" />
+                    android:paddingLeft="10dp" />
 
                 <EditText
                     android:layout_width="fill_parent"
@@ -137,9 +143,14 @@
                     android:hint="Mobile No"
                     android:imeOptions="actionNext"
                     android:inputType="phone"
-                    android:paddingLeft="5dp"
                     android:maxLength="10"
+                    android:paddingLeft="5dp"
                     android:singleLine="true" />
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" 
+                    android:src="@drawable/ic_phone"/> -->
             </LinearLayout>
 
             <EditText
@@ -152,18 +163,15 @@
                 android:inputType="phone"
                 android:paddingLeft="5dp"
                 android:singleLine="true" />
-
-            <EditText
+            
+            <LinearLayout
+                android:id="@+id/llHughesContainer"
                 android:layout_width="fill_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="15dp"
-                android:background="@xml/black_border"
-                android:hint="Huges No"
-                android:imeOptions="actionNext"
-                android:inputType="phone"
-                android:paddingLeft="5dp"
-                android:maxLength="4"
-                android:singleLine="true" />
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center|top" >
+
+            </LinearLayout>
 
             <EditText
                 android:layout_width="fill_parent"
@@ -176,16 +184,50 @@
                 android:paddingLeft="5dp"
                 android:singleLine="true" />
 
-            <EditText
+            <LinearLayout
+                android:id="@+id/llEmailContainer"
                 android:layout_width="fill_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center|top" >
+
+            </LinearLayout>
+            
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:background="@xml/black_border"
-                android:hint="Email"
-                android:imeOptions="actionNext"
-                android:inputType="textEmailAddress"
+                android:hint="Register as a"
                 android:paddingLeft="5dp"
-                android:singleLine="true" />
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical" >
+
+                <RadioButton
+                    android:id="@+id/radioButton1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="User" />
+
+                <RadioButton
+                    android:id="@+id/radioButton2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Stockist" />
+
+                <RadioButton
+                    android:id="@+id/radioButton3"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Manufacturer" />
+            </RadioGroup>
 
             <EditText
                 android:layout_width="fill_parent"
