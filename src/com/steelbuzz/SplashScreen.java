@@ -9,8 +9,8 @@ public class SplashScreen extends BaseActivity{
 	@Override
 	protected void onCreate(Bundle arg0) {
 		super.onCreate(arg0);
-		
-		if (app.getUserinfo().isTrialPeriodStatus()) {
+		setContentView(R.layout.spalsh);
+		/*if (app.getUserinfo().isTrialPeriodStatus()) {
 			setContentView(R.layout.spalsh);
 					
 			goToNextScreen(true);
@@ -39,8 +39,16 @@ public class SplashScreen extends BaseActivity{
 					//edit.putLong("ACCESS_START_TIME", System.currentTimeMillis());					
 				}
 			}
+		}*/
+		
+		if (app.getUserinfo().isSession()) {
+			Intent i = new Intent(SplashScreen.this,MainActivity.class);
+			startActivity(i);
+			finish();
+		}else{
+			goToNextScreen(true);
 		}
-		//goToNextScreen(false);
+		
 	}
 	
 	public void goToNextScreen(final boolean b){

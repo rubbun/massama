@@ -127,7 +127,7 @@ public class FirmRegisterActivity extends BaseActivity {
 						Toast.makeText(FirmRegisterActivity.this, "Please enter your mobile no.", Toast.LENGTH_LONG).show();
 					}
 				} else {
-					Toast.makeText(FirmRegisterActivity.this, "Please choose a country first.", Toast.LENGTH_LONG).show();
+					Toast.makeText(FirmRegisterActivity.this, "Please select a country", Toast.LENGTH_LONG).show();
 				}
 			}
 		});

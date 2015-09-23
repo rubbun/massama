@@ -6,22 +6,21 @@ import java.util.regex.Pattern;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
-import android.text.style.UnderlineSpan;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.steelbuzz.ResetPasword.PasswordValidator;
 import com.steelbuzz.constant.Constants;
 import com.steelbuzz.network.HttpClient;
 
@@ -34,11 +33,12 @@ public class SignUpScreen extends BaseActivity implements OnClickListener{
 	private String fname,lname,email,password = "";
 	private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 	private CheckBox checkbox;
+	private TextView tVPrivacy,tvTermsofService;
 	
 	private PasswordValidator validator;
 	
 	private static final String PASSWORD_PATTERN = 
-            "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})";
+            "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%*()_+^&}{:;?.]).{6,20})";
 	
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -51,12 +51,16 @@ public class SignUpScreen extends BaseActivity implements OnClickListener{
 		checkbox = (CheckBox)findViewById(R.id.checkBox1);
 		tvTerms = (TextView)findViewById(R.id.tvTerms);
 		
-		SpannableString content = new SpannableString("I accept Terms and Conditions.");
+		tVPrivacy = (TextView)findViewById(R.id.tVPrivacy);
+		tvTermsofService = (TextView)findViewById(R.id.tvTermsofService);
+		
+		
+		/*SpannableString content = new SpannableString("I accept Terms and Conditions.");
         content.setSpan(new UnderlineSpan(), 9, content.length(), 0);
         content.setSpan(new ForegroundColorSpan(Color.parseColor("#FFFF00")), 9, content.length(), 0);
-        tvTerms.setText(content);
+        tvTerms.setText(content);*/
         
-        tvTerms.setOnClickListener(new OnClickListener() {
+		tvTermsofService.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View arg0) {
@@ -86,7 +90,49 @@ public class SignUpScreen extends BaseActivity implements OnClickListener{
 		switch (v.getId()) {
 		case R.id.lblSignup:
 			if(isValid()){
-				sendValueToServer();
+				final Dialog dialog = new Dialog(SignUpScreen.this);
+				dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+				dialog.getWindow().setBackgroundDrawable(
+						new ColorDrawable(android.graphics.Color.TRANSPARENT));
+				dialog.setContentView(R.layout.custom_dialog);
+				dialog.setCancelable(false);
+
+				// set the custom dialog components - text, image and button
+				LinearLayout llContinue = (LinearLayout) dialog.findViewById(R.id.llContinue);
+				LinearLayout llCancel = (LinearLayout) dialog.findViewById(R.id.llCancel);
+				
+				TextView tvDialogText = (TextView) dialog.findViewById(R.id.tvDialogText);
+				
+				/*SpannableString content = new SpannableString(getResources().getString(R.string.privacy_text));
+		        content.setSpan(new UnderlineSpan(), 37, 53, 0);
+		        content.setSpan(new ForegroundColorSpan(Color.parseColor("#007aff")), 37, 53, 0);
+		        tvDialogText.setText(content);*/
+		        
+		       /* tvDialogText.setOnClickListener(new OnClickListener() {
+					
+					@Override
+					public void onClick(View arg0) {
+						Intent i = new Intent(SignUpScreen.this,TermsAndConditions.class);
+						startActivity(i);
+					}
+				});*/
+				
+				
+				llCancel.setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View arg0) {
+						dialog.dismiss();
+					}
+				});
+				
+				llContinue.setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View arg0) {
+						sendValueToServer();
+					}
+				});
+
+				dialog.show();
 			}
 			break;
 		}
@@ -170,7 +216,7 @@ public class SignUpScreen extends BaseActivity implements OnClickListener{
 			super.onPostExecute(result);
 			doRemoveLoading();
 			if(result){
-				Toast.makeText(getApplicationContext(), "Registration Successful!!!", Toast.LENGTH_LONG).show();
+				Toast.makeText(getApplicationContext(), "Your Account Has Been Created!", Toast.LENGTH_LONG).show();
 				mIntent = new Intent(SignUpScreen.this,SignInScreen.class);
 				startActivity(mIntent);
 				finish();
@@ -187,7 +233,7 @@ public class SignUpScreen extends BaseActivity implements OnClickListener{
 		  private String Password = "";
 	 
 		  private static final String PASSWORD_PATTERN = 
-	              "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})";
+	              "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%*()_+^&}{:;?.]).{6,20})";
 		        
 		  public PasswordValidator(){
 			  pattern = Pattern.compile(PASSWORD_PATTERN);

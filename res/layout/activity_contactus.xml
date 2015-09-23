@@ -16,7 +16,7 @@
             android:layout_height="fill_parent"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="Getting Help/Contact Us"
+            android:text="Getting Help / Contact Us"
             android:textColor="#FFFFFF"
             android:textSize="20sp" />
 
@@ -131,7 +131,7 @@
                 android:layout_height="fill_parent"
                 android:background="@drawable/signin_btn_rounded_corner"
                 android:gravity="center"
-                android:text="Submit"
+                android:text="Send"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@android:color/white"
                 android:textSize="18sp" />

@@ -87,4 +87,10 @@
 	 <dimen name="forgot_password_icon_height">15dp</dimen>
 	 <dimen name="forgot_password_icon_width">26dp</dimen>
 	 
+	 <dimen name="dialog_width">250dp</dimen>
+	 <dimen name="dialog_height">140dp</dimen>
+	 
+	 <dimen name="dialog_text_size">16sp</dimen>
+	 <dimen name="dialog_text_margin">5dp</dimen>
+	 
 </resources>

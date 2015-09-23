@@ -133,4 +133,6 @@ public class UserInfo {
 		edit.putLong(Constants.values.STARTTIME.name(), startTime);		
 		edit.commit();
 	}
+	
+	
 }

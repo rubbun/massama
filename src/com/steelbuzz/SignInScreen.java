@@ -499,7 +499,7 @@ public class SignInScreen extends BaseActivity implements OnClickListener,Connec
 				FlurryAgent.logEvent("LoginActivity", articleParams, true);
 				FlurryAgent.endTimedEvent("LoginActivity");
 		
-				Toast.makeText(getApplicationContext(), "Welcome to SteelBuzz!!!", Toast.LENGTH_LONG).show();
+				Toast.makeText(getApplicationContext(), "Welcome to SteelBuzz!", Toast.LENGTH_LONG).show();
 				mIntent = new Intent(SignInScreen.this,MainActivity.class);
 				startActivity(mIntent);
 				hideKeyBoard(etEmail);
@@ -570,8 +570,8 @@ public class SignInScreen extends BaseActivity implements OnClickListener,Connec
 					user_id = user.getId();
 					name = user.getName();		
 					
-					email = user.getProperty("email").toString();
-					System.out.println("!!email:"+email);
+					//email = user.getProperty("email").toString();
+					//System.out.println("!!email:"+email);
 					profile_image = "https://graph.facebook.com/"+user.getId()+"/picture";
 					profile_url = "https://graph.facebook.com/"+user.getId();
 					
@@ -666,6 +666,7 @@ public class SignInScreen extends BaseActivity implements OnClickListener,Connec
 					signOutFromGplus();
 				}
 				
+				Toast.makeText(getApplicationContext(), "Welcome to SteelBuzz!", Toast.LENGTH_LONG).show();
 				mIntent = new Intent(SignInScreen.this,MainActivity.class);
 				startActivity(mIntent);
 				finish();

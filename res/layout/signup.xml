@@ -46,7 +46,7 @@
         </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight=".75"
@@ -99,7 +99,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/input_box_height"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="15dp"
                 android:background="@drawable/signin_rounded_corner"
                 android:gravity="center|left"
                 android:orientation="horizontal"
@@ -131,7 +131,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/input_box_height"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="15dp"
                 android:background="@drawable/signin_rounded_corner"
                 android:gravity="center|left"
                 android:orientation="horizontal"
@@ -163,7 +163,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/input_box_height"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="15dp"
                 android:background="@drawable/signin_rounded_corner"
                 android:gravity="center|left"
                 android:orientation="horizontal"
@@ -195,11 +195,12 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="20dp"
                 android:gravity="center|left"
                 android:orientation="horizontal"
                 android:paddingLeft="5dp"
-                android:paddingRight="5dp" >
+                android:paddingRight="5dp"
+                android:visibility="gone" >
 
                 <CheckBox
                     android:id="@+id/checkBox1"
@@ -223,7 +224,7 @@
                 android:id="@+id/lblSignup"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/input_box_height"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="30dp"
                 android:background="@drawable/signin_btn_rounded_corner"
                 android:gravity="center"
                 android:orientation="vertical" >
@@ -238,6 +239,34 @@
                     android:textSize="@dimen/button_text_size" />
             </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:gravity="center|right"
+            android:orientation="horizontal"
+            android:padding="20dp" >
+
+            <TextView
+                android:id="@+id/tvTermsofService"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:text="Terms and Conditions"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/button_text_size" />
+
+            <TextView
+                android:id="@+id/tVPrivacy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Privacy Policy"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/button_text_size" />
+        </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>

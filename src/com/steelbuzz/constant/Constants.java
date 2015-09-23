@@ -14,6 +14,9 @@ public class Constants {
 	public static final String CATEGORY_MEMBER_DETAIL_LIST = BASE_URL+"isteel/index.php/category/findAllCategories";
 	public static final String BUZZ_LIST = "http://www.steelbuzz.com/sb/app/buzzsettings.php";
 	public static final String REGISTER = "http://steelbuzz.com/sb/app/register.php";
+	
+	public static final String REGISTER1 = "http://steelbuzz.com/steelbuzz/api/api.php?apiname=register";
+	
 	public static final String LOGIN = "http://www.steelbuzz.com/sb/app/login.php";
 	public static final String SOCIAL_LOGOUT = "http://steelbuzz.com/sb/app/social_logout.php";
 	public static final String IMAGE_LINK = "http://www.steelbuzz.com/sb/buzz_image/";

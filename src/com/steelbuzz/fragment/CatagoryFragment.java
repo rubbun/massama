@@ -34,6 +34,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.steelbuzz.BaseActivity;
@@ -67,18 +68,22 @@ public class CatagoryFragment extends BaseFragment implements OnItemClickListene
 	//private MemberAdapter memberAdapter;
 	private CatagoryAdapter catagoryAdapter;
 	private BaseActivity base;
-	private TextView tv_membername, tv_address;
+	private TextView tv_membername, tv_address,tvProductName;
 	private Member memberBean;
 	private Fragment fragment = null;
 	private int index = -1;
 	private LinearLayout ll_conpany_info,llMain, ll_phone, ll_mail, ll_products;
-
+	private RelativeLayout rlHeader;
+	
+	private String selectedProductname = "";
+	private TextView textViewName;
+	
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
 		base = (BaseActivity) activity;
 	}
-
+	
 	/*public CatagoryFragment() {
 
 	}*/
@@ -95,6 +100,8 @@ public class CatagoryFragment extends BaseFragment implements OnItemClickListene
 		ivBack = (ImageView)v.findViewById(R.id.ivBack);
 		llBack = (LinearLayout)v.findViewById(R.id.llBack);
 		llMain = (LinearLayout)v.findViewById(R.id.llMain);
+		tvProductName = (TextView)v.findViewById(R.id.tvProductName);
+		rlHeader = (RelativeLayout) v.findViewById(R.id.rlHeader);
 		
 		ivTick = (ImageView)v.findViewById(R.id.ivTick);
 
@@ -147,7 +154,6 @@ public class CatagoryFragment extends BaseFragment implements OnItemClickListene
 						String retailerName = memberArr.get(i).getName();
 						if (textLength <= retailerName.length()) {
 							if (retailerName.toLowerCase().contains(searchString.toLowerCase())) {
-
 								selectedtempArr.add(new Member(memberArr.get(i).getName(), memberArr.get(i).getName(), memberArr.get(i).getAddress(), memberArr.get(i).getContactParson(), memberArr.get(i).getTata(), memberArr.get(i).getMobile(), memberArr.get(i).getFax(), memberArr.get(i).getResidential(), memberArr.get(i).getEmail(), memberArr.get(i).getWeb(), memberArr.get(i).getHughes_no(),memberArr.get(i).getCity(),memberArr.get(i).getCountry(),memberArr.get(i).getStatus()));
 							}
 						}
@@ -188,7 +194,6 @@ public class CatagoryFragment extends BaseFragment implements OnItemClickListene
 		@Override
 		protected JSONArray doInBackground(Void... arg0) {
 			try {
-
 				JSONObject jsonObject = new JSONObject();
 				jsonObject.put("category", 1);
 				if (base.hasConnection()) {
@@ -202,9 +207,7 @@ public class CatagoryFragment extends BaseFragment implements OnItemClickListene
 					JSONArray arr = base.mDb.fetchCatagoryList();
 					return arr;
 				}
-
 			} catch (JSONException e) {
-
 			}
 			return null;
 		}
@@ -233,9 +236,11 @@ public class CatagoryFragment extends BaseFragment implements OnItemClickListene
 		try {
 			view = View.inflate(getActivity(), R.layout.row_catagory, null);
 			String name = jsonObject.getString("name");
+			
 			final String id = jsonObject.getString("id");
-			TextView textViewName = (TextView) view.findViewById(R.id.textViewName);
+			textViewName = (TextView) view.findViewById(R.id.textViewName);
 			textViewName.setText(name);
+			textViewName.setTag(name);
 			final LinearLayout llSubCategory = (LinearLayout) view.findViewById(R.id.llSubCategory);
 			LinearLayout llBody = (LinearLayout) view.findViewById(R.id.llBody);
 			llBody.setTag(tag+System.currentTimeMillis());
@@ -282,13 +287,16 @@ public class CatagoryFragment extends BaseFragment implements OnItemClickListene
 				textViewName.setTextColor(Color.parseColor("#07669E"));
 			}
 			
-			
 			llBody.setPadding(padding, 0, 0, 0);
 			textViewName.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View arg0) {
 					try {
 						index = 1;
+						if (index == 1) {
+							selectedProductname = (String) arg0.getTag();
+							System.out.println("!!value:"+selectedProductname);
+						}
 						if (jsonObject.has("root")) {
 							int childCount = llSubCategory.getChildCount();
 							if (childCount > 0) {
@@ -303,10 +311,8 @@ public class CatagoryFragment extends BaseFragment implements OnItemClickListene
 									}else if(((View)arg0.getParent()).getTag().toString().contains("level1")){
 										llSubCategory.addView(SubView(subJsonObject, 40,"level2"));	
 									}
-									
 								}
 							}
-
 						} else {
 							new GetMemberList().execute(id);
 						}
@@ -391,6 +397,8 @@ public class CatagoryFragment extends BaseFragment implements OnItemClickListene
 			if (base.hasConnection()) {
 				//dismissLoading();
 			}
+			
+			tvProductName.setText(selectedProductname);
 			ll_member.setVisibility(View.VISIBLE);
 			ll_body.setVisibility(View.GONE);
 			catagoryAdapter = new CatagoryAdapter(getActivity(), R.layout.row_member, memberArr);
@@ -412,6 +420,7 @@ public class CatagoryFragment extends BaseFragment implements OnItemClickListene
 			ll_body.setVisibility(View.GONE);
 			ll_member.setVisibility(View.VISIBLE);
 			ll_member_detail.setVisibility(View.GONE);
+			rlHeader.setVisibility(View.VISIBLE);
 		}
 	}
 
@@ -453,7 +462,7 @@ public class CatagoryFragment extends BaseFragment implements OnItemClickListene
 		if(selectedtempArr.size() > 0){
 			ll_member.setVisibility(View.GONE);
 			ll_body.setVisibility(View.GONE);
-			
+			rlHeader.setVisibility(View.GONE);
 			ll_member_detail.setVisibility(View.VISIBLE);
 			tv_membername.setText("" + selectedtempArr.get(arg2).getName());
 			tv_address.setText("" + selectedtempArr.get(arg2).getCity()+ ", "+selectedtempArr.get(arg2).getCountry());
@@ -467,6 +476,7 @@ public class CatagoryFragment extends BaseFragment implements OnItemClickListene
 		}else{
 			ll_member.setVisibility(View.GONE);
 			ll_body.setVisibility(View.GONE);
+			rlHeader.setVisibility(View.GONE);
 			ll_member_detail.setVisibility(View.VISIBLE);
 			tv_membername.setText("" + memberArr.get(arg2).getName());
 			tv_address.setText("" + memberArr.get(arg2).getCity()+", "+memberArr.get(arg2).getCountry());
